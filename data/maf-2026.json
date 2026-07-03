@@ -6,7 +6,7 @@
     "mvpCap": 9944,
     "vendorRev100": 8370,
     "vendorRev100Target": 10170,
-    "registryFull": 29829,
+    "registryFull": 33329,
     "vendorSlots": 44,
     "vendorSlotsTarget": 56,
     "vendorScenario": "layout-02a-carryover",
@@ -168,6 +168,58 @@
         {
           "label": "Volunteer + safety staging",
           "amount": 500
+        }
+      ]
+    },
+    {
+      "id": "lantern_contest_prizes",
+      "name": "Community Lantern Contest",
+      "emoji": "\ud83c\udfc6",
+      "amount": 2000,
+      "category": "registry",
+      "sortOrder": 1,
+      "impactOrder": 11,
+      "tagline": "Community Lantern Contest presented by [Sponsor] \u2014 from crayon to craftsmanship.",
+      "description": "Prize fund for the regional capstone lantern contest \u2014 **2D design** (paper/canvas, all ages, low barrier) and **3D handmade** (youth, family, artisan centerpiece). Launches **weeks before** the festival for school/church outreach and weekly social features. **People's Choice** voting: online poll (~35%) mobilizes entrant networks; **in-person ballots** at the festival (~65%, heavier). Expert panel awards **Grand Lantern Prize** on stage Saturday; winners lead or honor the dusk procession. **Consolation prizes** = coalition **LED lanterns already in inventory** (in-kind; not charged to this block).",
+      "benefits": [
+        "Community Lantern Contest presented by [Sponsor]",
+        "Grand prize naming on stage + MC script",
+        "Facebook/Instagram unlock post + featured winner reels",
+        "Early-season contest posts tagged to sponsor",
+        "People's Choice poll \u2014 sponsor named on voting gallery"
+      ],
+      "lineItems": [
+        {
+          "label": "Grand Lantern Prize \u2014 3D artisan / centerpiece showcase",
+          "amount": 950
+        },
+        {
+          "label": "3D youth handmade winner",
+          "amount": 200
+        },
+        {
+          "label": "3D family co-built winner",
+          "amount": 200
+        },
+        {
+          "label": "3D traditional craft winner",
+          "amount": 200
+        },
+        {
+          "label": "2D design winner \u2014 youth (12 & under)",
+          "amount": 150
+        },
+        {
+          "label": "2D design winner \u2014 teen & adult",
+          "amount": 150
+        },
+        {
+          "label": "Consolation \u2014 LED lanterns (coalition inventory; in-kind)",
+          "amount": 0
+        },
+        {
+          "label": "Gift cards, procurement, awards staging",
+          "amount": 150
         }
       ]
     },
@@ -380,21 +432,26 @@
       "id": "spread_the_word",
       "name": "Spread the Word",
       "emoji": "\ud83d\udce3",
-      "amount": 800,
+      "amount": 2300,
       "category": "registry",
       "sortOrder": 8,
       "impactOrder": 3,
-      "tagline": "Spread the Word presented by [Sponsor] \u2014 reach families who have not found us yet.",
-      "description": "Paid Meta / Instagram and boosted posts \u2014 media sponsorship, not a petty-cash ask.",
+      "tagline": "Spread the Word presented by [Sponsor] \u2014 paid reach plus local TV that fills the park.",
+      "description": "Paid Meta / Instagram and boosted posts **plus** a **TV / earned-media coordinator stipend** \u2014 books Good Day, Fox40, and local segments (LNY 2026 grammar). Marketing DRI (e.g. Ellie King) or designated coordinator; stipend covers outreach labor, not a full PR retainer. Sponsor-funded block \u2014 not petty cash.",
       "benefits": [
         "Sponsor tag on boosted content",
         "Named in Facebook/Instagram unlock post",
-        "website recognition"
+        "Website recognition",
+        "TV segments tagged \u201cSpread the Word presented by [Sponsor]\u201d when booked"
       ],
       "lineItems": [
         {
           "label": "Paid Meta / Instagram + boosted posts",
           "amount": 800
+        },
+        {
+          "label": "TV / earned-media coordinator stipend",
+          "amount": 1500
         }
       ]
     },
