@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="About Great Lantern Festival — Trung Thu traditions, Elk Grove history, and past festival fliers." />
-  <title>About the Festival — Great Lantern Festival</title>
+  <meta name="description" content="About Tết Trung Thu & Great Lantern Festival — traditions, Elk Grove history, and past festival fliers." />
+  <title>About Great Lantern Festival</title>
   <script src="../clean-urls.js"></script>
   <script>
     (function () {
@@ -25,12 +25,12 @@
   <script src="../site.js"></script>
   <script>
     (async function () {
-      const { initPageShell, loadSiteData, mountFooter, renderAboutPage, initPageToc, setPageTitle, escapeHtml } =
+      const { initPageShell, loadSiteData, mountFooter, renderAboutPage, initPageToc, escapeHtml } =
         window.MafSite;
       initPageShell("about");
       try {
         const site = await loadSiteData();
-        setPageTitle(site, "About the Festival");
+        document.title = "About Great Lantern Festival";
         document.getElementById("main").innerHTML = renderAboutPage(site.about);
         initPageToc();
         mountFooter(site);
