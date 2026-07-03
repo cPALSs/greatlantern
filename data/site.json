@@ -29,7 +29,7 @@
     "buildHref": "/fund-the-festival/"
   },
   "apply": {
-    "email": "midautumn@cpalss.com",
+    "email": "contact@greatlantern.com",
     "emailSubject": "GLF 2026 Volunteer interest",
     "intro": "Review the roles above — open and filled — then apply when you know which director or committee member role fits you.",
     "steps": [
@@ -37,7 +37,7 @@
       "Apply on Idealist — name the role(s), whether you want Director or Member, your preferred contact method (email, text, or phone), and any events you're already committed to this season.",
       "We'll follow up within a few business days — add you to the staff directory, introduce vendor partners or teammates, and set a first check-in."
     ],
-    "idealistFallback": "Can't use Idealist? Email midautumn@cpalss.com with the role name and one sentence on why you're interested."
+    "idealistFallback": "Can't use Idealist? Email contact@greatlantern.com with the role name and one sentence on why you're interested."
   },
   "directorIntro": {
     "title": "Directors and committee members",
@@ -402,7 +402,7 @@
         "diy": "https://docs.google.com/forms/d/1lq0PmaKz11ilsksy6uVTcsDSBH8TaLtBy_PsYMwD0GY/viewform?usp=pp_url&entry.72e95146=Custom+zone&entry.52624066=Decorate+it+myself",
         "help": "https://docs.google.com/forms/d/1lq0PmaKz11ilsksy6uVTcsDSBH8TaLtBy_PsYMwD0GY/viewform?usp=pp_url&entry.72e95146=Custom+zone&entry.52624066=Help+me+bring+it+to+life"
       },
-      "email": "midautumn@cpalss.com",
+      "email": "contact@greatlantern.com",
       "emailSubject": "GLF 2026 — host inquiry",
       "intro": "Tell us about your organization — Partnerships will follow up within a few business days with a recommended setup. They may ask about shade, lighting, and artwork; you don't need answers on day one."
     },
@@ -440,6 +440,10 @@
     }
   },
   "footer": {
+    "contactEmail": "contact@greatlantern.com",
+    "socialLinks": [
+      { "label": "Instagram", "href": "https://www.instagram.com/greatlanternfest/" }
+    ],
     "coalitionLinks": [
       { "label": "cPALSs", "href": "https://www.cpalss.com/" },
       { "label": "VACOS", "href": "https://vacos.org/" },
