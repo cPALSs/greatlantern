@@ -806,37 +806,19 @@
     return `<nav class="host-doc-toc" aria-label="On this page"><p class="host-doc-toc-label">On this page</p>${links}</nav>`;
   }
 
-  function renderHostApplyBlock(hostApply, prominent) {
-    const formUrl = hostApply.formUrl ?? "";
-    const formLabel = hostApply.formLabel ?? "Fill out the inquiry form";
-    const mailto = hostApply.email
-      ? `mailto:${hostApply.email}?subject=${encodeURIComponent(hostApply.emailSubject ?? "GLF 2026 — host inquiry")}`
-      : "";
-
+  function wrapDocLayout(tocItems, mainHtml) {
+    if (!tocItems?.length) return mainHtml;
     return `
-    <div class="apply-block${prominent ? " apply-block--prominent" : ""}">
-      <p>${escapeHtml(hostApply.intro ?? "")}</p>
-      <div class="cta-row">
-        ${formUrl ? `<a class="btn btn-primary" id="host-contact-form" href="${escapeHtml(formUrl)}">${escapeHtml(formLabel)}</a>` : ""}
-        ${mailto ? `<a class="btn btn-secondary" id="host-contact-email" href="${mailto}">Email ${escapeHtml(hostApply.email)}</a>` : ""}
-      </div>
-      ${hostApply.detailNote ? `<p class="muted">${escapeHtml(hostApply.detailNote)}</p>` : ""}
-      ${hostApply.vendorNote ? `<p class="muted">${escapeHtml(hostApply.vendorNote)}</p>` : ""}
-      ${hostApply.responseNote ? `<p class="muted">${escapeHtml(hostApply.responseNote)}</p>` : ""}
+    <div class="host-doc-layout">
+      ${renderHostToc(tocItems)}
+      <div class="host-doc-main">${mainHtml}</div>
     </div>`;
   }
 
-  function initHostPageToc(hostApply, prompts) {
+  function initPageToc() {
     const tocLinks = document.querySelectorAll("[data-toc-target]");
-    const sections = document.querySelectorAll("[data-host-section]");
-    const vendorModal = document.getElementById("vendor-spot-modal");
-
-    function openVendorModal() {
-      if (!vendorModal) return;
-      if (typeof vendorModal.showModal === "function") {
-        vendorModal.showModal();
-      }
-    }
+    const sections = document.querySelectorAll("[data-doc-section], [data-host-section]");
+    if (!tocLinks.length || !sections.length) return { scrollToSection: () => {} };
 
     function scrollToSection(id) {
       const el = document.getElementById(id);
@@ -849,63 +831,6 @@
         link.classList.toggle("is-active", link.getAttribute("data-toc-target") === id);
       });
     }
-
-    function updateFormLink(mode) {
-      const formLink = document.getElementById("host-contact-form");
-      if (!formLink || !hostApply) return;
-      const url =
-        mode === "diy" && hostApply.prefill?.diy
-          ? hostApply.prefill.diy
-          : mode === "help" && hostApply.prefill?.help
-            ? hostApply.prefill.help
-            : hostApply.formUrl;
-      if (url) {
-        formLink.href = url;
-      }
-    }
-
-    function updateMailto(mode) {
-      const emailLink = document.getElementById("host-contact-email");
-      if (!emailLink || !hostApply?.email) return;
-      const subject =
-        mode === "diy"
-          ? prompts?.diy?.mailtoSubject
-          : mode === "help"
-            ? prompts?.help?.mailtoSubject
-            : hostApply.emailSubject;
-      if (subject) {
-        emailLink.href = `mailto:${hostApply.email}?subject=${encodeURIComponent(subject)}`;
-      }
-    }
-
-    function highlightStories(mode) {
-      document.querySelectorAll(".host-story-card").forEach((card) => {
-        const cardMode = card.getAttribute("data-mode");
-        card.classList.toggle("is-dimmed", mode && cardMode && cardMode !== mode);
-        card.classList.toggle("is-highlighted", mode && cardMode === mode);
-      });
-    }
-
-    document.querySelectorAll("[data-host-prompt]").forEach((btn) => {
-      btn.addEventListener("click", () => {
-        const prompt = btn.getAttribute("data-host-prompt");
-        if (prompt === "vendor") {
-          highlightStories(null);
-          openVendorModal();
-          return;
-        }
-        highlightStories(null);
-        updateFormLink(prompt);
-        updateMailto(prompt);
-        const scrollTarget =
-          prompt === "diy"
-            ? prompts?.diy?.scrollTo ?? "decorate-yourself"
-            : prompt === "help"
-              ? prompts?.help?.scrollTo ?? "bring-to-life"
-              : "examples";
-        scrollToSection(scrollTarget);
-      });
-    });
 
     tocLinks.forEach((link) => {
       link.addEventListener("click", (e) => {
@@ -964,6 +889,97 @@
       window.addEventListener("scrollend", scheduleScrollSpyUpdate, { passive: true });
     }
     scheduleScrollSpyUpdate();
+
+    return { scrollToSection };
+  }
+
+  function renderHostApplyBlock(hostApply, prominent) {
+    const formUrl = hostApply.formUrl ?? "";
+    const formLabel = hostApply.formLabel ?? "Fill out the inquiry form";
+    const mailto = hostApply.email
+      ? `mailto:${hostApply.email}?subject=${encodeURIComponent(hostApply.emailSubject ?? "GLF 2026 — host inquiry")}`
+      : "";
+
+    return `
+    <div class="apply-block${prominent ? " apply-block--prominent" : ""}">
+      <p>${escapeHtml(hostApply.intro ?? "")}</p>
+      <div class="cta-row">
+        ${formUrl ? `<a class="btn btn-primary" id="host-contact-form" href="${escapeHtml(formUrl)}">${escapeHtml(formLabel)}</a>` : ""}
+        ${mailto ? `<a class="btn btn-secondary" id="host-contact-email" href="${mailto}">Email ${escapeHtml(hostApply.email)}</a>` : ""}
+      </div>
+      ${hostApply.detailNote ? `<p class="muted">${escapeHtml(hostApply.detailNote)}</p>` : ""}
+      ${hostApply.vendorNote ? `<p class="muted">${escapeHtml(hostApply.vendorNote)}</p>` : ""}
+      ${hostApply.responseNote ? `<p class="muted">${escapeHtml(hostApply.responseNote)}</p>` : ""}
+    </div>`;
+  }
+
+  function initHostPageToc(hostApply, prompts) {
+    const vendorModal = document.getElementById("vendor-spot-modal");
+    const { scrollToSection } = initPageToc();
+
+    function openVendorModal() {
+      if (!vendorModal) return;
+      if (typeof vendorModal.showModal === "function") {
+        vendorModal.showModal();
+      }
+    }
+
+    function updateFormLink(mode) {
+      const formLink = document.getElementById("host-contact-form");
+      if (!formLink || !hostApply) return;
+      const url =
+        mode === "diy" && hostApply.prefill?.diy
+          ? hostApply.prefill.diy
+          : mode === "help" && hostApply.prefill?.help
+            ? hostApply.prefill.help
+            : hostApply.formUrl;
+      if (url) {
+        formLink.href = url;
+      }
+    }
+
+    function updateMailto(mode) {
+      const emailLink = document.getElementById("host-contact-email");
+      if (!emailLink || !hostApply?.email) return;
+      const subject =
+        mode === "diy"
+          ? prompts?.diy?.mailtoSubject
+          : mode === "help"
+            ? prompts?.help?.mailtoSubject
+            : hostApply.emailSubject;
+      if (subject) {
+        emailLink.href = `mailto:${hostApply.email}?subject=${encodeURIComponent(subject)}`;
+      }
+    }
+
+    function highlightStories(mode) {
+      document.querySelectorAll(".host-story-card").forEach((card) => {
+        const cardMode = card.getAttribute("data-mode");
+        card.classList.toggle("is-dimmed", mode && cardMode && cardMode !== mode);
+        card.classList.toggle("is-highlighted", mode && cardMode === mode);
+      });
+    }
+
+    document.querySelectorAll("[data-host-prompt]").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        const prompt = btn.getAttribute("data-host-prompt");
+        if (prompt === "vendor") {
+          highlightStories(null);
+          openVendorModal();
+          return;
+        }
+        highlightStories(null);
+        updateFormLink(prompt);
+        updateMailto(prompt);
+        const scrollTarget =
+          prompt === "diy"
+            ? prompts?.diy?.scrollTo ?? "decorate-yourself"
+            : prompt === "help"
+              ? prompts?.help?.scrollTo ?? "bring-to-life"
+              : "examples";
+        scrollToSection(scrollTarget);
+      });
+    });
 
     const hash = window.location.hash.replace("#", "");
     if (hash === "diy" || hash === "decorate-yourself") {
@@ -1085,18 +1101,22 @@
     const contactNote = season.contactNote
       ? `<p class="muted season-contact-note">${escapeHtml(season.contactNote)}</p>`
       : "";
-
-    return `
-      <section class="hero">
-        <h1>${escapeHtml(resources?.headline ?? "Resources")}</h1>
-      </section>
-      <section class="about-section resources-season">
-        <h2>${escapeHtml(season.title ?? "Mid-Autumn Festival Season")}</h2>
+    const seasonTitle = season.title ?? "Mid-Autumn Festival Season";
+    const toc = [{ id: "season", label: seasonTitle }];
+    const seasonSection = `
+      <section class="host-doc-section about-section resources-season" id="season" data-doc-section>
+        <h2>${escapeHtml(seasonTitle)}</h2>
         ${season.intro ? `<p>${escapeHtml(season.intro)}</p>` : ""}
         ${events.length ? `<ul class="season-event-list">${listItems}</ul>` : `<p class="muted">Season events coming soon.</p>`}
         ${season.listNote ? `<p class="muted season-list-note">${escapeHtml(season.listNote)}</p>` : ""}
         ${contactNote}
       </section>`;
+
+    return `
+      <section class="hero">
+        <h1>${escapeHtml(resources?.headline ?? "Resources")}</h1>
+      </section>
+      ${wrapDocLayout(toc, seasonSection)}`;
   }
 
   function renderRoleCard(role) {
@@ -1187,15 +1207,112 @@
     if (sections.length) {
       return sections
         .map(
-          (section) => `
-      <section class="about-section">
+          (section, index) => {
+            const id = section.id || `section-${index}`;
+            return `
+      <section class="host-doc-section about-section" id="${escapeHtml(id)}" data-doc-section>
         <h2>${escapeHtml(section.title)}</h2>
         ${section.paragraphs.map((p) => `<p>${escapeHtml(p)}</p>`).join("")}
-      </section>`,
+      </section>`;
+          },
         )
         .join("");
     }
     return (about.paragraphs ?? []).map((p) => `<p>${escapeHtml(p)}</p>`).join("");
+  }
+
+  function renderAboutPage(about) {
+    const sections = about.sections ?? [];
+    const toc = sections.map((section, index) => ({
+      id: section.id || `section-${index}`,
+      label: section.tocLabel || section.title,
+    }));
+    if (about.posterWall) {
+      toc.push({
+        id: "posters",
+        label: about.posterWall.tocLabel || about.posterWall.title || "Festival posters",
+      });
+    }
+    const main = renderAboutSections(about) + renderPosterWall(about.posterWall);
+    return `
+      <section class="hero">
+        <h1>${escapeHtml(about.headline)}</h1>
+      </section>
+      ${wrapDocLayout(toc, main)}`;
+  }
+
+  function renderTeamPage(site) {
+    const intro = site.directorIntro;
+    const toc = [
+      { id: "intro", label: "Open roles & committees" },
+      ...(site.lanes ?? []).map((lane) => ({ id: lane.id, label: lane.title })),
+      { id: "phase2", label: site.phase2?.title ?? "Phase 2" },
+      { id: "apply", label: "How to apply" },
+      { id: "faq", label: "FAQ" },
+    ];
+
+    const introHtml = `
+      <section class="host-doc-section content-section" id="intro" data-doc-section>
+        <h2>Open roles &amp; committees</h2>
+        <h3>${escapeHtml(intro.title)}</h3>
+        ${intro.paragraphs.map((p) => `<p>${escapeHtml(p)}</p>`).join("")}
+        <ul>${intro.notes.map((n) => `<li>${escapeHtml(n)}</li>`).join("")}</ul>
+      </section>`;
+
+    const lanesHtml = (site.lanes ?? [])
+      .map(
+        (lane) => `
+          <section class="host-doc-section lane-section" id="${escapeHtml(lane.id)}" data-doc-section>
+            <div class="lane-header">
+              <h2>${escapeHtml(lane.title)}</h2>
+              <p><strong>${escapeHtml(lane.subtitle)}</strong>${lane.intro ? " — " + escapeHtml(lane.intro) : ""}</p>
+            </div>
+            ${lane.roles.map(renderRoleCard).join("")}
+          </section>`,
+      )
+      .join("");
+
+    const phase2 = site.phase2;
+    const phase2Html = phase2
+      ? `
+          <section class="host-doc-section content-section" id="phase2" data-doc-section>
+            <h2>${escapeHtml(phase2.title)}</h2>
+            <p>${escapeHtml(phase2.intro)}</p>
+            <ul>${phase2.roles.map((r) => `<li>${escapeHtml(r)}</li>`).join("")}</ul>
+            <p><a href="${escapeHtml(phase2.registryHref)}">See the registry →</a></p>
+          </section>`
+      : "";
+
+    const faqHtml = (site.faq ?? [])
+      .map(
+        (f) => `
+          <div class="faq-item">
+            <h3>${escapeHtml(f.q)}</h3>
+            <p>${escapeHtml(f.a)}</p>
+          </div>`,
+      )
+      .join("");
+
+    const main = `
+          ${introHtml}
+          ${lanesHtml}
+          ${phase2Html}
+          <section class="host-doc-section content-section" id="apply" data-doc-section>
+            <h2>How to apply</h2>
+            ${site.apply.intro ? `<p>${escapeHtml(site.apply.intro)}</p>` : ""}
+            ${renderApplyBlock(site)}
+            <div class="co-chairs">${renderCoChairs(site)}</div>
+          </section>
+          <section class="host-doc-section content-section" id="faq" data-doc-section>
+            <h2>FAQ</h2>
+            ${faqHtml}
+          </section>`;
+
+    return `
+      <section class="hero">
+        <h1>Team</h1>
+      </section>
+      ${wrapDocLayout(toc, main)}`;
   }
 
   function renderPosterWall(posterWall) {
@@ -1219,7 +1336,7 @@
       .join("");
 
     return `
-    <section class="poster-wall">
+    <section class="host-doc-section poster-wall" id="posters" data-doc-section>
       <h2>${escapeHtml(posterWall.title ?? "Festival posters over the years")}</h2>
       ${posterWall.intro ? `<p class="muted">${escapeHtml(posterWall.intro)}</p>` : ""}
       <div class="poster-grid">${cards}</div>
@@ -1239,12 +1356,15 @@
     loadSeasonEvents,
     loadSkuCatalog,
     mountFooter,
+    renderAboutPage,
     renderAboutSections,
+    renderTeamPage,
     renderResourcesPage,
     renderPosterWall,
     renderApplyBlock,
     renderCoChairs,
     renderEventSummary,
+    initPageToc,
     initHostPageToc,
     initZoneCarousel,
     renderHostActivations,

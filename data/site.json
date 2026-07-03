@@ -260,6 +260,7 @@
     "headline": "About the Festival",
     "sections": [
       {
+        "id": "trung-thu",
         "title": "About Trung Thu & Great Lantern Festival",
         "paragraphs": [
           "Mid-Autumn Festival, known as Tết Trung Thu in Vietnamese culture, is a cherished celebration when families gather under the full moon. Children carry lanterns, share mooncakes, and drink tea — a night of reunion, gratitude, and hope. For Vietnamese communities in America, the festival reconnects generations and keeps cultural traditions alive in a new homeland.",
@@ -267,6 +268,7 @@
         ]
       },
       {
+        "id": "elk-grove",
         "title": "Elk Grove & Derr-Okamoto Park",
         "paragraphs": [
           "Great Lantern Festival 2026 is a free, family-centered afternoon and evening at Derr-Okamoto Park in Elk Grove: Saturday, Sep 26, 4–9 PM, with food vendors, stage programming, and lantern procession at dusk.",

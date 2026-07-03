@@ -564,6 +564,17 @@ body.nav-open {
   padding: 0 0 3rem;
 }
 
+.page-wrap--doc {
+  max-width: none;
+  padding: 1rem 0 3rem;
+}
+
+.page-wrap--doc > .hero {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 clamp(1.25rem, 4vw, 3rem) 1rem;
+}
+
 .hero {
   padding: 0 0 1rem;
 }
@@ -740,7 +751,8 @@ body.nav-open {
   margin-bottom: 0;
 }
 
-.hero + .about-section {
+.hero + .about-section,
+.hero + .host-doc-layout {
   margin-top: 0;
 }
 
@@ -860,6 +872,10 @@ body.nav-open {
   .poster-grid {
     grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
   }
+}
+
+.host-doc-main .lane-section {
+  border-top: none;
 }
 
 .lane-section {
@@ -1579,13 +1595,13 @@ body.nav-open {
 
   .host-doc-toc-link {
     display: block;
-    padding: 0.35rem 0;
+    padding: 0.45rem 0 0.45rem 0.65rem;
+    margin-left: -0.65rem;
     color: var(--muted);
     text-decoration: none;
     font-size: 0.92rem;
+    line-height: 1.25;
     border-left: 2px solid transparent;
-    padding-left: 0.65rem;
-    margin-left: -0.65rem;
   }
 
   .host-doc-toc-link:hover {
