@@ -1,4 +1,4 @@
-/** Fund the Festival — multi-festival interactive model */
+/** Fund The Festival — multi-festival interactive model */
 
 const fmt = (n) =>
   n.toLocaleString("en-US", { style: "currency", currency: "USD", maximumFractionDigits: 0 });
@@ -740,7 +740,7 @@ function renderMeta() {
   if (summaryEl) {
     summaryEl.textContent = [e.venue, e.dates, attendance].filter(Boolean).join(" · ");
   }
-  document.title = `Fund the Festival — ${e.name}`;
+  document.title = `Fund The Festival — ${currentFestivalEntry()?.label ?? "Great Lantern Festival"}`;
 }
 
 function renderSectionHints() {

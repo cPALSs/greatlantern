@@ -152,7 +152,7 @@
         if (/^(\s+|—|--)$/.test(part)) return part;
         const lower = part.toLowerCase();
         const wordIndex = parts.slice(0, index).filter((p) => !/^(\s+|—|--)$/.test(p)).length;
-        if (wordIndex > 0 && small.has(lower)) return lower;
+        if (wordIndex > 0 && small.has(lower) && part === lower) return lower;
         if (/^\d/.test(part)) {
           return part.replace(/[a-z]+/g, (word) => word.charAt(0).toUpperCase() + word.slice(1));
         }
@@ -172,7 +172,7 @@
         href: "/custom-zones/",
         children: [
           { id: "host", label: "Custom Zones", href: "/custom-zones/" },
-          { id: "build", label: "Fund the Festival", href: "/fund-the-festival/" },
+          { id: "build", label: "Fund The Festival", href: "/fund-the-festival/" },
         ],
       },
     ];
@@ -208,8 +208,8 @@
     <nav class="site-nav" aria-label="Main">
       <div class="site-nav-bar">
         <a class="site-nav-brand" href="/">
-          <span class="site-nav-brand-full">Great Lantern <span>Festival 2026</span></span>
-          <span class="site-nav-brand-short">GLF <span>2026</span></span>
+          <span class="site-nav-brand-full">Great Lantern <span>Festival</span></span>
+          <span class="site-nav-brand-short">GLF</span>
         </a>
         <div class="site-nav-end">
           ${renderThemeControl()}
@@ -1110,7 +1110,7 @@
   }
 
   function setPageTitle(site, pageTitle) {
-    const suffix = site.meta?.titleSuffix ?? "Great Lantern Festival 2026";
+    const suffix = site.meta?.titleSuffix ?? "Great Lantern Festival";
     document.title = pageTitle
       ? `${toTitleCase(pageTitle)} — ${suffix}`
       : site.meta?.siteName ?? suffix;

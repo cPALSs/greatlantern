@@ -14,7 +14,7 @@ Unified Great Lantern Festival hub — clean URLs, no `.html` in public paths.
 | `/team/` | `team/index.html` |
 | `/about/` | `about/index.html` |
 | `/custom-zones/` | **Custom Zones** — hero, prompts, examples, desktop TOC |
-| `/fund-the-festival/` | **Fund the Festival** — interactive sponsor registry |
+| `/fund-the-festival/` | **Fund The Festival** — interactive sponsor registry |
 
 Legacy redirects (via `clean-urls.js`): `/host.html` → `/custom-zones/`, `/build/` → `/fund-the-festival/`, `/about.html` → `/about/`, `/team.html` → `/team/`.
 
@@ -22,7 +22,7 @@ Legacy redirects (via `clean-urls.js`): `/host.html` → `/custom-zones/`, `/bui
 
 - **`data/site.json`** — recruitment + about + Custom Zones copy
 - **`data/sku-catalog.json`** — SKU inventory master (vendor Eventeny sync + zone Partnerships quotes)
-- **`data/maf-2026.json`** — Fund the Festival data (from `build_maf_budget.py`)
+- **`data/maf-2026.json`** — Fund The Festival data (from `build_maf_budget.py`)
 - **`data/festivals.json`** — BTF manifest
 - **`assets/custom-zones-hero.webp`** — Custom Zones hero image (replace with photography when ready)
 

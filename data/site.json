@@ -1,12 +1,12 @@
 {
   "meta": {
-    "siteName": "Great Lantern Festival 2026",
-    "titleSuffix": "Great Lantern Festival 2026",
+    "siteName": "Great Lantern Festival",
+    "titleSuffix": "Great Lantern Festival",
     "idealistUrl": "https://ideali.st/h9P2PJ"
   },
   "event": {
-    "name": "Great Lantern Festival 2026",
-    "dates": "Sat Sep 26 (4–9 PM)",
+    "name": "Great Lantern Festival",
+    "dates": "Sat Sep 26, 2026 (4–9 PM)",
     "venue": "Derr-Okamoto Park, Elk Grove, California",
     "city": "Elk Grove, CA",
     "tagline": "free admission · lantern procession at dusk",
@@ -25,7 +25,7 @@
     "primaryHref": "/team/",
     "secondaryLabel": "Apply on Idealist",
     "secondaryHref": "https://ideali.st/h9P2PJ",
-    "buildLabel": "Fund the Festival",
+    "buildLabel": "Fund The Festival",
     "buildHref": "/fund-the-festival/"
   },
   "apply": {
@@ -107,7 +107,7 @@
       "id": "program",
       "title": "Program & experience",
       "subtitle": "What families see and remember",
-      "intro": "Stage, schedule, and signature moments — including sponsor-funded features from Fund the Festival.",
+      "intro": "Stage, schedule, and signature moments — including sponsor-funded features from Fund The Festival.",
       "roles": [
         {
           "title": "Stage Director",
@@ -175,7 +175,7 @@
       "roles": [
         {
           "title": "Sponsorship Director",
-          "experience": "Registry stories funded on Fund the Festival — lantern procession, children's programming, Honor our Elders, and site lighting unlock when sponsors claim a block",
+          "experience": "Registry stories funded on Fund The Festival — lantern procession, children's programming, Honor our Elders, and site lighting unlock when sponsors claim a block",
           "test": "How can one create win-win-win situations — great guest experiences, producers who make it happen, and sponsors growing their business?",
           "ship": "Pipeline active, registry asks out, sponsor deliverables tracked through event weekend",
           "get": "Business development network — coalition merchants and regional sponsors",
@@ -205,7 +205,7 @@
         {
           "title": "Partnerships & Grants Director",
           "test": "How can one position Great Lantern Festival as a pillar of the community-at-large — and build mutually beneficial relationships with every organization around it?",
-          "ship": "Community partnership map; CCSD liaison, cross-promo allies (e.g. Giant Pumpkin), grant language and renewals; outreach log separating confirmed partners from exploratory threads; festival design advisory — when a grant opens a door we hadn't considered, rough-shape the idea on the Fund the Festival gift registry until a lane director owns and details it",
+          "ship": "Community partnership map; CCSD liaison, cross-promo allies (e.g. Giant Pumpkin), grant language and renewals; outreach log separating confirmed partners from exploratory threads; festival design advisory — when a grant opens a door we hadn't considered, rough-shape the idea on the Fund The Festival gift registry until a lane director owns and details it",
           "fit": "Think in mutual benefit across the local ecosystem — not just sponsorship asks; comfortable building institutional relationships and advising on festival design; can give grant-born ideas basic registry shape before handing off to a lane director"
         }
       ]
@@ -213,7 +213,7 @@
   ],
   "phase2": {
     "title": "Sponsor unlocks — Phase 2",
-    "intro": "These lanes activate when sponsors fund the matching Fund the Festival gift. Plan with the base lane lead in the meantime; hold the vision until the block unlocks.",
+    "intro": "These lanes activate when sponsors fund the matching Fund The Festival gift. Plan with the base lane lead in the meantime; hold the vision until the block unlocks.",
     "roles": [
       "Stage+ Director — How can one upgrade to concert-quality sound and basic stage lights beyond MVP?",
       "Security+ Director — How can one add guards at peak hours when sponsors fund the block?",
