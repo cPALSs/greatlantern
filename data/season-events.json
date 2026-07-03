@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-03T05:14:24.102Z",
+  "generatedAt": "2026-07-03T05:24:06.430Z",
   "sourceSpreadsheetId": "1Va0oCv09nyW98-JnWL9DuYYTsXG35cxjf_WqBZsySrA",
   "seasonYear": "2026",
   "events": [
@@ -39,7 +39,7 @@
       "eventId": "cpalss-maf",
       "dates": "Sat Sep 26, 2026 (4–9 PM)",
       "name": "Great Lantern Festival",
-      "host": "VACOS / cPALSs",
+      "host": "VACOS / cPALSs / NVCC",
       "location": "Derr-Okamoto Park, Elk Grove",
       "href": "/",
       "capstone": true
