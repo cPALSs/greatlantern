@@ -436,22 +436,26 @@
       "category": "registry",
       "sortOrder": 8,
       "impactOrder": 3,
-      "tagline": "Spread the Word presented by [Sponsor] \u2014 paid reach plus local TV that fills the park.",
-      "description": "Paid Meta / Instagram and boosted posts **plus** a **TV / earned-media coordinator stipend** \u2014 books Good Day, Fox40, and local segments (LNY 2026 grammar). Marketing DRI (e.g. Ellie King) or designated coordinator; stipend covers outreach labor, not a full PR retainer. Sponsor-funded block \u2014 not petty cash.",
+      "tagline": "Spread the Word presented by [Sponsor] \u2014 parent-lane Reels plus a focused local TV pitch.",
+      "description": "**Influencer Reels** (posted to parent-lane IG \u2014 e.g. Sactown Supermom class) **plus** paid Meta boosts on the best-performing content. **TV coordinator stipend** covers pitching **1\u20132 local segments** (Good Day Sacramento priority; one backup channel if needed) \u2014 not a multi-station PR push. Marketing DRI (e.g. Ellie King) or designated coordinator; stipend is outreach labor, not a full PR retainer. Sponsor-funded block \u2014 not petty cash.",
       "benefits": [
-        "Sponsor tag on boosted content",
+        "Sponsor tag on boosted content and influencer Reels",
         "Named in Facebook/Instagram unlock post",
         "Website recognition",
-        "TV segments tagged \u201cSpread the Word presented by [Sponsor]\u201d when booked"
+        "TV segments tagged \u201cSpread the Word presented by [Sponsor]\u201d when booked (Good Day Sac target)"
       ],
       "lineItems": [
+        {
+          "label": "Influencer Reels (posted \u2014 parent lane)",
+          "amount": 1000
+        },
         {
           "label": "Paid Meta / Instagram + boosted posts",
           "amount": 800
         },
         {
-          "label": "TV / earned-media coordinator stipend",
-          "amount": 1500
+          "label": "TV coordinator stipend (Good Day Sac + 1 backup)",
+          "amount": 500
         }
       ]
     },
