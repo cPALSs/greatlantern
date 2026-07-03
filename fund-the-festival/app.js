@@ -206,7 +206,7 @@ function initTheme() {
 
   if (isSiteEmbed()) {
     window.addEventListener("storage", (e) => {
-      if (e.key === EGLNY_THEME_KEY && VALID_THEMES.has(e.newValue)) applyTheme(e.newValue);
+      if (e.key === MAF_THEME_KEY && VALID_THEMES.has(e.newValue)) applyTheme(e.newValue);
     });
     window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", () => {
       if (loadThemeFromStorage() === "auto") applyTheme("auto");
