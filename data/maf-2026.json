@@ -1,7 +1,7 @@
 {
   "event": {
     "name": "MAF 2026",
-    "venue": "Derr-Okamoto Park",
+    "venue": "Derr-Okamoto Park, Elk Grove, CA",
     "dates": "Sat Sep 26, 2026 (4\u20139 PM)",
     "mvpCap": 9944,
     "vendorRev100": 8370,
@@ -587,27 +587,91 @@
     },
     {
       "label": "Supporter",
-      "min": 250
+      "min": 250,
+      "tagline": "Name on the website and a thank-you mention",
+      "description": "Recognition tier for your total sponsorship. Tier benefits stack with naming credit on any registry stories you fund.",
+      "benefits": [
+        "Name on website sponsor page",
+        "Thank-you in email blast to mailing lists"
+      ]
     },
     {
       "label": "Bronze",
-      "min": 500
+      "min": 500,
+      "tagline": "Entry recognition with logo and light social",
+      "description": "Recognition tier for your total sponsorship. Tier benefits stack with naming credit on any registry stories you fund.",
+      "benefits": [
+        "Name on website sponsor page",
+        "Logo on website",
+        "Name in email blast to mailing lists",
+        "Instagram / Facebook tag"
+      ]
     },
     {
       "label": "Silver",
-      "min": 1000
+      "min": 1000,
+      "tagline": "Standard digital recognition and stage thank-you",
+      "description": "Recognition tier for your total sponsorship. Tier benefits stack with naming credit on any registry stories you fund.",
+      "benefits": [
+        "Name on website sponsor page",
+        "Logo on website",
+        "Logo row in email blast to mailing lists",
+        "Instagram / Facebook post",
+        "MC stage thank-you (Saturday)"
+      ]
     },
     {
       "label": "Gold",
-      "min": 2500
+      "min": 2500,
+      "tagline": "Strong recognition with booth and speaking opportunity",
+      "description": "Recognition tier for your total sponsorship. Tier benefits stack with naming credit on any registry stories you fund. Includes sponsor booth eligibility.",
+      "benefits": [
+        "Name on website sponsor page",
+        "Logo on website",
+        "Dedicated block in email blast to mailing lists",
+        "Instagram / Facebook post + Story",
+        "MC stage thank-you (Saturday)",
+        "10\u00d710 sponsor booth",
+        "Bring your own stage banner",
+        "Speaking opportunity (main stage)",
+        "Reserved seating for representatives"
+      ]
     },
     {
       "label": "Diamond",
-      "min": 5000
+      "min": 5000,
+      "tagline": "Major recognition with premium booth and stage banner",
+      "description": "Recognition tier for your total sponsorship. Tier benefits stack with naming credit on any registry stories you fund.",
+      "benefits": [
+        "Name on website sponsor page",
+        "Logo on website",
+        "Featured placement \u00d72 in email blast to mailing lists",
+        "Instagram / Facebook collaboration post",
+        "MC stage thank-you (Saturday)",
+        "Premium 10\u00d710 sponsor booth",
+        "Bring your own stage banner",
+        "Speaking opportunity (main stage)",
+        "Reserved seating for representatives",
+        "Press release mention"
+      ]
     },
     {
       "label": "Presenter",
-      "min": 10000
+      "min": 10000,
+      "tagline": "Premium recognition with booth and speaking opportunity",
+      "description": "Recognition tier for your total sponsorship. Tier benefits stack with naming credit on any registry stories you fund.",
+      "benefits": [
+        "Name on website sponsor page",
+        "Featured logo on website",
+        "Headline placement in all email blasts",
+        "Hero Instagram / Facebook coverage (multiple posts)",
+        "Opening MC stage thank-you (Saturday)",
+        "Premium 10\u00d710 sponsor booth",
+        "Bring your own stage banner",
+        "Speaking opportunity (main stage) + intro",
+        "VIP reserved seating for representatives",
+        "Featured press release mention"
+      ]
     }
   ],
   "globalPerks": [

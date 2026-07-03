@@ -1,15 +1,23 @@
 {
-  "generatedAt": "2026-07-03T07:50:45.595Z",
+  "generatedAt": "2026-07-03T23:35:49.916Z",
   "sourceSpreadsheetId": "1Va0oCv09nyW98-JnWL9DuYYTsXG35cxjf_WqBZsySrA",
   "seasonYear": "2026",
   "events": [
     {
       "eventId": "ca-is-my-home-maf",
-      "dates": "Sep 12, 2026 (estimated)",
+      "dates": "Sep 11, 2026 5-10 PM (estimated)",
       "name": "Mid-Autumn Festival",
       "host": "California Is My Home",
       "location": "District 56 - 8230 Civic Center Dr (expected), Elk Grove",
       "href": "https://www.kcra.com/article/mid-autumn-festival-elk-grove-friday/66071496"
+    },
+    {
+      "eventId": "sac-state-harvest-moon",
+      "dates": "Sep 13, 2026 10 AM-3 PM (estimated)",
+      "name": "Harvest Moon Festival",
+      "host": "JSSCC + CSUS Asian Studies",
+      "location": "Sac State Capistrano Hall + courtyard (expected), Sacramento",
+      "href": "https://jsscc.org/2025-program-and-events/"
     },
     {
       "eventId": "caaps-lantern",
@@ -18,6 +26,14 @@
       "host": "CAAPS / CAAPS Foundation",
       "location": "Sacramento",
       "href": "https://www.caaps.org/"
+    },
+    {
+      "eventId": "riverside-umc-mid-autumn",
+      "dates": "Sep 19, 2026 5-8:30 PM (estimated)",
+      "name": "Mid-Autumn Festival (community)",
+      "host": "Riverside United Methodist Church + sponsors",
+      "location": "803 Vallejo Way (expected), Sacramento",
+      "href": "https://happeningnext.com/event/mid-autumn-festival-eid3a0crd8ljl"
     },
     {
       "eventId": "sac-state-maf",
@@ -43,14 +59,6 @@
       "location": "Derr-Okamoto Park, Elk Grove",
       "href": "/",
       "capstone": true
-    },
-    {
-      "eventId": "sac-state-harvest-moon",
-      "dates": "Sep 27, 2026 10 AM-3 PM (estimated)",
-      "name": "Harvest Moon Festival",
-      "host": "JSSCC + CSUS Asian Studies",
-      "location": "Sac State Capistrano Hall + courtyard (expected), Sacramento",
-      "href": "https://jsscc.org/2025-program-and-events/"
     },
     {
       "eventId": "sf-supermarket-maf-rancho",
