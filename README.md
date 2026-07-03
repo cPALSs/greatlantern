@@ -13,6 +13,7 @@ Unified Great Lantern Festival hub — clean URLs, no `.html` in public paths.
 | `/` | `index.html` (redirects `/index.html` → `/`) |
 | `/team/` | `team/index.html` |
 | `/about/` | `about/index.html` |
+| `/resources/` | **Resources** — Mid-Autumn Festival Season event list |
 | `/custom-zones/` | **Custom Zones** — hero, prompts, examples, desktop TOC |
 | `/fund-the-festival/` | **Fund The Festival** — interactive sponsor registry |
 
@@ -20,7 +21,8 @@ Legacy redirects (via `clean-urls.js`): `/host.html` → `/custom-zones/`, `/bui
 
 ## Content
 
-- **`data/site.json`** — recruitment + about + Custom Zones copy
+- **`data/site.json`** — recruitment + about + resources copy + Custom Zones copy
+- **`data/season-events.json`** — Mid-Autumn season list (generated from Autumn landscape Sheet)
 - **`data/sku-catalog.json`** — SKU inventory master (vendor Eventeny sync + zone Partnerships quotes)
 - **`data/maf-2026.json`** — Fund The Festival data (from `build_maf_budget.py`)
 - **`data/festivals.json`** — BTF manifest
@@ -34,8 +36,15 @@ python3 -m http.server 8765
 ```
 
 - http://localhost:8765/
+- http://localhost:8765/resources/
 - http://localhost:8765/custom-zones/
 - http://localhost:8765/fund-the-festival/
+
+Refresh season events from the landscape Sheet:
+
+```bash
+node "Festival Network/scripts/export-glf-season-events.mjs"
+```
 
 ## Publish
 

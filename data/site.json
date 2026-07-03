@@ -439,6 +439,15 @@
       "href": "/custom-zones/"
     }
   },
+  "resources": {
+    "headline": "Resources",
+    "season": {
+      "title": "Mid-Autumn Festival Season",
+      "intro": "Celebrate Mid-Autumn Festival Season in Greater Sacramento from early September through early October!",
+      "listNote": "Dates marked estimated or tentative may change — check organizer listings before you go.",
+      "contactNote": "Know a Mid-Autumn event we missed? Email contact@greatlantern.com."
+    }
+  },
   "footer": {
     "contactEmail": "contact@greatlantern.com",
     "socialLinks": [

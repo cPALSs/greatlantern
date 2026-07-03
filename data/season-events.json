@@ -1,0 +1,64 @@
+{
+  "generatedAt": "2026-07-03T05:14:24.102Z",
+  "sourceSpreadsheetId": "1Va0oCv09nyW98-JnWL9DuYYTsXG35cxjf_WqBZsySrA",
+  "seasonYear": "2026",
+  "events": [
+    {
+      "eventId": "ca-is-my-home-maf",
+      "dates": "Sep 12, 2026 (estimated)",
+      "name": "Mid-Autumn Festival",
+      "host": "California Is My Home",
+      "location": "District 56 - 8230 Civic Center Dr (expected), Elk Grove",
+      "href": "https://www.kcra.com/article/mid-autumn-festival-elk-grove-friday/66071496"
+    },
+    {
+      "eventId": "caaps-lantern",
+      "dates": "Sep 19, 2026 (tentative)",
+      "name": "Autumn Lantern Festival & Night Market",
+      "host": "CAAPS / CAAPS Foundation",
+      "location": "Sacramento",
+      "href": "https://www.caaps.org/"
+    },
+    {
+      "eventId": "sac-state-maf",
+      "dates": "Sep 21, 2026 5-9 PM",
+      "name": "APIDA Night Lights — Illuminating the Hive",
+      "host": "Sac State APIDA Center",
+      "location": "Acorn Amphitheatre, Sac State campus, Sacramento",
+      "href": "https://www.instagram.com/p/DaOD6Xbvukn/"
+    },
+    {
+      "eventId": "annie-peony-mid-autumn-mural",
+      "dates": "Sep 23, 2026 – Sep 28, 2026",
+      "name": "Mid-Autumn Chinese Moon Festival Mural",
+      "host": "Annie Peony Gallery",
+      "location": "Annie Peony Gallery - 9635 Elk Grove Florin Rd",
+      "href": "https://www.exploreelkgrove.com/events/mid-autumn-chinese-moon-festival-mural-at-annie-peony-gallery/"
+    },
+    {
+      "eventId": "cpalss-maf",
+      "dates": "Sat Sep 26, 2026 (4–9 PM)",
+      "name": "Great Lantern Festival",
+      "host": "VACOS / cPALSs",
+      "location": "Derr-Okamoto Park, Elk Grove",
+      "href": "/",
+      "capstone": true
+    },
+    {
+      "eventId": "sac-state-harvest-moon",
+      "dates": "Sep 27, 2026 10 AM-3 PM (estimated)",
+      "name": "Harvest Moon Festival",
+      "host": "JSSCC + CSUS Asian Studies",
+      "location": "Sac State Capistrano Hall + courtyard (expected), Sacramento",
+      "href": "https://jsscc.org/2025-program-and-events/"
+    },
+    {
+      "eventId": "sf-supermarket-maf-rancho",
+      "dates": "Oct 3, 2026 – Oct 4, 2026 (estimated)",
+      "name": "SF Supermarket Mid-Autumn Festival",
+      "host": "SF Supermarket (Shun Fat)",
+      "location": "2738 Sunrise Blvd, Rancho Cordova",
+      "href": "https://www.instagram.com/p/DPEo69zER3x/"
+    }
+  ]
+}

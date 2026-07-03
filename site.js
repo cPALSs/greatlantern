@@ -13,6 +13,13 @@
       .replace(/"/g, "&quot;");
   }
 
+  /** Cursor Simple Browser opens a new OS tab per target="_blank"; skip on localhost preview. */
+  function externalLinkAttrs(href) {
+    if (!href || !href.startsWith("http")) return "";
+    const local = /^(localhost|127\.0\.0\.1)$/.test(window.location.hostname);
+    return local ? ' rel="noopener"' : ' target="_blank" rel="noopener"';
+  }
+
   function formatProse(text) {
     return escapeHtml(text).replace(/\*\*([^*]+)\*\*/g, "<strong>$1</strong>");
   }
@@ -138,7 +145,7 @@
 
   function navPrefix() {
     const path = window.location.pathname;
-    if (/\/(custom-zones|fund-the-festival|about|team|build|2026)(\/|$)/.test(path)) {
+    if (/\/(custom-zones|fund-the-festival|about|team|resources|build|2026)(\/|$)/.test(path)) {
       return "../";
     }
     return "";
@@ -175,6 +182,7 @@
           { id: "build", label: "Fund The Festival", href: "/fund-the-festival/" },
         ],
       },
+      { id: "resources", label: "Resources", href: "/resources/" },
     ];
   }
 
@@ -322,7 +330,7 @@
     const items = links
       .map((link) => {
         const icon = renderFooterSocialIcon(link.label);
-        return `<a href="${escapeHtml(link.href)}" target="_blank" rel="noopener" aria-label="${escapeHtml(link.label)}">${icon}</a>`;
+        return `<a href="${escapeHtml(link.href)}"${externalLinkAttrs(link.href)} aria-label="${escapeHtml(link.label)}">${icon}</a>`;
       })
       .join("");
     return `<nav class="site-footer-social" aria-label="Social media">${items}</nav>`;
@@ -334,7 +342,7 @@
     const social = renderFooterSocialLinks(footer.socialLinks);
     const contactEmail = footer.contactEmail ?? site.apply?.email ?? "contact@greatlantern.com";
     const coalition = (footer.coalitionLinks ?? [])
-      .map((link) => `<a href="${escapeHtml(link.href)}" target="_blank" rel="noopener">${escapeHtml(link.label)}</a>`)
+      .map((link) => `<a href="${escapeHtml(link.href)}"${externalLinkAttrs(link.href)}>${escapeHtml(link.label)}</a>`)
       .join(" + ");
 
     return `
@@ -1050,6 +1058,47 @@
     return res.json();
   }
 
+  async function loadSeasonEvents() {
+    const prefix = navPrefix();
+    const res = await fetch(`${prefix}data/season-events.json`, { cache: "no-store" });
+    if (!res.ok) throw new Error(`Could not load season events (${res.status})`);
+    return res.json();
+  }
+
+  function renderSeasonEventItem(event) {
+    const capstoneClass = event.capstone ? " season-event-capstone" : "";
+    const nameHtml = event.href
+      ? `<a href="${escapeHtml(event.href)}"${externalLinkAttrs(event.href)}>${escapeHtml(event.name)}</a>`
+      : escapeHtml(event.name);
+    const hostPart = event.host ? ` · ${escapeHtml(event.host)}` : "";
+    return `<li class="season-event-item${capstoneClass}">
+      <span class="season-event-dates">${escapeHtml(event.dates)}</span>
+      <span class="season-event-title">${nameHtml}${hostPart}</span>
+      <span class="season-event-location">${escapeHtml(event.location)}</span>
+    </li>`;
+  }
+
+  function renderResourcesPage(resources, seasonData) {
+    const season = resources?.season ?? {};
+    const events = seasonData?.events ?? [];
+    const listItems = events.map(renderSeasonEventItem).join("");
+    const contactNote = season.contactNote
+      ? `<p class="muted season-contact-note">${escapeHtml(season.contactNote)}</p>`
+      : "";
+
+    return `
+      <section class="hero">
+        <h1>${escapeHtml(resources?.headline ?? "Resources")}</h1>
+      </section>
+      <section class="about-section resources-season">
+        <h2>${escapeHtml(season.title ?? "Mid-Autumn Festival Season")}</h2>
+        ${season.intro ? `<p>${escapeHtml(season.intro)}</p>` : ""}
+        ${events.length ? `<ul class="season-event-list">${listItems}</ul>` : `<p class="muted">Season events coming soon.</p>`}
+        ${season.listNote ? `<p class="muted season-list-note">${escapeHtml(season.listNote)}</p>` : ""}
+        ${contactNote}
+      </section>`;
+  }
+
   function renderRoleCard(role) {
     const title = role.emoji ? `${role.emoji} ${role.title}` : role.title;
     const phase2 = role.phase2 ? " phase2" : "";
@@ -1187,9 +1236,11 @@
   window.MafSite = {
     initPageShell,
     loadSiteData,
+    loadSeasonEvents,
     loadSkuCatalog,
     mountFooter,
     renderAboutSections,
+    renderResourcesPage,
     renderPosterWall,
     renderApplyBlock,
     renderCoChairs,

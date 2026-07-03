@@ -744,6 +744,59 @@ body.nav-open {
   margin-top: 0;
 }
 
+.resources-season .season-event-list {
+  list-style: none;
+  margin: 1.25rem 0 0;
+  padding: 0;
+}
+
+.season-event-item {
+  padding: 0.85rem 0;
+  border-bottom: 1px solid var(--border);
+  line-height: 1.5;
+}
+
+.season-event-item:first-child {
+  border-top: 1px solid var(--border);
+}
+
+.season-event-dates {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 0.2rem;
+}
+
+.season-event-title {
+  display: block;
+}
+
+.season-event-location {
+  display: block;
+  color: var(--muted);
+  margin-top: 0.15rem;
+}
+
+.season-event-detail a,
+.season-event-title a {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+.season-event-detail a:hover,
+.season-event-title a:hover {
+  text-decoration: underline;
+}
+
+.season-event-capstone .season-event-dates,
+.season-event-capstone .season-event-title {
+  font-weight: 600;
+}
+
+.season-list-note,
+.season-contact-note {
+  margin-top: 1.25rem;
+}
+
 .poster-wall {
   margin: 0;
   padding: 2.5rem 0;
