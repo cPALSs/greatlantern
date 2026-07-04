@@ -145,7 +145,7 @@
 
   function navPrefix() {
     const path = window.location.pathname;
-    if (/\/(custom-zones|fund-the-festival|about|team|resources|build|2026)(\/|$)/.test(path)) {
+    if (/\/(custom-zones|fund-the-festival|logo-design|about|team|resources|build|2026)(\/|$)/.test(path)) {
       return "../";
     }
     return "";
@@ -180,6 +180,7 @@
         children: [
           { id: "host", label: "Custom Zones", href: "/custom-zones/" },
           { id: "build", label: "Fund The Festival", href: "/fund-the-festival/" },
+          { id: "logo-design", label: "Logo Design", href: "/logo-design/" },
         ],
       },
       { id: "resources", label: "Resources", href: "/resources/" },
@@ -1119,6 +1120,107 @@
       ${wrapDocLayout(toc, seasonSection)}`;
   }
 
+  function renderBriefBullets(bullets) {
+    if (!bullets?.length) return "";
+    const items = bullets
+      .map((bullet) => {
+        if (typeof bullet === "string") {
+          return `<li>${formatProse(bullet)}</li>`;
+        }
+        const label = bullet.label ? `<strong>${escapeHtml(bullet.label)}:</strong> ` : "";
+        return `<li>${label}${formatProse(bullet.text ?? "")}</li>`;
+      })
+      .join("");
+    return `<ul class="brief-list">${items}</ul>`;
+  }
+
+  function renderBriefOrderedItems(items) {
+    if (!items?.length) return "";
+    const list = items
+      .map((item) => {
+        const label = item.label ? `<strong>${escapeHtml(item.label)}</strong> — ` : "";
+        return `<li>${label}${formatProse(item.text ?? "")}</li>`;
+      })
+      .join("");
+    return `<ol class="brief-list brief-list--ordered">${list}</ol>`;
+  }
+
+  function renderFrameworkBlocks(blocks) {
+    if (!blocks?.length) return "";
+    const cards = blocks
+      .map(
+        (block) => `
+      <div class="logo-framework-block">
+        <p class="logo-framework-tier">${escapeHtml(block.tier)}</p>
+        <p class="logo-framework-text">${escapeHtml(block.text)}</p>
+        ${block.note ? `<p class="logo-framework-note">${escapeHtml(block.note)}</p>` : ""}
+      </div>`,
+      )
+      .join("");
+    return `<div class="logo-framework" role="img" aria-label="Three-tier modular logo framework">${cards}</div>`;
+  }
+
+  function renderBriefSubsections(subsections) {
+    if (!subsections?.length) return "";
+    return subsections
+      .map(
+        (sub) => `
+      <div class="brief-subsection">
+        <h3>${escapeHtml(sub.title)}</h3>
+        ${renderBriefBullets(sub.bullets)}
+      </div>`,
+      )
+      .join("");
+  }
+
+  function renderLogoDesignSection(section) {
+    const paragraphs = (section.paragraphs ?? []).map((p) => `<p>${formatProse(p)}</p>`).join("");
+    return `
+      <section class="host-doc-section about-section logo-brief-section" id="${escapeHtml(section.id)}" data-doc-section>
+        <h2>${escapeHtml(section.title)}</h2>
+        ${paragraphs}
+        ${renderBriefOrderedItems(section.orderedItems)}
+        ${renderFrameworkBlocks(section.frameworkBlocks)}
+        ${renderBriefSubsections(section.subsections)}
+        ${renderBriefBullets(section.bullets)}
+      </section>`;
+  }
+
+  function renderLogoDesignContact(contact) {
+    if (!contact) return "";
+    const email = contact.email ?? "contact@greatlantern.com";
+    const subject = contact.emailSubject ?? "GLF 2026 — logo design";
+    const mailto = `mailto:${email}?subject=${encodeURIComponent(subject)}`;
+    return `
+      <section class="host-doc-section about-section logo-brief-section" id="${escapeHtml(contact.id ?? "contact")}" data-doc-section>
+        <h2>${escapeHtml(contact.title ?? "Questions")}</h2>
+        ${contact.intro ? `<p>${escapeHtml(contact.intro)}</p>` : ""}
+        <p><a href="${escapeHtml(mailto)}">${escapeHtml(email)}</a></p>
+      </section>`;
+  }
+
+  function renderLogoDesignPage(logoDesign) {
+    const sections = logoDesign?.sections ?? [];
+    const contact = logoDesign?.contact;
+    const toc = sections.map((section) => ({
+      id: section.id,
+      label: section.tocLabel || section.title,
+    }));
+    if (contact) {
+      toc.push({
+        id: contact.id ?? "contact",
+        label: contact.tocLabel || contact.title || "Questions",
+      });
+    }
+    const main = sections.map(renderLogoDesignSection).join("") + renderLogoDesignContact(contact);
+    return `
+      <section class="hero">
+        <h1>${escapeHtml(logoDesign?.headline ?? "Logo Design")}</h1>
+        ${logoDesign?.lead ? `<p class="hero-lead">${escapeHtml(logoDesign.lead)}</p>` : ""}
+      </section>
+      ${wrapDocLayout(toc, main)}`;
+  }
+
   function roleDirectorName(role) {
     if (role.director) return role.director;
     const note = role.note ?? "";
@@ -1377,6 +1479,7 @@
     renderAboutSections,
     renderTeamPage,
     renderResourcesPage,
+    renderLogoDesignPage,
     renderPosterWall,
     renderApplyBlock,
     renderCoChairs,

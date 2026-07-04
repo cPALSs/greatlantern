@@ -16,6 +16,7 @@ Unified Great Lantern Festival hub — clean URLs, no `.html` in public paths.
 | `/resources/` | **Resources** — Mid-Autumn Festival Season event list |
 | `/custom-zones/` | **Custom Zones** — hero, prompts, examples, desktop TOC |
 | `/fund-the-festival/` | **Fund The Festival** — interactive sponsor registry |
+| `/logo-design/` | **Logo Design** — official branding brief + human-artistry audit trail |
 
 Legacy redirects (via `clean-urls.js`): `/host.html` → `/custom-zones/`, `/build/` → `/fund-the-festival/`, `/about.html` → `/about/`, `/team.html` → `/team/`.
 
@@ -39,6 +40,7 @@ python3 -m http.server 8765
 - http://localhost:8765/resources/
 - http://localhost:8765/custom-zones/
 - http://localhost:8765/fund-the-festival/
+- http://localhost:8765/logo-design/
 
 Refresh season events from the landscape Sheet:
 

@@ -256,22 +256,35 @@
       {
         "id": "trung-thu",
         "title": "Tết Trung Thu",
+        "tocLabel": "Tết Trung Thu",
         "paragraphs": [
-          "Mid-Autumn Festival, known as Tết Trung Thu in Vietnamese culture, is a cherished celebration when families gather under the full moon. Children carry lanterns, share mooncakes, and drink tea — a night of reunion, gratitude, and hope. For Vietnamese communities in America, the festival reconnects generations and keeps cultural traditions alive in a new homeland.",
-          "The lantern procession — children walking together at dusk — is the signature moment families remember. Great Lantern Festival 2026 brings that ritual back to Derr-Okamoto Park alongside food vendors, stage programming, and elder hospitality."
+          "Mid-Autumn Festival, known as Tết Trung Thu in Vietnamese culture, is a cherished celebration when families gather under the full moon. Children carry lanterns, share mooncakes, and drink tea — a night of reunion, gratitude, and hope.",
+          "For Vietnamese communities in America, the festival reconnects generations and keeps cultural traditions alive in a new homeland. The lantern procession — children walking together at dusk — is the signature moment families remember."
         ]
       },
       {
         "id": "elk-grove",
-        "title": "Elk Grove & Derr-Okamoto Park",
+        "title": "Elk Grove, 2026",
+        "tocLabel": "Elk Grove, 2026",
         "paragraphs": [
           "Great Lantern Festival 2026 is a free, family-centered afternoon and evening at Derr-Okamoto Park in Elk Grove: Saturday, Sep 26, 4–9 PM, with food vendors, stage programming, and lantern procession at dusk.",
-          "The festival is co-hosted by Vietnamese American Community of Sacramento (VACOS), Community Partners Advocate of Little Saigon Sacramento (cPALSs), Norcal Vietnamese Chamber of Commerce (NVCC), and Cosumnes Community Services District (CCSD), with support from sponsors, donors, and volunteers."
+          "This year's celebration is co-hosted by Vietnamese American Community of Sacramento (VACOS), Community Partners Advocate of Little Saigon Sacramento (cPALSs), Norcal Vietnamese Chamber of Commerce (NVCC), and Cosumnes Community Services District (CCSD), with support from sponsors, donors, and volunteers."
+        ]
+      },
+      {
+        "id": "origins",
+        "title": "Origins of this festival line",
+        "tocLabel": "Origins",
+        "paragraphs": [
+          "This festival line began in 2021 as Mid-Autumn Moon Celebration — a NVCC and cPALSs project at Florin Towne Centre on Florin Road in Sacramento's Little Saigon corridor. The first year was presented by those two organizations alone; VACOS was not yet a co-host.",
+          "In 2022 the same hosts returned for a second annual Mid-Autumn Multicultural Festival and Night Market at Florin. In 2023 the celebration moved to Laguna Town Hall in Elk Grove, and VACOS joined NVCC and cPALSs as a co-host — the tri-host coalition that has carried the festival since.",
+          "Great Lantern Festival continues that spiritual line — the same community-built Mid-Autumn tradition, now at Derr-Okamoto Park under a broader coalition that still carries the founding partnership of NVCC and cPALSs."
         ]
       }
     ],
     "posterWall": {
       "title": "Past fliers over the years",
+      "tocLabel": "Past fliers",
       "intro": "Each season's festival flier reflects the host neighborhood and the community partners who made it happen.",
       "posters": [
         {
@@ -532,6 +545,136 @@
       "intro": "Celebrate Mid-Autumn Festival Season in Greater Sacramento from early September through early October!",
       "listNote": "Dates marked estimated or tentative may change — check organizer listings before you go.",
       "contactNote": "Know a Mid-Autumn event we missed? Email contact@greatlantern.com."
+    }
+  },
+  "logoDesign": {
+    "headline": "Logo Design",
+    "lead": "Official design brief for Great Lantern Festival branding — a modular, highly wearable logo system rooted in Tết Trung Thu and this festival line's Little Saigon Sacramento origins.",
+    "meta": {
+      "pageTitle": "Logo Design",
+      "description": "Official logo design brief for Great Lantern Festival — festival background, modular branding, Hội An lantern art, West Coast logotype, and proof-of-human-artistry audit trail."
+    },
+    "sections": [
+      {
+        "id": "overview",
+        "title": "Project Overview",
+        "tocLabel": "Overview",
+        "paragraphs": [
+          "Create a modular, highly wearable logo system for the Great Lantern Festival — the current name for this community's Mid-Autumn / Tết Trung Thu festival line. The design must celebrate the authentic identity of the Little Saigon Sacramento community, pairing a deep reverence for traditional Vietnamese roots with the rugged, homegrown street culture of Northern California.",
+          "The modular blocks below encode that history: Little Saigon Sacramento stays permanent (the spiritual home of the line); Elk Grove, California is the current event location and must remain swappable."
+        ]
+      },
+      {
+        "id": "background",
+        "title": "Festival Background",
+        "tocLabel": "Background",
+        "paragraphs": [
+          "Tết Trung Thu is the Vietnamese Mid-Autumn Festival — families gather under the full moon; children carry lanterns, share mooncakes, and drink tea. It is a night of reunion, gratitude, and hope. For Vietnamese communities in America, it reconnects generations and keeps cultural traditions alive in a new homeland. The lantern procession at dusk is the signature moment families remember.",
+          "The Great Lantern Festival of 2026 is the current iteration of this line: a free, family-centered afternoon and evening at Derr-Okamoto Park in Elk Grove (Saturday, Sep 26, 4–9 PM), with food vendors, stage programming, and lantern procession at dusk. It is co-hosted by Vietnamese American Community of Sacramento (VACOS), Community Partners Advocate of Little Saigon Sacramento (cPALSs), Norcal Vietnamese Chamber of Commerce (NVCC), and Cosumnes Community Services District (CCSD).",
+          "This festival line began in 2021 as Mid-Autumn Moon Celebration — a NVCC and cPALSs project at Florin Towne Centre on Florin Road in Sacramento's Little Saigon corridor. The first year was presented by those two organizations alone. In 2022 the same hosts returned for a second annual festival at Florin. In 2023 the celebration moved to Laguna Town Hall in Elk Grove, and VACOS joined as co-host — the tri-host coalition that has carried the festival since. Great Lantern Festival continues that spiritual line at Derr-Okamoto Park.",
+          "Designers should treat Little Saigon Sacramento as the permanent cultural anchor of the brand, even when the printed location block reads Elk Grove. Past season fliers (2021–2024) are on the About page and show how host neighborhoods and partners evolved while the community identity stayed continuous."
+        ]
+      },
+      {
+        "id": "pillars",
+        "title": "Visual & Conceptual Pillars",
+        "tocLabel": "Pillars",
+        "orderedItems": [
+          {
+            "label": "The Fruit Crate Frame (The California Context)",
+            "text": "Inspired by vintage 1930s–1950s Central Valley agricultural crate labels. It grounds the celebration in the region's agricultural landscape where the community established its roots."
+          },
+          {
+            "label": "The Main Art (The Vietnamese Anchor)",
+            "text": "Centered entirely on the physical craftsmanship of the Hội An Silk Lantern (bamboo ribbed frame, fluid silk panel curves, and hanging tassel)."
+          },
+          {
+            "label": "The Logotype (The West Coast Vibe)",
+            "text": "A custom, hand-rendered West Coast script or sign-painter lettering that brings genuine Sacramento street energy."
+          }
+        ]
+      },
+      {
+        "id": "framework",
+        "title": "The Tripartite Modular Framework",
+        "tocLabel": "Modular Framework",
+        "paragraphs": [
+          "The logo is built on a three-tier vertical block system. This allows the branding to be completely deconstructed for specific merchandise (like sports caps) or updated if the festival expands geographically."
+        ],
+        "frameworkBlocks": [
+          {
+            "tier": "Top Block",
+            "text": "LITTLE SAIGON SACRAMENTO",
+            "note": "The Permanent Community Anchor"
+          },
+          {
+            "tier": "Center Block",
+            "text": "HARVEST MOON & HỘI AN LANTERN + HERO WEST COAST LOGOTYPE",
+            "note": "The Scalable Main Graphic"
+          },
+          {
+            "tier": "Bottom Block",
+            "text": "ELK GROVE, CALIFORNIA",
+            "note": "The Swappable Event Location"
+          }
+        ],
+        "subsections": [
+          {
+            "title": "1. Top Block (The Fixed Anchor)",
+            "bullets": [
+              { "label": "Text", "text": "\"LITTLE SAIGON SACRAMENTO\"" },
+              { "label": "Style", "text": "A crisp, unpolished sans-serif or trade-union stamp font." },
+              { "label": "Purpose", "text": "Stays permanent across all future iterations — the spiritual home of this festival line (founded on Florin Road in Sacramento's Little Saigon corridor) and an explicit distinction from Southern California's Little Saigon." }
+            ]
+          },
+          {
+            "title": "2. Center Block (The Core Graphic)",
+            "bullets": [
+              { "label": "The Main Art", "text": "A bold, solid representation of the full harvest moon. Superimposed over it is the elegant silhouette of a Hội An silk lantern. The lantern's bamboo ribs must be visible, and its long tassel should drop down dynamically to interact with the text." },
+              { "label": "The Logotype", "text": "\"Great Lantern Festival\" rendered in a bold, custom-drawn West Coast font. It must be able to break completely free from the frame to live as a standalone asset for premium streetwear drops and headwear collaborations (e.g., 3D puff embroidery on caps)." }
+            ]
+          },
+          {
+            "title": "3. Bottom Block (The Variable Location)",
+            "bullets": [
+              { "label": "Text", "text": "\"ELK GROVE, CALIFORNIA\" (balanced with the festival year)." },
+              { "label": "Style", "text": "Matches the industrial block font of the top tier." },
+              { "label": "Purpose", "text": "Completely swappable — Elk Grove is the current home (Laguna Town Hall 2023–2024; Derr-Okamoto Park 2026), not the permanent cultural identity. If the festival hosts satellite events or pop-ups in other regional areas, the print shop can easily swap this block without touching the core art." }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "specs",
+        "title": "Ink, Palette, and Production Specs",
+        "tocLabel": "Production Specs",
+        "bullets": [
+          { "label": "Aesthetic", "text": "Flat-ink, high-contrast screen-print look. The lines should feel hand-carved and have a heavy, tactile presence on fabric. No smooth digital gradients or neon glows." },
+          { "label": "Color Palette", "text": "Sun-baked California harvest tones. Warm saffron gold, deep terracotta/burnt orange, and an earthy charcoal or midnight indigo for the heavy outline work." },
+          { "label": "Merchandise Intention", "text": "The assets must look exceptional screen-printed on heavyweight 240GSM box-fit t-shirts, canvas tote bags, and embroidered heavy-fleece hoodies." }
+        ]
+      },
+      {
+        "id": "audit-trail",
+        "title": "Proof of Human Artistry & Audit Trail",
+        "tocLabel": "Audit Trail",
+        "paragraphs": [
+          "To ensure absolute community trust and preserve the cultural integrity of the festival, the commissioned artist must provide an audit trail verifying the handmade nature of the artwork:"
+        ],
+        "bullets": [
+          { "label": "Process Recording", "text": "Continuous or step-by-step screen recordings (for digital illustration) or video timelapses (for traditional media) showing the art being drawn from initial rough sketch to final vector line work." },
+          { "label": "Layered Delivery", "text": "The final file must be delivered with its original, unflattened sketch and rough pencil layers intact beneath the final inks." },
+          { "label": "Marketing Utility", "text": "These process videos will be used across community social media channels to proudly showcase the human craftsmanship behind the festival's identity." }
+        ]
+      }
+    ],
+    "contact": {
+      "id": "contact",
+      "title": "Questions",
+      "tocLabel": "Questions",
+      "intro": "Designers with questions about this brief, or who want to follow up on a proposal, can email us.",
+      "email": "contact@greatlantern.com",
+      "emailSubject": "GLF 2026 — logo design"
     }
   },
   "footer": {

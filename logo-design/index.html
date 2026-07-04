@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="About Great Lantern Festival — Tết Trung Thu, the 2026 Elk Grove celebration, origins of this festival line, and past fliers." />
-  <title>About Great Lantern Festival</title>
+  <meta name="description" content="Official logo design brief for Great Lantern Festival — modular branding, Hội An lantern art, West Coast logotype, and proof-of-human-artistry audit trail." />
+  <title>Logo Design — Great Lantern Festival</title>
   <script src="../clean-urls.js"></script>
   <script>
     (function () {
@@ -25,13 +25,17 @@
   <script src="../site.js"></script>
   <script>
     (async function () {
-      const { initPageShell, loadSiteData, mountFooter, renderAboutPage, initPageToc, escapeHtml } =
+      const { initPageShell, loadSiteData, mountFooter, renderLogoDesignPage, initPageToc, setPageTitle, escapeHtml } =
         window.MafSite;
-      initPageShell("about");
+      initPageShell("logo-design");
       try {
         const site = await loadSiteData();
-        document.title = "About Great Lantern Festival";
-        document.getElementById("main").innerHTML = renderAboutPage(site.about);
+        const brief = site.logoDesign;
+        setPageTitle(site, brief?.meta?.pageTitle ?? "Logo Design");
+        if (brief?.meta?.description) {
+          document.querySelector('meta[name="description"]').setAttribute("content", brief.meta.description);
+        }
+        document.getElementById("main").innerHTML = renderLogoDesignPage(brief);
         initPageToc();
         mountFooter(site);
       } catch (err) {
