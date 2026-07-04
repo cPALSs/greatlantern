@@ -50,13 +50,26 @@
             ${h.ctaNote ? `<p class="muted">${escapeHtml(h.ctaNote)}</p>` : ""}
           </section>
           <div class="home-cta-columns">
-            <section class="content-section home-cta-column home-fund-cta">
-              <h2>Fund the experience</h2>
-              <p>Vendor fees fund baseline operations. Sponsors unlock the blocks families remember — lantern procession, children's programming, Honor our Elders, and site lighting.</p>
-              <div class="cta-row">
-                <a class="btn btn-primary" href="${escapeHtml(c.buildHref)}">${escapeHtml(c.buildLabel)}</a>
-              </div>
-            </section>
+            <div class="home-cta-column home-cta-stack">
+              <section class="content-section home-fund-cta">
+                <h2>Fund the experience</h2>
+                <p>Vendor fees fund baseline operations. Sponsors unlock the blocks families remember — lantern procession, children's programming, Honor our Elders, and site lighting.</p>
+                <div class="cta-row">
+                  <a class="btn btn-primary" href="${escapeHtml(c.buildHref)}">${escapeHtml(c.buildLabel)}</a>
+                </div>
+              </section>
+              ${site.logoDesign?.homepageCta ? (() => {
+                const lc = site.logoDesign.homepageCta;
+                return `
+              <section class="content-section home-logo-cta">
+                <h2>${escapeHtml(lc.title)}</h2>
+                <p>${escapeHtml(lc.body)}</p>
+                <div class="cta-row">
+                  <a class="btn btn-primary" href="${escapeHtml(lc.href)}">${escapeHtml(lc.buttonLabel)}</a>
+                </div>
+              </section>`;
+              })() : ""}
+            </div>
             ${site.hostActivations?.homepageCta ? (() => {
               const hc = site.hostActivations.homepageCta;
               return `
