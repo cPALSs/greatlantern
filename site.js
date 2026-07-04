@@ -197,7 +197,7 @@
             .map((child) => {
               const childCurrent = child.id === activePage ? ' aria-current="page"' : "";
               const external = child.external ? ' target="_blank" rel="noopener"' : "";
-              return `<a class="site-nav-sublink" href="${child.href}"${childCurrent}${external}>${escapeHtml(toTitleCase(child.label))}</a>`;
+              return `<div class="site-nav-sublink-wrap"><a class="site-nav-sublink" href="${child.href}"${childCurrent}${external}>${escapeHtml(toTitleCase(child.label))}</a></div>`;
             })
             .join("");
           return `<div class="site-nav-group${childActive ? " is-active" : ""}"><a class="site-nav-parent" href="${page.href}"${parentCurrent}>${escapeHtml(toTitleCase(page.label))}</a><div class="site-nav-submenu">${sublinks}</div></div>`;

@@ -50,14 +50,15 @@ node "Festival Network/scripts/export-glf-season-events.mjs"
 
 ## Publish
 
-From repo root:
+From monorepo root (rsyncs this folder → [`Sites/greatlantern`](../../../../Sites/greatlantern); edit **here**, not in `Sites/`):
 
 ```bash
-./scripts/publish_greatlantern_site.sh ~/greatlantern
-./scripts/publish_festival_redirect.sh ~/festival
+./scripts/publish_greatlantern_site.sh
+./scripts/publish_festival_redirect.sh   # only when redirect copy changes
+cd Sites/greatlantern && git add -A && git commit -m "Update site" && git push
 ```
 
-Live: https://greatlantern.com
+Live: https://greatlantern.com · see [`Sites/README.md`](../../../../Sites/README.md)
 
 ## DNS (greatlantern.com)
 
