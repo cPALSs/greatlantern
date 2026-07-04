@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-04T04:45:43.425Z",
+  "generatedAt": "2026-07-04T05:17:48.518Z",
   "sourceSpreadsheetId": "1Va0oCv09nyW98-JnWL9DuYYTsXG35cxjf_WqBZsySrA",
   "seasonYear": "2026",
   "events": [
@@ -23,9 +23,9 @@
       "eventId": "caaps-lantern",
       "dates": "Sep 19, 2026 (tentative)",
       "name": "Autumn Lantern Festival & Night Market",
-      "host": "CAAPS / CAAPS Foundation",
+      "host": "CAAPS",
       "location": "Sacramento",
-      "href": "https://www.caaps.org/"
+      "href": "https://www.acaaps.org/"
     },
     {
       "eventId": "riverside-umc-mid-autumn",
