@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-04T05:18:24.856Z",
+  "generatedAt": "2026-07-04T05:37:34.834Z",
   "sourceSpreadsheetId": "1Va0oCv09nyW98-JnWL9DuYYTsXG35cxjf_WqBZsySrA",
   "seasonYear": "2026",
   "events": [
@@ -10,6 +10,14 @@
       "host": "California Is My Home",
       "location": "District 56 - 8230 Civic Center Dr (expected), Elk Grove",
       "href": "https://www.kcra.com/article/mid-autumn-festival-elk-grove-friday/66071496"
+    },
+    {
+      "eventId": "asm-nguyen-autumn-moon",
+      "dates": "Sep 12, 2026 6:30–10 PM (estimated)",
+      "name": "Annual Autumn Moon Festival",
+      "host": "Assemblymember Stephanie Nguyen",
+      "location": "Garcia Bend Park — 7654 Pocket Rd (expected), Sacramento",
+      "href": "https://nguyen.asmdc.org/event/20250920-annual-autumn-moon-festival"
     },
     {
       "eventId": "sac-state-harvest-moon",
