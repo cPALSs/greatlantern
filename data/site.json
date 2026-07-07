@@ -540,7 +540,7 @@
   },
   "resources": {
     "headline": "Resources",
-    "lead": "Season calendar and planning notes.",
+    "lead": "Season calendar, festival media, and planning notes.",
     "links": [
       {
         "title": "Mid-Autumn Festival Season",
@@ -548,9 +548,26 @@
         "href": "/resources/season/"
       },
       {
+        "title": "Media",
+        "body": "News coverage, ads, and festival videos from recent seasons.",
+        "href": "/resources/media/"
+      },
+      {
         "title": "Blog",
         "body": "How our teams plan sustainable community festivals — budgets, ownership, and regional coordination.",
         "href": "/resources/blog/"
+      }
+    ]
+  },
+  "media": {
+    "headline": "Media",
+    "lead": "Press coverage, ads, and festival videos from Great Lantern Festival and this festival line's earlier seasons.",
+    "contactNote": "Media inquiries: contact@greatlantern.com · #greatlanternfest",
+    "videos": [
+      {
+        "year": 2021,
+        "youtubeId": "QVbWwLDlUbk",
+        "title": "KCRA 3 — South Sacramento hosts first annual Mid-Autumn Moon Festival"
       }
     ]
   },

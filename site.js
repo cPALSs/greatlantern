@@ -187,6 +187,7 @@
         href: "/resources/",
         children: [
           { id: "season", label: "Mid-Autumn Season", href: "/resources/season/" },
+          { id: "media", label: "Media", href: "/resources/media/" },
           { id: "blog", label: "Blog", href: "/resources/blog/" },
         ],
       },
@@ -1179,6 +1180,80 @@
       <div class="resource-card-grid">${cards}</div>`;
   }
 
+  function renderMediaVideoCard(video) {
+    const id = String(video.youtubeId ?? "").trim();
+    const title = video.title ?? "Festival video";
+    const watchUrl = `https://www.youtube.com/watch?v=${encodeURIComponent(id)}`;
+    const embedSrc = `https://www.youtube-nocookie.com/embed/${encodeURIComponent(id)}?autoplay=1&rel=0`;
+    const poster = `https://i.ytimg.com/vi/${encodeURIComponent(id)}/hqdefault.jpg`;
+    return `
+      <figure class="video-card">
+        <div class="video-embed" data-youtube-id="${escapeHtml(id)}" data-embed-src="${escapeHtml(embedSrc)}">
+          <button type="button" class="video-play" aria-label="Play ${escapeHtml(title)}">
+            <img class="video-poster" src="${escapeHtml(poster)}" alt="" loading="lazy" width="480" height="360" />
+            <span class="video-play-icon" aria-hidden="true"></span>
+          </button>
+          <a class="video-fallback-link" href="${escapeHtml(watchUrl)}" target="_blank" rel="noopener">Watch on YouTube</a>
+        </div>
+        <figcaption class="video-caption">${escapeHtml(title)}</figcaption>
+      </figure>`;
+  }
+
+  function renderMediaPage(media) {
+    const videos = media?.videos ?? [];
+    const byYear = new Map();
+    for (const video of videos) {
+      const year = String(video.year ?? "Videos");
+      if (!byYear.has(year)) byYear.set(year, []);
+      byYear.get(year).push(video);
+    }
+    const years = [...byYear.keys()].sort((a, b) => String(b).localeCompare(String(a)));
+    const sections = years
+      .map((year) => {
+        const cards = byYear.get(year).map(renderMediaVideoCard).join("");
+        return `
+      <section class="media-year-section" aria-labelledby="media-year-${escapeHtml(year)}">
+        <h2 class="media-year-heading" id="media-year-${escapeHtml(year)}">${escapeHtml(year)}</h2>
+        <div class="video-grid">${cards}</div>
+      </section>`;
+      })
+      .join("");
+
+    const contact = media?.contactNote
+      ? `<p class="muted media-contact-note">${escapeHtml(media.contactNote)}</p>`
+      : "";
+
+    return `
+      <section class="hero">
+        <h1>${escapeHtml(media?.headline ?? "Media")}</h1>
+        ${media?.lead ? `<p class="hero-lead">${escapeHtml(media.lead)}</p>` : ""}
+      </section>
+      <div class="media-page-body">
+        ${videos.length ? sections : `<p class="muted">Media coming soon.</p>`}
+        ${contact}
+      </div>`;
+  }
+
+  function initMediaPlayers(root = document) {
+    root.querySelectorAll(".video-embed[data-embed-src]").forEach((embed) => {
+      const button = embed.querySelector(".video-play");
+      if (!button || button.dataset.bound === "1") return;
+      button.dataset.bound = "1";
+      button.addEventListener("click", () => {
+        const src = embed.getAttribute("data-embed-src");
+        const title = button.getAttribute("aria-label")?.replace(/^Play\s+/, "") || "Festival video";
+        if (!src) return;
+        embed.innerHTML = `<iframe
+          src="${src}"
+          title="${escapeHtml(title)}"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowfullscreen
+          referrerpolicy="strict-origin-when-cross-origin"
+        ></iframe>`;
+      });
+    });
+  }
+
   function renderBriefBullets(bullets) {
     if (!bullets?.length) return "";
     const items = bullets
@@ -1541,6 +1616,8 @@
     renderAboutSections,
     renderTeamPage,
     renderResourcesPage,
+    initMediaPlayers,
+    renderMediaPage,
     renderSeasonPage,
     renderLogoDesignPage,
     renderPosterWall,
