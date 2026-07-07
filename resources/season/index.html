@@ -4,12 +4,12 @@
   <meta charset="UTF-8" />
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-G3HQX0SYHS"></script>
-  <script src="../analytics.js"></script>
+  <script src="../../analytics.js"></script>
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="Great Lantern Festival resources — Mid-Autumn Festival Season events and planning notes." />
-  <title>Resources — Great Lantern Festival</title>
-  <script src="../clean-urls.js"></script>
+  <meta name="description" content="Mid-Autumn Festival Season in Greater Sacramento — early September through early October events, including Great Lantern Festival." />
+  <title>Mid-Autumn Festival Season — Great Lantern Festival</title>
+  <script src="../../clean-urls.js"></script>
   <script>
     (function () {
       try {
@@ -18,7 +18,7 @@
       } catch (_) {}
     })();
   </script>
-  <link rel="stylesheet" href="../site.css" />
+  <link rel="stylesheet" href="../../site.css" />
 </head>
 <body>
   <div id="site-nav"></div>
@@ -26,16 +26,25 @@
     <p class="muted">Loading…</p>
   </main>
   <div id="site-footer"></div>
-  <script src="../site.js"></script>
+  <script src="../../site.js"></script>
   <script>
     (async function () {
-      const { initPageShell, loadSiteData, mountFooter, renderResourcesPage, setPageTitle, escapeHtml } =
-        window.MafSite;
-      initPageShell("resources");
+      const {
+        initPageShell,
+        loadSiteData,
+        loadSeasonEvents,
+        mountFooter,
+        renderSeasonPage,
+        initPageToc,
+        setPageTitle,
+        escapeHtml,
+      } = window.MafSite;
+      initPageShell("season");
       try {
-        const site = await loadSiteData();
-        setPageTitle(site, "Resources");
-        document.getElementById("main").innerHTML = renderResourcesPage(site.resources);
+        const [site, seasonData] = await Promise.all([loadSiteData(), loadSeasonEvents()]);
+        setPageTitle(site, "Mid-Autumn Festival Season");
+        document.getElementById("main").innerHTML = renderSeasonPage(site.season, seasonData);
+        initPageToc();
         mountFooter(site);
       } catch (err) {
         document.getElementById("main").innerHTML = `<p class="error-panel">${escapeHtml(err.message)}</p>`;

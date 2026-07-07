@@ -540,12 +540,27 @@
   },
   "resources": {
     "headline": "Resources",
-    "season": {
-      "title": "Mid-Autumn Festival Season",
-      "intro": "Celebrate Mid-Autumn Festival Season in Greater Sacramento from early September through early October!",
-      "listNote": "Dates marked estimated or tentative may change — check organizer listings before you go.",
-      "contactNote": "Know a Mid-Autumn event we missed? Email contact@greatlantern.com."
-    }
+    "lead": "Season calendar and planning notes.",
+    "links": [
+      {
+        "title": "Mid-Autumn Festival Season",
+        "body": "Celebrate Mid-Autumn Festival Season across Greater Sacramento — early September through early October.",
+        "href": "/resources/season/"
+      },
+      {
+        "title": "Blog",
+        "body": "How our teams plan sustainable community festivals — budgets, ownership, and regional coordination.",
+        "href": "/resources/blog/"
+      }
+    ]
+  },
+  "season": {
+    "headline": "Mid-Autumn Festival Season",
+    "title": "2026 season",
+    "lead": "Celebrate Mid-Autumn Festival Season in Greater Sacramento from early September through early October!",
+    "intro": "Greater Sacramento's Mid-Autumn and Moon Festival calendar — community celebrations and our Elk Grove capstone weekend.",
+    "listNote": "Dates marked estimated or tentative may change — check organizer listings before you go.",
+    "contactNote": "Know a Mid-Autumn event we missed? Email contact@greatlantern.com."
   },
   "logoDesign": {
     "headline": "Logo Design",

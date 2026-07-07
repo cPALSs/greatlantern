@@ -186,7 +186,7 @@
         label: "Resources",
         href: "/resources/",
         children: [
-          { id: "season", label: "Mid-Autumn Season", href: "/resources/" },
+          { id: "season", label: "Mid-Autumn Season", href: "/resources/season/" },
           { id: "blog", label: "Blog", href: "/resources/blog/" },
         ],
       },
@@ -1103,29 +1103,52 @@
     </li>`;
   }
 
-  function renderResourcesPage(resources, seasonData) {
-    const season = resources?.season ?? {};
+  function renderSeasonPage(season, seasonData) {
     const events = seasonData?.events ?? [];
+    const seasonTitle = season?.title ?? "Mid-Autumn Festival Season";
     const listItems = events.map(renderSeasonEventItem).join("");
-    const contactNote = season.contactNote
+    const listNote = season?.listNote
+      ? `<p class="muted season-list-note">${escapeHtml(season.listNote)}</p>`
+      : "";
+    const contactNote = season?.contactNote
       ? `<p class="muted season-contact-note">${escapeHtml(season.contactNote)}</p>`
       : "";
-    const seasonTitle = season.title ?? "Mid-Autumn Festival Season";
     const toc = [{ id: "season", label: seasonTitle }];
     const seasonSection = `
       <section class="host-doc-section about-section resources-season" id="season" data-doc-section>
         <h2>${escapeHtml(seasonTitle)}</h2>
-        ${season.intro ? `<p>${escapeHtml(season.intro)}</p>` : ""}
+        ${season?.intro ? `<p>${escapeHtml(season.intro)}</p>` : ""}
         ${events.length ? `<ul class="season-event-list">${listItems}</ul>` : `<p class="muted">Season events coming soon.</p>`}
-        ${season.listNote ? `<p class="muted season-list-note">${escapeHtml(season.listNote)}</p>` : ""}
+        ${listNote}
         ${contactNote}
       </section>`;
 
     return `
       <section class="hero">
-        <h1>${escapeHtml(resources?.headline ?? "Resources")}</h1>
+        <h1>${escapeHtml(season?.headline ?? "Mid-Autumn Festival Season")}</h1>
+        ${season?.lead ? `<p class="hero-lead">${escapeHtml(season.lead)}</p>` : ""}
       </section>
       ${wrapDocLayout(toc, seasonSection)}`;
+  }
+
+  function renderResourcesPage(resources) {
+    const links = resources?.links ?? [];
+    const cards = links
+      .map(
+        (link) => `
+      <a class="resource-card" href="${escapeHtml(link.href)}">
+        <h2>${escapeHtml(link.title)}</h2>
+        ${link.body ? `<p>${escapeHtml(link.body)}</p>` : ""}
+      </a>`,
+      )
+      .join("");
+
+    return `
+      <section class="hero">
+        <h1>${escapeHtml(resources?.headline ?? "Resources")}</h1>
+        ${resources?.lead ? `<p class="hero-lead">${escapeHtml(resources.lead)}</p>` : ""}
+      </section>
+      <div class="resource-card-grid">${cards}</div>`;
   }
 
   function renderBriefBullets(bullets) {
@@ -1487,6 +1510,7 @@
     renderAboutSections,
     renderTeamPage,
     renderResourcesPage,
+    renderSeasonPage,
     renderLogoDesignPage,
     renderPosterWall,
     renderApplyBlock,

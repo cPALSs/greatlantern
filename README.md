@@ -13,7 +13,8 @@ Unified Great Lantern Festival hub — clean URLs, no `.html` in public paths.
 | `/` | `index.html` (redirects `/index.html` → `/`) |
 | `/team/` | `team/index.html` |
 | `/about/` | `about/index.html` |
-| `/resources/` | **Resources** — Mid-Autumn Festival Season event list |
+| `/resources/` | **Resources** hub — season calendar and blog |
+| `/resources/season/` | **Mid-Autumn Festival Season** calendar |
 | `/resources/blog/` | **Blog** — SEO-safe planning notes (generated from shared markdown) |
 | `/custom-zones/` | **Custom Zones** — hero, prompts, examples, desktop TOC |
 | `/fund-the-festival/` | **Fund The Festival** — interactive sponsor registry |
@@ -52,6 +53,7 @@ python3 -m http.server 8765
 
 - http://localhost:8765/
 - http://localhost:8765/resources/
+- http://localhost:8765/resources/season/
 - http://localhost:8765/resources/blog/
 - http://localhost:8765/custom-zones/
 - http://localhost:8765/fund-the-festival/

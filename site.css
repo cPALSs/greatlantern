@@ -769,7 +769,8 @@ body.nav-open {
 }
 
 .hero + .about-section,
-.hero + .host-doc-layout {
+.hero + .host-doc-layout,
+.hero + .resource-card-grid {
   margin-top: 0;
 }
 
@@ -1257,6 +1258,50 @@ body.nav-open {
   border: 1px solid var(--danger, #f87171);
   border-radius: var(--radius);
   color: var(--danger, #f87171);
+}
+
+.resource-card-grid {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: 1fr;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 clamp(1.25rem, 4vw, 3rem);
+}
+
+@media (min-width: 640px) {
+  .resource-card-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.resource-card {
+  display: block;
+  padding: 1.25rem 1.35rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--surface);
+  text-decoration: none;
+  color: inherit;
+  transition: border-color 0.15s ease, background 0.15s ease;
+}
+
+.resource-card:hover {
+  border-color: var(--accent);
+  background: var(--surface-raised, var(--surface));
+}
+
+.resource-card h2 {
+  margin: 0 0 0.4rem;
+  font-size: 1.15rem;
+  color: var(--text);
+}
+
+.resource-card p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.95rem;
+  line-height: 1.45;
 }
 
 .hero-lead {
