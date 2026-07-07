@@ -5,10 +5,10 @@
     "dates": "Sat Sep 26, 2026 (4\u20139 PM)",
     "mvpCap": 9944,
     "vendorRev100": 8370,
-    "vendorRev100Target": 10170,
+    "vendorRev100Target": 10270,
     "registryFull": 33329,
-    "vendorSlots": 44,
-    "vendorSlotsTarget": 56,
+    "vendorSlots": 45,
+    "vendorSlotsTarget": 58,
     "vendorScenario": "layout-02a-carryover",
     "attendance": 2000
   },
@@ -21,11 +21,11 @@
     "mvpCap": 9944,
     "vendorRevenue": 8370,
     "headroomOrGap": -1574,
-    "vendorSlots": 44,
+    "vendorSlots": 45,
     "vendorScenario": "layout-02a-carryover",
     "estimatedRevenue": {
       "total": 8370,
-      "summary": "44 vendor slots (02A carryover) \u00b7 2,000 attendance \u00b7 100% fill",
+      "summary": "45 vendor slots (02A carryover) \u00b7 2,000 attendance \u00b7 100% fill",
       "lines": [
         {
           "label": "Vendor booth fees",

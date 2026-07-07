@@ -183,7 +183,15 @@
           { id: "logo-design", label: "Logo Design", href: "/logo-design/" },
         ],
       },
-      { id: "resources", label: "Resources", href: "/resources/" },
+      {
+        id: "resources",
+        label: "Resources",
+        href: "/resources/",
+        children: [
+          { id: "season", label: "Mid-Autumn Season", href: "/resources/" },
+          { id: "blog", label: "Blog", href: "/resources/blog/" },
+        ],
+      },
     ];
   }
 

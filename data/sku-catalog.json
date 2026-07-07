@@ -1,9 +1,21 @@
 {
   "meta": {
     "festival": "Great Lantern Festival 2026",
-    "version": "2026-07-01",
+    "version": "2026-07-06",
     "sourceOfTruth": "Inventory master for vendor Eventeny sync and zone Partnerships quotes"
   },
+  "foodArchetypes": [
+    { "id": "boba_milk_tea", "label": "Boba / milk tea anchor", "applyQuestionValue": "boba_milk_tea", "vendorSkus": ["MAF-VENDOR-DR", "MAF-VENDOR-OC", "MAF-VENDOR-FT"] },
+    { "id": "sugarcane_fruit_refresher", "label": "Sugarcane / fruit refresher", "applyQuestionValue": "sugarcane_fruit_refresher", "vendorSkus": ["MAF-VENDOR-DR", "MAF-VENDOR-OC", "MAF-VENDOR-FT"] },
+    { "id": "packaged_savory", "label": "Packaged savory treats", "applyQuestionValue": "packaged_savory", "vendorSkus": ["MAF-VENDOR-SN"] },
+    { "id": "packaged_sweets", "label": "Packaged sweets", "applyQuestionValue": "packaged_sweets", "vendorSkus": ["MAF-VENDOR-SN"] },
+    { "id": "popcorn_fair", "label": "Popcorn & fair treats", "applyQuestionValue": "popcorn_fair", "vendorSkus": ["MAF-VENDOR-SN"] },
+    { "id": "ice_treat", "label": "Shaved ice & frozen treats", "applyQuestionValue": "ice_treat", "vendorSkus": ["MAF-VENDOR-SN"] },
+    { "id": "fast_handheld", "label": "Fast handheld", "applyQuestionValue": "fast_handheld", "vendorSkus": ["MAF-VENDOR-OC", "MAF-VENDOR-FT"] },
+    { "id": "rice_plates_bowls", "label": "Rice plates & bowls", "applyQuestionValue": "rice_plates_bowls", "vendorSkus": ["MAF-VENDOR-OC", "MAF-VENDOR-FT"] },
+    { "id": "noodle_wok_soup", "label": "Noodle / wok / soup", "applyQuestionValue": "noodle_wok_soup", "vendorSkus": ["MAF-VENDOR-OC", "MAF-VENDOR-FT"] },
+    { "id": "bbq_smoke_carved", "label": "BBQ / smoke / carved", "applyQuestionValue": "bbq_smoke_carved", "vendorSkus": ["MAF-VENDOR-OC", "MAF-VENDOR-FT"] }
+  ],
   "vendors": [
     {
       "id": "MAF-VENDOR-FT",
@@ -48,24 +60,80 @@
       }
     },
     {
-      "id": "MAF-VENDOR-PF",
+      "id": "MAF-VENDOR-DR",
       "skuType": "catalog-vendor",
-      "name": "Prepackaged food",
-      "footprint": "10×10 flex",
-      "slotCap": 10,
-      "publicDescription": "Prepackaged or sealed food for retail — no open flame on pad.",
-      "requirements": ["County health compliance for prepack sales"],
+      "name": "Beverage anchor",
+      "vendorClass": "drinks",
+      "footprint": "10×10 flex or truck row",
+      "slotCap": 2,
+      "publicDescription": "Live-prep drink anchor — boba, sugarcane, aguas, coffee. Pick canopy, truck, or trailer on follow-up.",
+      "requirements": ["Footprint follow-up required", "Beverage exclusivity caps"],
       "eventeny": {
-        "applyQuestionValue": "prepack_food",
-        "tags": ["prepack", "maf-vendor-pf"],
+        "applyQuestionValue": "beverage_anchor",
+        "tags": ["drinks", "maf-vendor-dr"],
+        "setupQuestion": {
+          "prompt": "How will you set up on site?",
+          "options": [
+            { "label": "Open cooking pad (canopy)", "setup_type": "open_food_canopy" },
+            { "label": "Food truck / trailer", "setup_type": "open_food_truck" },
+            { "label": "Prepack booth (pre-batch only)", "setup_type": "prepack_booth" }
+          ]
+        },
         "lineItems": [
-          { "role": "booth_fee", "tier": "standard", "titleTemplate": "Prepackaged Food (10×10) – Sat Sep 26 – ${amount}", "amount": 150 },
-          { "role": "booth_fee", "tier": "early_bird", "titleTemplate": "Prepackaged Food Early Bird – Sat Sep 26 – ${amount}", "amount": 125 },
-          { "role": "booth_fee", "tier": "late", "titleTemplate": "Prepackaged Food Late – Sat Sep 26 – ${amount}", "amount": 175 }
+          { "role": "booth_fee", "tier": "standard", "titleTemplate": "Beverage Anchor (10×10) – Sat Sep 26 – ${amount}", "amount": 150 },
+          { "role": "booth_fee", "tier": "early_bird", "titleTemplate": "Beverage Anchor Early Bird – Sat Sep 26 – ${amount}", "amount": 125 },
+          { "role": "booth_fee", "tier": "late", "titleTemplate": "Beverage Anchor Late – Sat Sep 26 – ${amount}", "amount": 175 }
+        ],
+        "depositApply": 50,
+        "depositApproval": 25,
+        "tffSku": "TFF-PREPKG"
+      }
+    },
+    {
+      "id": "MAF-VENDOR-SN",
+      "skuType": "catalog-vendor",
+      "name": "Snack / treat booth",
+      "vendorClass": "snack",
+      "footprint": "10×10 flex",
+      "slotCap": 8,
+      "publicDescription": "Walk-around treats — jerky, candy, popcorn, shaved ice. Prepack booth; no meal or drink anchor.",
+      "requirements": ["County health compliance for prepack sales", "Treat archetype caps"],
+      "eventeny": {
+        "applyQuestionValue": "snack_treat",
+        "tags": ["snack", "maf-vendor-sn"],
+        "setupQuestion": { "fixed_setup_type": "prepack_booth" },
+        "lineItems": [
+          { "role": "booth_fee", "tier": "standard", "titleTemplate": "Snack / Treat Booth (10×10) – Sat Sep 26 – ${amount}", "amount": 125 },
+          { "role": "booth_fee", "tier": "early_bird", "titleTemplate": "Snack / Treat Early Bird – Sat Sep 26 – ${amount}", "amount": 100 },
+          { "role": "booth_fee", "tier": "late", "titleTemplate": "Snack / Treat Late – Sat Sep 26 – ${amount}", "amount": 150 }
         ],
         "depositApply": 50,
         "depositApproval": 25,
         "tffSku": null
+      }
+    },
+    {
+      "id": "MAF-VENDOR-MF",
+      "skuType": "catalog-vendor",
+      "name": "Sealed food retail",
+      "vendorClass": "merchant",
+      "footprint": "10×10 flex",
+      "slotCap": 2,
+      "requiresTffPrePkg": true,
+      "publicDescription": "Take-home sealed food — mooncake boxes, frozen packs, jars. TFF PRE-PKG when applicable.",
+      "requirements": ["No open flame", "TFF PRE-PKG for sealed food"],
+      "eventeny": {
+        "applyQuestionValue": "sealed_food_merchant",
+        "tags": ["merchant", "maf-vendor-mf"],
+        "setupQuestion": { "fixed_setup_type": "prepack_booth" },
+        "lineItems": [
+          { "role": "booth_fee", "tier": "standard", "titleTemplate": "Sealed Food Retail (10×10) – Sat Sep 26 – ${amount}", "amount": 150 },
+          { "role": "booth_fee", "tier": "early_bird", "titleTemplate": "Sealed Food Retail Early Bird – Sat Sep 26 – ${amount}", "amount": 125 },
+          { "role": "booth_fee", "tier": "late", "titleTemplate": "Sealed Food Retail Late – Sat Sep 26 – ${amount}", "amount": 175 }
+        ],
+        "depositApply": 50,
+        "depositApproval": 25,
+        "tffSku": "TFF-PREPKG"
       }
     },
     {
@@ -109,6 +177,13 @@
         "depositApproval": 0,
         "tffSku": null
       }
+    }
+  ],
+  "retiredSkus": [
+    {
+      "id": "MAF-VENDOR-PF",
+      "replacedBy": ["MAF-VENDOR-DR", "MAF-VENDOR-SN", "MAF-VENDOR-MF"],
+      "note": "Legacy prepackaged food — split by vendor_class"
     }
   ],
   "zoneBaselines": [

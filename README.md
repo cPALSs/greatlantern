@@ -14,6 +14,7 @@ Unified Great Lantern Festival hub — clean URLs, no `.html` in public paths.
 | `/team/` | `team/index.html` |
 | `/about/` | `about/index.html` |
 | `/resources/` | **Resources** — Mid-Autumn Festival Season event list |
+| `/resources/blog/` | **Blog** — SEO-safe planning notes (generated from shared markdown) |
 | `/custom-zones/` | **Custom Zones** — hero, prompts, examples, desktop TOC |
 | `/fund-the-festival/` | **Fund The Festival** — interactive sponsor registry |
 | `/logo-design/` | **Logo Design** — official branding brief + human-artistry audit trail |
@@ -28,8 +29,21 @@ Legacy redirects (via `clean-urls.js`): `/host.html` → `/custom-zones/`, `/bui
 - **`data/maf-2026.json`** — Fund The Festival data (from `build_maf_budget.py`)
 - **`data/festivals.json`** — BTF manifest
 - **`assets/custom-zones-hero.webp`** — Custom Zones hero image (replace with photography when ready)
+- **`resources/blog/`** — static blog pages (generated; do not edit HTML by hand)
 
-## Local preview
+### Blog
+
+Source markdown lives in [`Festival Network/shared/content/blog/`](../../../../Festival%20Network/shared/content/blog/). Rebuild after editing:
+
+```bash
+node "Festival Network/scripts/build-festival-site-blog.mjs" --site glf
+# or both sites:
+npm run blog:build --prefix "Festival Network"
+```
+
+The publish script runs this automatically before rsync.
+
+Refresh season events from the landscape Sheet:
 
 ```bash
 cd "Projects - Mid-Autumn Festival/2026/Marketing/maf-site"
@@ -38,6 +52,7 @@ python3 -m http.server 8765
 
 - http://localhost:8765/
 - http://localhost:8765/resources/
+- http://localhost:8765/resources/blog/
 - http://localhost:8765/custom-zones/
 - http://localhost:8765/fund-the-festival/
 - http://localhost:8765/logo-design/
