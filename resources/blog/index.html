@@ -49,6 +49,7 @@
     (async function () {
       const { initPageShell, loadSiteData, mountFooter } = window.MafSite;
       initPageShell("blog");
+      
       try { mountFooter(await loadSiteData()); } catch (_) {}
     })();
   </script>

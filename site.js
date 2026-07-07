@@ -144,11 +144,9 @@
   }
 
   function navPrefix() {
-    const path = window.location.pathname;
-    if (/\/(custom-zones|fund-the-festival|logo-design|about|team|resources|build|2026)(\/|$)/.test(path)) {
-      return "../";
-    }
-    return "";
+    const path = window.location.pathname.replace(/\/index\.html$/i, "").replace(/\/$/, "");
+    const depth = path.split("/").filter(Boolean).length;
+    return depth === 0 ? "" : "../".repeat(depth);
   }
 
   function toTitleCase(title) {
