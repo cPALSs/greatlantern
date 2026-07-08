@@ -187,7 +187,6 @@
         href: "/resources/",
         children: [
           { id: "season", label: "Mid-Autumn Season", href: "/resources/season/" },
-          { id: "media", label: "Media", href: "/resources/media/" },
           { id: "blog", label: "Blog", href: "/resources/blog/" },
         ],
       },
@@ -842,83 +841,7 @@
   }
 
   function initPageToc() {
-    const tocLinks = document.querySelectorAll("[data-toc-target]");
-    const sections = document.querySelectorAll("[data-doc-section], [data-host-section]");
-    if (!tocLinks.length || !sections.length) return { scrollToSection: () => {} };
-
-    function scrollToSection(id) {
-      const el = document.getElementById(id);
-      if (!el) return;
-      el.scrollIntoView({ behavior: "smooth", block: "start" });
-    }
-
-    function setActiveSection(id) {
-      tocLinks.forEach((link) => {
-        link.classList.toggle("is-active", link.getAttribute("data-toc-target") === id);
-      });
-    }
-
-    tocLinks.forEach((link) => {
-      link.addEventListener("click", (e) => {
-        e.preventDefault();
-        scrollToSection(link.getAttribute("data-toc-target"));
-      });
-    });
-
-    function getScrollSpyOffsetPx() {
-      // Measure the sticky nav in px — parseFloat("--nav-height") is wrong for "3.25rem".
-      const nav = document.getElementById("site-nav");
-      const navHeight = nav?.getBoundingClientRect().height || 52;
-      const rem = parseFloat(getComputedStyle(document.documentElement).fontSize) || 16;
-      // Match .host-doc-section scroll-margin-top: nav + 1rem
-      return navHeight + rem;
-    }
-
-    function pickActiveSection(sectionList) {
-      if (!sectionList.length) return null;
-
-      const offset = getScrollSpyOffsetPx();
-      const doc = document.documentElement;
-      const nearBottom = window.scrollY + window.innerHeight >= doc.scrollHeight - offset;
-
-      if (nearBottom) {
-        return sectionList[sectionList.length - 1].id;
-      }
-
-      let activeId = sectionList[0].id;
-      for (const section of sectionList) {
-        if (section.getBoundingClientRect().top <= offset + 1) {
-          activeId = section.id;
-        }
-      }
-      return activeId;
-    }
-
-    const sectionList = [...sections];
-    let scrollSpyScheduled = false;
-
-    function updateScrollSpy() {
-      const activeId = pickActiveSection(sectionList);
-      if (activeId) setActiveSection(activeId);
-    }
-
-    function scheduleScrollSpyUpdate() {
-      if (scrollSpyScheduled) return;
-      scrollSpyScheduled = true;
-      requestAnimationFrame(() => {
-        scrollSpyScheduled = false;
-        updateScrollSpy();
-      });
-    }
-
-    window.addEventListener("scroll", scheduleScrollSpyUpdate, { passive: true });
-    window.addEventListener("resize", scheduleScrollSpyUpdate, { passive: true });
-    if ("onscrollend" in window) {
-      window.addEventListener("scrollend", scheduleScrollSpyUpdate, { passive: true });
-    }
-    scheduleScrollSpyUpdate();
-
-    return { scrollToSection };
+    return window.DocScroll.init();
   }
 
   function renderHostApplyBlock(hostApply, prominent) {
@@ -943,7 +866,7 @@
 
   function initHostPageToc(hostApply, prompts) {
     const vendorModal = document.getElementById("vendor-spot-modal");
-    const { scrollToSection } = initPageToc();
+    const { navigateToSection } = initPageToc();
 
     function openVendorModal() {
       if (!vendorModal) return;
@@ -1005,17 +928,15 @@
             : prompt === "help"
               ? prompts?.help?.scrollTo ?? "bring-to-life"
               : "examples";
-        scrollToSection(scrollTarget);
+        navigateToSection(scrollTarget, "smooth");
       });
     });
 
     const hash = window.location.hash.replace("#", "");
     if (hash === "diy" || hash === "decorate-yourself") {
       updateMailto("diy");
-      scrollToSection("decorate-yourself");
     } else if (hash === "help" || hash === "bring-to-life") {
       updateMailto("help");
-      scrollToSection("bring-to-life");
     }
   }
 
@@ -1178,80 +1099,6 @@
         ${resources?.lead ? `<p class="hero-lead">${escapeHtml(resources.lead)}</p>` : ""}
       </section>
       <div class="resource-card-grid">${cards}</div>`;
-  }
-
-  function renderMediaVideoCard(video) {
-    const id = String(video.youtubeId ?? "").trim();
-    const title = video.title ?? "Festival video";
-    const watchUrl = `https://www.youtube.com/watch?v=${encodeURIComponent(id)}`;
-    const embedSrc = `https://www.youtube-nocookie.com/embed/${encodeURIComponent(id)}?autoplay=1&rel=0`;
-    const poster = `https://i.ytimg.com/vi/${encodeURIComponent(id)}/hqdefault.jpg`;
-    return `
-      <figure class="video-card">
-        <div class="video-embed" data-youtube-id="${escapeHtml(id)}" data-embed-src="${escapeHtml(embedSrc)}">
-          <button type="button" class="video-play" aria-label="Play ${escapeHtml(title)}">
-            <img class="video-poster" src="${escapeHtml(poster)}" alt="" loading="lazy" width="480" height="360" />
-            <span class="video-play-icon" aria-hidden="true"></span>
-          </button>
-          <a class="video-fallback-link" href="${escapeHtml(watchUrl)}" target="_blank" rel="noopener">Watch on YouTube</a>
-        </div>
-        <figcaption class="video-caption">${escapeHtml(title)}</figcaption>
-      </figure>`;
-  }
-
-  function renderMediaPage(media) {
-    const videos = media?.videos ?? [];
-    const byYear = new Map();
-    for (const video of videos) {
-      const year = String(video.year ?? "Videos");
-      if (!byYear.has(year)) byYear.set(year, []);
-      byYear.get(year).push(video);
-    }
-    const years = [...byYear.keys()].sort((a, b) => String(b).localeCompare(String(a)));
-    const sections = years
-      .map((year) => {
-        const cards = byYear.get(year).map(renderMediaVideoCard).join("");
-        return `
-      <section class="media-year-section" aria-labelledby="media-year-${escapeHtml(year)}">
-        <h2 class="media-year-heading" id="media-year-${escapeHtml(year)}">${escapeHtml(year)}</h2>
-        <div class="video-grid">${cards}</div>
-      </section>`;
-      })
-      .join("");
-
-    const contact = media?.contactNote
-      ? `<p class="muted media-contact-note">${escapeHtml(media.contactNote)}</p>`
-      : "";
-
-    return `
-      <section class="hero">
-        <h1>${escapeHtml(media?.headline ?? "Media")}</h1>
-        ${media?.lead ? `<p class="hero-lead">${escapeHtml(media.lead)}</p>` : ""}
-      </section>
-      <div class="media-page-body">
-        ${videos.length ? sections : `<p class="muted">Media coming soon.</p>`}
-        ${contact}
-      </div>`;
-  }
-
-  function initMediaPlayers(root = document) {
-    root.querySelectorAll(".video-embed[data-embed-src]").forEach((embed) => {
-      const button = embed.querySelector(".video-play");
-      if (!button || button.dataset.bound === "1") return;
-      button.dataset.bound = "1";
-      button.addEventListener("click", () => {
-        const src = embed.getAttribute("data-embed-src");
-        const title = button.getAttribute("aria-label")?.replace(/^Play\s+/, "") || "Festival video";
-        if (!src) return;
-        embed.innerHTML = `<iframe
-          src="${src}"
-          title="${escapeHtml(title)}"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-          allowfullscreen
-          referrerpolicy="strict-origin-when-cross-origin"
-        ></iframe>`;
-      });
-    });
   }
 
   function renderBriefBullets(bullets) {
@@ -1616,8 +1463,6 @@
     renderAboutSections,
     renderTeamPage,
     renderResourcesPage,
-    initMediaPlayers,
-    renderMediaPage,
     renderSeasonPage,
     renderLogoDesignPage,
     renderPosterWall,

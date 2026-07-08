@@ -2,7 +2,7 @@
 
 **Public site:** https://greatlantern.com · GitHub Pages repo [`cPALSs/greatlantern`](https://github.com/cPALSs/greatlantern)
 
-**Legacy redirect:** https://festival.cpalss.com → greatlantern.com (path preserved) · repo [`cPALSs/festival`](https://github.com/cPALSs/festival)
+**Festival Season Network:** https://festival.cpalss.com · repo [`cPALSs/festival`](https://github.com/cPALSs/festival)
 
 Unified Great Lantern Festival hub — clean URLs, no `.html` in public paths.
 
@@ -71,7 +71,6 @@ From monorepo root (rsyncs this folder → [`Sites/greatlantern`](../../../../Si
 
 ```bash
 ./scripts/publish_greatlantern_site.sh
-./scripts/publish_festival_redirect.sh   # only when redirect copy changes
 cd Sites/greatlantern && git add -A && git commit -m "Update site" && git push
 ```
 
