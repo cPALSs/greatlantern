@@ -26,6 +26,7 @@ const GIFT_SORT = {
   safe_festival: 2,
   festival_amenities: 3,
   lantern_procession: 1,
+  lantern_wall_installation: 1,
   saturday_children: 2,
   honor_elders: 3,
   light_up_derr_okamoto: 4,
@@ -42,6 +43,16 @@ const GIFT_SORT = {
   sponsor_booth: 1,
   tent_rental: 2,
   additional_amount: 0,
+  lantern_moon_backdrop: 3,
+  plaza_lantern_canopy: 1,
+  lantern_wall_installation: 2,
+  lantern_craft_station: 2,
+  creator_photo_lane: 3,
+  family_lantern_moment: 4,
+  deployment_stop: 1,
+  extra_craft_session: 2,
+  popup_program_base: 0,
+  backdrop_hardware_kit: 1,
 };
 
 function giftBenefits(gift) {
@@ -242,6 +253,29 @@ function currentFestivalEntry() {
   return state.manifest?.festivals?.find((f) => f.id === state.festivalId) ?? null;
 }
 
+function pageProfile() {
+  return currentFestivalEntry()?.pageProfile ?? "festival";
+}
+
+function isPopupsPage() {
+  return pageProfile() === "popups";
+}
+
+function manifestPath() {
+  return document.body?.dataset?.manifest ?? "../data/festivals.json";
+}
+
+function progressLabel(key, fallback) {
+  return currentFestivalEntry()?.progressLabels?.[key] ?? fallback;
+}
+
+function visionTargetAmount() {
+  if (isPopupsPage()) {
+    return state.data?.event?.programFull ?? state.data?.event?.registryFull ?? 0;
+  }
+  return state.data?.event?.registryFull ?? 0;
+}
+
 function variableAmountGift() {
   return state.data?.gifts.find((g) => isVariableAmountGift(g)) ?? null;
 }
@@ -268,6 +302,9 @@ function registryFundedAmount() {
 }
 
 function getSponsorRules() {
+  if (isPopupsPage()) {
+    return { boothUnlockThreshold: Infinity, boothTierLabel: "Gold" };
+  }
   return state.data?.sponsorRules ?? { boothUnlockThreshold: 2500, boothTierLabel: "Gold" };
 }
 
@@ -587,6 +624,7 @@ function loadExtraCashFromStorage(festivalId) {
 }
 
 function boothGapHint() {
+  if (isPopupsPage()) return "";
   const giftOnly = sumEnabled(["registry", "core"]);
   const { boothUnlockThreshold, boothTierLabel } = getSponsorRules();
   const hasBoothGift = state.data?.gifts.some(
@@ -816,11 +854,35 @@ function renderMeta() {
   const e = state.data.event;
   const attendance = e.attendance != null ? `~${e.attendance.toLocaleString()} attendees` : null;
   const summaryEl = document.getElementById("event-summary");
+  const pageTitle = currentFestivalEntry()?.pageTitle ?? "Fund The Festival";
 
   if (summaryEl) {
     summaryEl.textContent = [e.venue, e.dates, attendance].filter(Boolean).join(" · ");
   }
-  document.title = `Fund The Festival — ${currentFestivalEntry()?.label ?? "Great Lantern Festival"}`;
+  document.title = `${pageTitle} — ${currentFestivalEntry()?.label ?? "Great Lantern Festival"}`;
+}
+
+function renderPageChrome() {
+  const revenueBtn = document.getElementById("revenue-info-btn");
+  if (revenueBtn) {
+    revenueBtn.hidden = isPopupsPage() || !state.data?.scenario?.estimatedRevenue;
+  }
+
+  const labels = currentFestivalEntry()?.progressLabels;
+  if (!labels) return;
+
+  const setText = (id, value) => {
+    const el = document.getElementById(id);
+    if (el && value) el.textContent = value;
+  };
+
+  setText("core-progress-title", labels.coreTitle);
+  setText("progress-title", labels.visionTitle);
+  setText("core-funded-metric-label", labels.coreFundedLabel);
+  setText("core-sponsored-metric-label", labels.coreSponsoredLabel);
+  setText("core-needed-metric-label", labels.coreNeededLabel);
+  setText("registry-funded-metric-label", labels.visionRegistryLabel);
+  setText("vision-needed-metric-label", labels.visionNeededLabel);
 }
 
 function renderSectionHints() {
@@ -978,6 +1040,32 @@ function cashOffsetLabel() {
 }
 
 function coreFundingState() {
+  if (isPopupsPage()) {
+    const baselineCap = state.data?.event?.baselineCap;
+    if (!baselineCap) return null;
+
+    const estimatedCore = sumEstimatedAssigned(["core"]);
+    const sponsorFill =
+      estimatedCore !== null
+        ? Math.min(estimatedCore, baselineCap)
+        : Math.min(sumEnabled(["core"]) + (state.extraCash || 0), baselineCap);
+    const remainingGap = Math.max(0, baselineCap - sponsorFill);
+    const fundedTotal = sponsorFill;
+
+    return {
+      mvpCap: baselineCap,
+      cashOffset: 0,
+      sponsorGap: baselineCap,
+      sponsorFill,
+      remainingGap,
+      fundedTotal,
+      cashPct: 0,
+      sponsorPct: (sponsorFill / baselineCap) * 100,
+      fundedPct: (fundedTotal / baselineCap) * 100,
+      cashOpsOnly: false,
+    };
+  }
+
   if (!state.data?.scenario) return null;
   const mvpCap = state.data.scenario.mvpCap;
   if (!mvpCap) return null;
@@ -1064,8 +1152,13 @@ function renderCoreProgress() {
 
   const pct = Math.min(100, Math.round(core.fundedPct));
 
-  labelEl.textContent = `Est. revenue ${fmt(core.cashOffset)}`;
-  targetEl.textContent = `Target ${fmt(core.mvpCap)}`;
+  if (isPopupsPage()) {
+    labelEl.textContent = `${progressLabel("coreFundedLabel", "Baseline funded")} ${fmt(core.sponsorFill)}`;
+    targetEl.textContent = `Target ${fmt(core.mvpCap)}`;
+  } else {
+    labelEl.textContent = `Est. revenue ${fmt(core.cashOffset)}`;
+    targetEl.textContent = `Target ${fmt(core.mvpCap)}`;
+  }
 
   barEl.setAttribute("aria-valuenow", String(pct));
   barEl.setAttribute("aria-valuemin", "0");
@@ -1081,10 +1174,39 @@ function renderCoreProgress() {
 }
 
 function renderProgress() {
-  const s = state.data.scenario;
   const core = coreFundingState();
   const registryFunded = registryFundedAmount();
-  const target = state.data.event.registryFull;
+  const optionsFunded = isPopupsPage() ? sumEnabled(["options"]) : 0;
+  const target = visionTargetAmount();
+
+  if (isPopupsPage()) {
+    const baselineCap = state.data.event.baselineCap ?? core?.mvpCap ?? 0;
+    const fundedBlue = (core?.fundedTotal ?? 0) + registryFunded + optionsFunded;
+    const toFullVision = Math.max(0, target - fundedBlue);
+
+    document.getElementById("vision-label").textContent = `${progressLabel("visionBaselineLabel", "Program baseline")} ${fmt(baselineCap)}`;
+    document.getElementById("target-label").textContent = `Target ${fmt(target)}`;
+
+    const coreGap = core?.remainingGap ?? 0;
+    const visionGap = Math.max(0, target - baselineCap - registryFunded - optionsFunded);
+    const fundedPct = target > 0 ? (fundedBlue / target) * 100 : 0;
+    const coreGapPct = target > 0 ? (coreGap / target) * 100 : 0;
+    const visionGapPct = target > 0 ? (visionGap / target) * 100 : 0;
+
+    document.getElementById("progress-bar").innerHTML = `
+    <div class="progress-seg funded" style="width:${fundedPct}%" title="Funded"></div>
+    <div class="progress-seg core-unfunded" style="width:${coreGapPct}%" title="Unfunded baseline"></div>
+    <div class="progress-seg vision-unfunded" style="width:${visionGapPct}%" title="Unfunded full vision"></div>
+  `;
+
+    document.getElementById("vision-total-value").textContent = fmt(fundedBlue);
+    document.getElementById("registry-funded-value").textContent = fmt(registryFunded + optionsFunded);
+    document.getElementById("to-vision-value").textContent = fmt(toFullVision);
+    return;
+  }
+
+  const s = state.data.scenario;
+  if (!core || !s) return;
   const fundedBlue = core.cashOffset + core.sponsorFill + registryFunded;
   const toFullVision = Math.max(0, target - fundedBlue);
 
@@ -1340,6 +1462,7 @@ function setModalTab(tab) {
 
 function renderAll() {
   enforceOptionLocks();
+  renderPageChrome();
   renderSectionHints();
   renderCoreProgress();
   renderProgress();
@@ -1484,8 +1607,8 @@ async function init() {
   }
 
   try {
-    const manifestRes = await fetch("../data/festivals.json", { cache: "no-store" });
-    if (!manifestRes.ok) throw new Error(`HTTP ${manifestRes.status} loading festivals.json`);
+    const manifestRes = await fetch(manifestPath(), { cache: "no-store" });
+    if (!manifestRes.ok) throw new Error(`HTTP ${manifestRes.status} loading ${manifestPath()}`);
     state.manifest = await manifestRes.json();
 
     const festivalId = resolveInitialFestivalId(state.manifest);
@@ -1493,14 +1616,17 @@ async function init() {
 
     syncFestivalSelect();
     const select = document.getElementById("festival-select");
-    select.onchange = () => switchFestival(select.value);
+    if (select) select.onchange = () => switchFestival(select.value);
 
     await loadFestivalData(festivalId);
   } catch (err) {
+    const pagePath = document.body?.dataset?.manifest?.includes("popups")
+      ? "/fund-the-popups/"
+      : "/fund-the-festival/";
     document.querySelector(".page").innerHTML = `
       <p class="error">Could not load festival data. Run from a local server:<br>
       <code>cd "Projects - Mid-Autumn Festival/2026/Marketing/maf-site" && python3 -m http.server 8765</code><br>
-      Then open http://localhost:8765/fund-the-festival/<br><br>${err.message}</p>`;
+      Then open http://localhost:8765${pagePath}<br><br>${err.message}</p>`;
   }
 }
 

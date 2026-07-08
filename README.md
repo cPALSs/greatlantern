@@ -18,6 +18,7 @@ Unified Great Lantern Festival hub — clean URLs, no `.html` in public paths.
 | `/resources/blog/` | **Blog** — SEO-safe planning notes (generated from shared markdown) |
 | `/custom-zones/` | **Custom Zones** — hero, prompts, examples, desktop TOC |
 | `/fund-the-festival/` | **Fund The Festival** — interactive sponsor registry |
+| `/fund-the-popups/` | **Fund The Popups** — portable lantern photo activations registry |
 | `/logo-design/` | **Logo Design** — official branding brief + human-artistry audit trail |
 
 Legacy redirects (via `clean-urls.js`): `/host.html` → `/custom-zones/`, `/build/` → `/fund-the-festival/`, `/about.html` → `/about/`, `/team.html` → `/team/`.
@@ -28,7 +29,9 @@ Legacy redirects (via `clean-urls.js`): `/host.html` → `/custom-zones/`, `/bui
 - **`data/season-events.json`** — Mid-Autumn season list (generated from Autumn landscape Sheet)
 - **`data/sku-catalog.json`** — SKU inventory master (vendor Eventeny sync + zone Partnerships quotes)
 - **`data/maf-2026.json`** — Fund The Festival data (from `build_maf_budget.py`)
+- **`data/popups-2026.json`** — Fund The Popups data (from `build_popup_registry.py`)
 - **`data/festivals.json`** — BTF manifest
+- **`data/popups-festivals.json`** — Fund The Popups manifest
 - **`assets/custom-zones-hero.webp`** — Custom Zones hero image (replace with photography when ready)
 - **`resources/blog/`** — static blog pages (generated; do not edit HTML by hand)
 

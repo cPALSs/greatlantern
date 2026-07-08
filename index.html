@@ -55,14 +55,23 @@
             ${h.ctaNote ? `<p class="muted">${escapeHtml(h.ctaNote)}</p>` : ""}
           </section>
           <div class="home-cta-columns">
+            <section class="content-section home-cta-column home-fund-cta">
+              <h2>Fund The Festival</h2>
+              <p>Vendor fees fund baseline operations. Sponsors unlock the blocks families remember — lantern procession, children's programming, Honor our Elders, and site lighting.</p>
+              <div class="cta-row">
+                <a class="btn btn-primary" href="${escapeHtml(c.buildHref)}">${escapeHtml(c.buildLabel)}</a>
+              </div>
+            </section>
+            <section class="content-section home-cta-column home-popups-cta">
+              <h2>Fund The Popups</h2>
+              <p>Portable lantern photo activations across the autumn season — backdrops, craft stations, and family portraits at partner events while we grow the team.</p>
+              <div class="cta-row">
+                <a class="btn btn-primary" href="${escapeHtml(c.popupsHref)}">${escapeHtml(c.popupsLabel)}</a>
+              </div>
+            </section>
+          </div>
+          <div class="home-cta-columns">
             <div class="home-cta-column home-cta-stack">
-              <section class="content-section home-fund-cta">
-                <h2>Fund the experience</h2>
-                <p>Vendor fees fund baseline operations. Sponsors unlock the blocks families remember — lantern procession, children's programming, Honor our Elders, and site lighting.</p>
-                <div class="cta-row">
-                  <a class="btn btn-primary" href="${escapeHtml(c.buildHref)}">${escapeHtml(c.buildLabel)}</a>
-                </div>
-              </section>
               ${site.logoDesign?.homepageCta ? (() => {
                 const lc = site.logoDesign.homepageCta;
                 return `

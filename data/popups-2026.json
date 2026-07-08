@@ -1,0 +1,423 @@
+{
+  "event": {
+    "name": "GLF Popup Program 2026",
+    "venue": "Greater Sacramento autumn season",
+    "dates": "Sep\u2013Oct 2026",
+    "baselineCap": 4500,
+    "registryFull": 21200,
+    "programFull": 22250
+  },
+  "gifts": [
+    {
+      "id": "popup_program_base",
+      "name": "Popup Program Base",
+      "amount": 2500,
+      "category": "core",
+      "sortOrder": 0,
+      "tagline": "Season coordinator, transport, storage, and liability coverage for guest activations.",
+      "description": "One part-time season lead, vehicle/trailer time for kit moves, off-season storage, and liability coverage for popup activations at autumn events across Greater Sacramento.",
+      "benefits": [
+        "Program base sponsor recognition on website + email"
+      ],
+      "lineItems": [
+        {
+          "label": "Season coordinator (planning + deployment scheduling)",
+          "amount": 1200
+        },
+        {
+          "label": "Transport + trailer rental (season)",
+          "amount": 500
+        },
+        {
+          "label": "Off-season storage",
+          "amount": 400
+        },
+        {
+          "label": "Liability coverage for guest activations",
+          "amount": 400
+        }
+      ]
+    },
+    {
+      "id": "backdrop_hardware_kit",
+      "name": "Backdrop Hardware Kit",
+      "amount": 2000,
+      "category": "core",
+      "sortOrder": 1,
+      "tagline": "Reusable step-and-repeat frame, rigging, and cases \u2014 deploy at every stop.",
+      "description": "Coalition-owned hardware: step-and-repeat structure, weighted bases, rigging kit, and transport cases. Festival staff install and strike at each popup; sponsors supply print art for named backdrops.",
+      "benefits": [
+        "Hardware kit sponsor recognition on website"
+      ],
+      "lineItems": [
+        {
+          "label": "Step-and-repeat frame + mount",
+          "amount": 900
+        },
+        {
+          "label": "Weighted bases + rigging kit",
+          "amount": 450
+        },
+        {
+          "label": "Transport cases + spare hardware",
+          "amount": 350
+        },
+        {
+          "label": "Install/strike labor (first deployment)",
+          "amount": 300
+        }
+      ]
+    },
+    {
+      "id": "plaza_lantern_canopy",
+      "name": "Plaza Lantern Canopy",
+      "emoji": "\u2728",
+      "amount": 5500,
+      "category": "registry",
+      "sortOrder": 1,
+      "impactOrder": 12,
+      "tagline": "Strung lanterns over the plaza \u2014 dusk environmental design guests walk under.",
+      "description": "A portable **plaza canopy**: festival-weighted poles, span rigging, and rows of LED or silk lanterns strung overhead so an open plaza reads Mid-Autumn at dusk. Coalition staff install and strike; pairs with host events that have a central walk-through area. Built for atmosphere, procession paths, and wide-angle photos \u2014 not a single-queue backdrop.",
+      "benefits": [
+        "Plaza Lantern Canopy presented by [Sponsor]",
+        "Named on plaza entrance signage",
+        "Facebook/Instagram Reel \u2014 walk-through at dusk",
+        "Onsite sponsor banner at funded popup"
+      ],
+      "lineItems": [
+        {
+          "label": "Festival pole kit + weighted bases",
+          "amount": 900
+        },
+        {
+          "label": "Span rigging + safety hardware",
+          "amount": 700
+        },
+        {
+          "label": "LED / silk lantern fleet (rental or season purchase)",
+          "amount": 2200
+        },
+        {
+          "label": "Install + strike labor (1 day)",
+          "amount": 1100
+        },
+        {
+          "label": "Dusk power + extension layout",
+          "amount": 400
+        },
+        {
+          "label": "Site signage + sponsor panel",
+          "amount": 200
+        }
+      ]
+    },
+    {
+      "id": "lantern_wall_installation",
+      "name": "Lantern Wall",
+      "emoji": "\ud83e\uddf1",
+      "amount": 4200,
+      "category": "registry",
+      "sortOrder": 2,
+      "impactOrder": 11,
+      "tagline": "A wall of lanterns \u2014 vertical spectacle and photo backdrop in one.",
+      "description": "A **lantern wall** install: modular frames or truss facing the plaza, dense rows of LED or silk lanterns, and ground uplights so the surface glows at dusk. Guests pose in front; creators shoot vertical. Smaller footprint than a full canopy \u2014 fits retail plazas, parish fair edges, and festival entry lanes.",
+      "benefits": [
+        "Lantern Wall presented by [Sponsor]",
+        "Named on wall header signage",
+        "Facebook/Instagram feature post + photo carousel",
+        "Onsite sponsor banner at funded popup"
+      ],
+      "lineItems": [
+        {
+          "label": "Modular frame / truss + ballast",
+          "amount": 800
+        },
+        {
+          "label": "Lantern units + mounting hardware",
+          "amount": 1600
+        },
+        {
+          "label": "Ground uplights + power distro",
+          "amount": 500
+        },
+        {
+          "label": "Install + strike labor (1 day)",
+          "amount": 900
+        },
+        {
+          "label": "Queue lane + photo facilitator (half day)",
+          "amount": 400
+        }
+      ]
+    },
+    {
+      "id": "lantern_moon_backdrop",
+      "name": "Lantern Moon Backdrop",
+      "emoji": "\ud83c\udf15",
+      "amount": 3500,
+      "category": "registry",
+      "sortOrder": 1,
+      "impactOrder": 10,
+      "tagline": "Hero photo moment \u2014 families and creators under the full moon.",
+      "description": "The flagship popup set: a lantern-and-moon photo backdrop families queue for \u2014 the Mid-Autumn version of a Santa photo line. Includes printed backdrop art, dusk-friendly lighting, queue stanchions, and a facilitator to keep flow moving. Built for **Instagram Reels** and fridge photos alike.",
+      "benefits": [
+        "Lantern Moon Backdrop presented by [Sponsor]",
+        "Named on backdrop signage + queue banner",
+        "Facebook/Instagram unlock post + Reel featuring the set",
+        "Onsite sponsor banner at funded popup"
+      ],
+      "lineItems": [
+        {
+          "label": "Custom backdrop print + install",
+          "amount": 1200
+        },
+        {
+          "label": "Dusk lighting + power",
+          "amount": 800
+        },
+        {
+          "label": "Queue stanchions + signage",
+          "amount": 400
+        },
+        {
+          "label": "Facilitator (photo flow, 1 day)",
+          "amount": 450
+        },
+        {
+          "label": "Props + touch-up kit",
+          "amount": 350
+        },
+        {
+          "label": "Social capture (Reel + stills)",
+          "amount": 300
+        }
+      ]
+    },
+    {
+      "id": "lantern_craft_station",
+      "name": "Lantern Craft Station",
+      "emoji": "\ud83c\udfee",
+      "amount": 1200,
+      "category": "registry",
+      "sortOrder": 2,
+      "impactOrder": 9,
+      "tagline": "Make a lantern, then take it to the photo line \u2014 hands-on Mid-Autumn.",
+      "description": "Supplies and facilitator runbook for a make-a-lantern table before the backdrop. Kids leave with something to carry \u2014 natural pairing with **Lantern Moon Backdrop** or **Family Lantern Moment**. Same grammar as Children's Village craft slots, scaled for a popup footprint.",
+      "benefits": [
+        "Lantern Craft Station presented by [Sponsor]",
+        "Named on activity signage",
+        "Facebook/Instagram feature post",
+        "Onsite sponsor banner at funded popup"
+      ],
+      "lineItems": [
+        {
+          "label": "Craft supplies (LED lantern kits, markers, ribbons)",
+          "amount": 450
+        },
+        {
+          "label": "Table + shade setup",
+          "amount": 200
+        },
+        {
+          "label": "Facilitator (1 day, bilingual preferred)",
+          "amount": 400
+        },
+        {
+          "label": "Runbook + volunteer hospitality",
+          "amount": 150
+        }
+      ]
+    },
+    {
+      "id": "creator_photo_lane",
+      "name": "Creator Photo Lane",
+      "emoji": "\ud83d\udcf8",
+      "amount": 800,
+      "category": "registry",
+      "sortOrder": 3,
+      "impactOrder": 8,
+      "tagline": "Ring light, props, and a hashtag board \u2014 built for creators and UGC.",
+      "description": "A compact creator lane beside the main backdrop: ring light, subtle GLF branding, props table, and a printed hashtag board. Invited creators and walk-up guests get a dedicated spot for vertical video without blocking the family queue.",
+      "benefits": [
+        "Creator Photo Lane presented by [Sponsor]",
+        "Tagged in creator collaboration posts",
+        "Facebook/Instagram Story feature"
+      ],
+      "lineItems": [
+        {
+          "label": "Ring light + phone mount kit",
+          "amount": 250
+        },
+        {
+          "label": "Props table + hashtag board",
+          "amount": 200
+        },
+        {
+          "label": "Creator liaison (half day)",
+          "amount": 250
+        },
+        {
+          "label": "Branded overlay cards for Reels",
+          "amount": 100
+        }
+      ]
+    },
+    {
+      "id": "family_lantern_moment",
+      "name": "Family Lantern Moment",
+      "emoji": "\ud83d\udc68\u200d\ud83d\udc69\u200d\ud83d\udc67",
+      "amount": 1500,
+      "category": "registry",
+      "sortOrder": 4,
+      "impactOrder": 7,
+      "tagline": "Queued family portraits \u2014 stroller-friendly, grandma in frame.",
+      "description": "A dedicated family portrait flow: numbered tickets, stroller corral, bench seating, and a photographer slot (contractor or trained volunteer). Less spectacle than the moon backdrop \u2014 more **fridge photo** and **grandparent gift** energy.",
+      "benefits": [
+        "Family Lantern Moment presented by [Sponsor]",
+        "Named on queue signage",
+        "Facebook/Instagram family-feature post",
+        "Onsite sponsor banner at funded popup"
+      ],
+      "lineItems": [
+        {
+          "label": "Portrait backdrop + soft light",
+          "amount": 500
+        },
+        {
+          "label": "Queue tickets + stroller corral",
+          "amount": 250
+        },
+        {
+          "label": "Photographer (half day)",
+          "amount": 500
+        },
+        {
+          "label": "Print/share station (QR download)",
+          "amount": 250
+        }
+      ]
+    },
+    {
+      "id": "deployment_stop",
+      "name": "Deployment Stop",
+      "amount": 600,
+      "category": "options",
+      "sortOrder": 1,
+      "tagline": "One popup day \u2014 load-in, strike, and two volunteers.",
+      "description": "Operational add-on for a single deployment: transport to site, load-in, strike, and two volunteer shifts. Does not name a host event \u2014 sponsorship team assigns the stop when a partner confirms.",
+      "benefits": [
+        "Deployment sponsor thank-you on social media"
+      ],
+      "lineItems": [
+        {
+          "label": "Load-in + strike labor",
+          "amount": 300
+        },
+        {
+          "label": "Volunteer shifts (2\u00d7 half day)",
+          "amount": 200
+        },
+        {
+          "label": "Site consumables (tape, weights, signage)",
+          "amount": 100
+        }
+      ]
+    },
+    {
+      "id": "extra_craft_session",
+      "name": "Extra Craft Session",
+      "amount": 450,
+      "category": "options",
+      "sortOrder": 2,
+      "requiresCoreGift": "lantern_craft_station",
+      "tagline": "Second facilitator block when Lantern Craft Station is funded.",
+      "description": "Adds a second 3-hour craft session on the same day \u2014 useful for high-traffic stops where the first table stays full. Requires **Lantern Craft Station** in your build.",
+      "benefits": [
+        "Counts toward tier recognition"
+      ],
+      "lineItems": [
+        {
+          "label": "Second facilitator + supplies top-up",
+          "amount": 450
+        }
+      ]
+    }
+  ],
+  "sponsorTiers": [
+    {
+      "label": "Community supporter",
+      "min": 0
+    },
+    {
+      "label": "Supporter",
+      "min": 250,
+      "tagline": "Name on the website and a thank-you mention",
+      "description": "Recognition tier for your total sponsorship. Tier benefits stack with naming credit on any popup stories you fund.",
+      "benefits": [
+        "Name on website sponsor page",
+        "Thank-you in email blast to mailing lists"
+      ]
+    },
+    {
+      "label": "Bronze",
+      "min": 500,
+      "tagline": "Entry recognition with logo and light social",
+      "description": "Recognition tier for your total sponsorship. Tier benefits stack with naming credit on any popup stories you fund.",
+      "benefits": [
+        "Name on website sponsor page",
+        "Logo on website",
+        "Name in email blast to mailing lists",
+        "Instagram / Facebook tag"
+      ]
+    },
+    {
+      "label": "Silver",
+      "min": 1000,
+      "tagline": "Dedicated social feature",
+      "description": "Recognition tier for your total sponsorship. Tier benefits stack with naming credit on any popup stories you fund.",
+      "benefits": [
+        "Name on website sponsor page",
+        "Logo on website",
+        "Logo row in email blast to mailing lists",
+        "Dedicated Instagram / Facebook post",
+        "Onsite sponsor banner at funded popup"
+      ]
+    },
+    {
+      "label": "Gold",
+      "min": 2500,
+      "tagline": "Collaboration Reel + onsite banner",
+      "description": "Recognition tier for your total sponsorship. Tier benefits stack with naming credit on any popup stories you fund.",
+      "benefits": [
+        "Name on website sponsor page",
+        "Logo on website",
+        "Dedicated block in email blast to mailing lists",
+        "Instagram / Facebook collaboration Reel",
+        "Onsite sponsor banner at every funded popup",
+        "Named on popup signage"
+      ]
+    },
+    {
+      "label": "Diamond",
+      "min": 5000,
+      "tagline": "Named backdrop + season-long social feature",
+      "description": "Recognition tier for your total sponsorship. Tier benefits stack with naming credit on any popup stories you fund.",
+      "benefits": [
+        "Name on website sponsor page",
+        "Featured logo on website",
+        "Headline placement in email blasts",
+        "Hero Instagram / Facebook coverage (multiple posts)",
+        "Lantern Moon Backdrop naming credit when funded",
+        "Onsite sponsor banner at every funded popup",
+        "Season recap feature post"
+      ]
+    }
+  ],
+  "globalPerks": [
+    {
+      "id": "social_recognition",
+      "label": "Social recognition",
+      "template": "{tier}-tier social recognition on popup posts"
+    }
+  ]
+}

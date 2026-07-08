@@ -6,7 +6,7 @@
     "mvpCap": 9944,
     "vendorRev100": 8370,
     "vendorRev100Target": 10270,
-    "registryFull": 33329,
+    "registryFull": 37529,
     "vendorSlots": 45,
     "vendorSlotsTarget": 58,
     "vendorScenario": "layout-02a-carryover",
@@ -220,6 +220,45 @@
         {
           "label": "Gift cards, procurement, awards staging",
           "amount": 150
+        }
+      ]
+    },
+    {
+      "id": "lantern_wall_installation",
+      "name": "Lantern Wall",
+      "emoji": "\ud83e\uddf1",
+      "amount": 4200,
+      "category": "registry",
+      "sortOrder": 1,
+      "impactOrder": 12,
+      "tagline": "A wall of lanterns at the park \u2014 entry spectacle and photo moment.",
+      "description": "A **lantern wall** at Derr-Okamoto: modular frames facing the main walk, dense rows of LED or silk lanterns, and ground uplights so the surface glows at dusk. Guests pose on arrival; creators shoot vertical. Natural bookend to **Community Lantern Contest** display row and the **Lantern Procession** route \u2014 vertical light before the walk begins.",
+      "benefits": [
+        "Lantern Wall presented by [Sponsor]",
+        "Named on wall header signage + festival map",
+        "Facebook/Instagram feature post + photo carousel",
+        "MC thank-you (Saturday)"
+      ],
+      "lineItems": [
+        {
+          "label": "Modular frame / truss + ballast",
+          "amount": 800
+        },
+        {
+          "label": "Lantern units + mounting hardware",
+          "amount": 1600
+        },
+        {
+          "label": "Ground uplights + power distro",
+          "amount": 500
+        },
+        {
+          "label": "Install + strike labor (Sat festival)",
+          "amount": 900
+        },
+        {
+          "label": "Queue lane + photo facilitator (Sat peak)",
+          "amount": 400
         }
       ]
     },

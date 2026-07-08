@@ -1,0 +1,29 @@
+{
+  "festivals": [
+    {
+      "id": "glf-popups-2026",
+      "label": "GLF Popup Program",
+      "file": "../data/popups-2026.json",
+      "pageProfile": "popups",
+      "pageTitle": "Fund The Popups",
+      "registryImpactSort": "desc",
+      "sections": {
+        "core": "Baseline program costs every popup season needs — coordinator, transport, storage, and reusable backdrop hardware.",
+        "registry": "Sponsor-funded popup stories — lantern backdrops, craft station, creator lane, and family portraits. Pick the experience you want to own.",
+        "tiers": "Recognition levels based on your total sponsorship. Benefits are social media and onsite banner — no stage speeches.",
+        "options": "Deployment extras that stack on funded registry stories — one popup day or an extra craft session."
+      },
+      "progressLabels": {
+        "coreTitle": "Program baseline funded",
+        "coreFundedLabel": "Baseline funded",
+        "coreSponsoredLabel": "Core sponsored",
+        "coreNeededLabel": "To baseline",
+        "visionTitle": "Full popup vision",
+        "visionBaselineLabel": "Program baseline",
+        "visionRegistryLabel": "Registry funded",
+        "visionNeededLabel": "To full target"
+      }
+    }
+  ],
+  "default": "glf-popups-2026"
+}
