@@ -6,7 +6,7 @@
     "mvpCap": 9944,
     "vendorRev100": 8370,
     "vendorRev100Target": 10270,
-    "registryFull": 37529,
+    "registryFull": 37386,
     "vendorSlots": 45,
     "vendorSlotsTarget": 58,
     "vendorScenario": "layout-02a-carryover",
@@ -375,7 +375,7 @@
       "id": "inflatable_carnival_games",
       "name": "Inflatable Carnival Games",
       "emoji": "\ud83c\udfaf",
-      "amount": 1900,
+      "amount": 1757,
       "category": "registry",
       "sortOrder": 5,
       "impactOrder": 6,
@@ -404,8 +404,8 @@
           "amount": 150
         },
         {
-          "label": "Storage amortization \u2014 U-Haul unit share (\u00f7 3 flagships; Finance confirms)",
-          "amount": 300
+          "label": "Storage amortization \u2014 games share (2 pallets \u00f7 3 flagships; Elk Grove U-Haul)",
+          "amount": 157
         }
       ]
     },
