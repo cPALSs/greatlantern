@@ -1309,13 +1309,31 @@
 
   function renderTeamPage(site) {
     const intro = site.directorIntro;
+    const meetings = site.productionMeetings;
+    const contactEmail = site.apply?.email ?? "contact@greatlantern.com";
     const toc = [
+      ...(meetings ? [{ id: "production-meetings", label: meetings.title ?? "Production meetings" }] : []),
       { id: "intro", label: "Open roles & committees" },
       ...(site.lanes ?? []).map((lane) => ({ id: lane.id, label: lane.title })),
       { id: "phase2", label: site.phase2?.title ?? "Phase 2" },
       { id: "apply", label: "How to apply" },
       { id: "faq", label: "FAQ" },
     ];
+
+    const meetingsHtml = meetings
+      ? `
+      <section class="host-doc-section content-section" id="production-meetings" data-doc-section>
+        <h2>${escapeHtml(meetings.title ?? "Production meetings")}</h2>
+        ${meetings.intro ? `<p>${escapeHtml(meetings.intro)}</p>` : ""}
+        <ul>
+          <li>${escapeHtml(meetings.zoom).replace(
+            escapeHtml(contactEmail),
+            `<a href="mailto:${escapeHtml(contactEmail)}">${escapeHtml(contactEmail)}</a>`,
+          )}</li>
+          <li><a href="${escapeHtml(meetings.discordHref)}"${externalLinkAttrs(meetings.discordHref)}>${escapeHtml(meetings.discordLabel ?? "Join the Discord")}</a></li>
+        </ul>
+      </section>`
+      : "";
 
     const introHtml = `
       <section class="host-doc-section content-section" id="intro" data-doc-section>
@@ -1360,6 +1378,7 @@
       .join("");
 
     const main = `
+          ${meetingsHtml}
           ${introHtml}
           ${lanesHtml}
           ${phase2Html}
@@ -1415,7 +1434,10 @@
     initTheme();
     initNavMenu();
     loadSiteData()
-      .then((site) => injectNavSocial(site?.footer?.socialLinks))
+      .then((site) => {
+        injectNavSocial(site?.footer?.socialLinks);
+        mountFooter(site);
+      })
       .catch(() => {});
   }
 
