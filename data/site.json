@@ -2,28 +2,34 @@
   "meta": {
     "siteName": "Great Lantern Festival",
     "titleSuffix": "Great Lantern Festival",
-    "idealistUrl": "https://ideali.st/h9P2PJ"
+    "homeTitle": "Great Lantern Festival — Not hosting in 2026",
+    "homeDescription": "Great Lantern Festival will not be hosted in 2026. Share interest via contact@greatlantern.com for future team roles and sister Mid-Autumn events such as APIDA Night Lights.",
+    "teamDescription": "Share interest in joining the Great Lantern Festival team for other events we're planning, or helping with sister Mid-Autumn events such as Sac State APIDA Night Lights.",
+    "aboutDescription": "About Great Lantern Festival — Tết Trung Thu, festival origins, and the autumn 2026 pause at Derr-Okamoto Park."
   },
   "event": {
     "name": "Great Lantern Festival",
-    "dates": "Sat Sep 26, 2026 (4–9 PM)",
+    "dates": "Not hosting in 2026",
     "venue": "Derr-Okamoto Park, Elk Grove, California",
     "city": "Elk Grove, CA",
-    "tagline": "free admission · lantern procession at dusk",
+    "tagline": "interest signups open · supporting sister Mid-Autumn events",
     "hosts": "VACOS · cPALSs · NVCC · CCSD",
-    "attendanceNote": "Planning target ~2,000 attendees"
+    "attendanceNote": "",
+    "eventStatus": "https://schema.org/EventCancelled",
+    "plannedStartDate": "2026-09-26T16:00:00-07:00",
+    "plannedEndDate": "2026-09-26T21:00:00-07:00"
   },
   "hero": {
-    "headline": "Join the festival team",
-    "intro": "We're bringing Great Lantern Festival back to Elk Grove. Rooted in Tết Trung Thu — the Vietnamese Mid-Autumn celebration — it is a cherished night when families gather under the full moon: children carry lanterns, share mooncakes, and drink tea. This year's celebration is hosted by the Vietnamese American community through VACOS, cPALSs, and NVCC.",
-    "subhead": "We're recruiting directors and committee members for the Sep 25–28 event window.",
-    "body": "Festival Co-Chairs already hold permits, site, and vendor baseline — now we're building the team. Browse open roles on the Team page, then apply on Idealist when you're ready."
+    "headline": "Not hosting in 2026",
+    "intro": "Rooted in Tết Trung Thu — the Vietnamese Mid-Autumn celebration — Great Lantern Festival is a cherished night when families gather under the full moon: children carry lanterns, share mooncakes, and drink tea. We love this tradition and will return when we can host it well.",
+    "subhead": "We will not be hosting Great Lantern Festival at Derr-Okamoto Park this year.",
+    "body": "We're still gathering interest for our team — for other events we're planning, and to help with sister Mid-Autumn activations hosted by partner organizations, such as Sac State APIDA Night Lights. Email contact@greatlantern.com if you'd like to stay involved."
   },
   "cta": {
-    "primaryLabel": "Join the team",
-    "primaryHref": "/team/",
-    "secondaryLabel": "Apply on Idealist",
-    "secondaryHref": "https://ideali.st/h9P2PJ",
+    "primaryLabel": "Email interest",
+    "primaryHref": "mailto:contact@greatlantern.com?subject=GLF%20team%20%26%20season%20interest",
+    "secondaryLabel": "Season calendar",
+    "secondaryHref": "/resources/season/",
     "buildLabel": "Fund The Festival",
     "buildHref": "/fund-the-festival/",
     "popupsLabel": "Fund The Popups",
@@ -31,35 +37,38 @@
   },
   "apply": {
     "email": "contact@greatlantern.com",
-    "emailSubject": "GLF 2026 Volunteer interest",
-    "intro": "Review the roles above — open and filled — then apply when you know which director or committee member role fits you.",
+    "emailSubject": "GLF team & season interest",
+    "intro": "Tell us how you'd like to help — other events we're planning, or sister Mid-Autumn activations such as APIDA Night Lights. Browse the lanes below if you want a sense of the skills we look for.",
     "steps": [
-      "Pick one role (or two if they're closely related — we'll talk). Director already filled? You can still apply to join that committee as a Member.",
-      "Apply on Idealist — name the role(s), whether you want Director or Member, your preferred contact method (email, text, or phone), and any events you're already committed to this season.",
-      "We'll follow up within a few business days — add you to the staff directory, introduce vendor partners or teammates, and set a first check-in."
+      "Email contact@greatlantern.com with your name, preferred contact method (email, text, or phone), and a line on how you'd like to help.",
+      "Mention skills or festival lanes that interest you, and any events you're already committed to this season (including partner hosts).",
+      "We'll follow up within a few business days and connect you where there's a fit."
     ],
-    "idealistFallback": "Can't use Idealist? Email contact@greatlantern.com with the role name and one sentence on why you're interested."
+    "emailNote": "No Idealist application this season — email is the way in."
   },
   "directorIntro": {
-    "title": "Directors and committee members",
+    "title": "Lanes we recruit for",
     "paragraphs": [
+      "These are the director and committee lanes we use when we produce Great Lantern Festival — and the skill areas we look for when supporting partner Mid-Autumn events.",
       "A director is the go-to person for one festival area. You plan the work — volunteers, members, vendors, or paid contractors may execute it. You don't have to do every shift or task yourself.",
-      "Already covered (director): Festival Co-Chairs (Thuy Pham, Bao Thien Ngo) · Marketing (Ellie King) · Honor our Elders (Raul Armenta). Members still welcome on filled committees.",
-      "Twenty director roles are open. Committee members are welcome on every team — including where the director seat is already filled."
+      "Because we are not hosting GLF in 2026, these roles are not open seats for a Derr-Okamoto weekend — they are a map of how we work, and where your interest can still land this season."
     ],
     "notes": [
-      "Most lanes are planning now through September; peak workload is the two weeks before and event weekend.",
-      "Co-chairs encourage every director to find a counterpart at another festival — same lane, different producer — to bounce ideas and share learnings.",
-      "Stage owns tent, sound, and physical stack. Program & Entertainment owns the master schedule and MC. Show directors own content lanes and hand run-of-show up to Program.",
-      "Power & Lighting installs generators and light towers; Light Up the Park designs decorative lighting — coordinate on loads before either rigs."
+      "Interest this autumn may land on sister events (for example Sac State APIDA Night Lights) or other activations our team supports.",
+      "Co-chairs encourage counterparts across festivals — same lane, different producer — to bounce ideas and share learnings.",
+      "When we host again, Stage owns tent, sound, and physical stack; Program & Entertainment owns the master schedule and MC; show directors own content lanes."
     ]
   },
   "productionMeetings": {
-    "title": "Production meetings",
-    "intro": "Stay connected with festival production — join the weekly Zoom call or the Discord channel.",
-    "zoom": "Weekly Zoom calls are Mondays at 6:30 PM. To join as a guest, email contact@greatlantern.com.",
+    "title": "Stay connected",
+    "intro": "We're not running a full Derr-Okamoto production calendar this year — if you'd like to join a conversation about season support or future planning, reach out.",
+    "zoom": "To join a guest call, email contact@greatlantern.com.",
     "discordLabel": "Join the Discord",
     "discordHref": "https://discord.gg/h4hXXvWS"
+  },
+  "teamPage": {
+    "headline": "Stay involved",
+    "lead": "We're not hosting Great Lantern Festival in 2026 — but we're still taking interest for our team and for help with sister Mid-Autumn events."
   },
   "coChairs": [
     {
@@ -225,32 +234,28 @@
   },
   "faq": [
     {
-      "q": "Why a product lab?",
-      "a": "Festival organizing hits the same failure modes as messy ops — handoffs, one-off spreadsheets, knowledge in people's heads. Co-chairs apply fintech and automation thinking with an open-source ethos: automate what repeats, improve quality, and publish forkable playbooks on Festival Season Network."
+      "q": "Are you hosting Great Lantern Festival in 2026?",
+      "a": "No — we will not host GLF at Derr-Okamoto Park in 2026. We're still taking interest emails for future team roles and for help with sister Mid-Autumn events (such as Sac State APIDA Night Lights)."
+    },
+    {
+      "q": "How do I share interest?",
+      "a": "Email contact@greatlantern.com — name, preferred contact method, and a line on how you'd like to help. No Idealist posting this season."
+    },
+    {
+      "q": "Why list director lanes if you're not hosting?",
+      "a": "They're a map of how we organize when we produce GLF — and the skill areas we look for when supporting partner events. Share which lanes interest you when you email."
     },
     {
       "q": "Should I find a counterpart at another festival?",
-      "a": "Yes — we encourage it. Every director should network with someone running the same lane at another festival or event. Co-chairs can help make an intro if you don't have one yet."
+      "a": "Yes — we encourage it. Every organizer benefits from someone running the same lane at another festival or event. Co-chairs can help make an intro if you don't have one yet."
     },
     {
       "q": "Do I need festival experience?",
-      "a": "Helpful, not required. LNY runbooks and co-chairs back you up."
+      "a": "Helpful, not required. Co-chairs and peer organizers back you up."
     },
     {
       "q": "Is this paid?",
-      "a": "These are volunteer leadership roles — you plan the lane; others may execute. Sponsor-funded experiences may include modest stipends for performers or vendors — not director compensation. Flag contractor needs early if volunteers won't cover the work."
-    },
-    {
-      "q": "Can two people co-direct?",
-      "a": "One name on the directory as Director; co-leads listed as Members is fine."
-    },
-    {
-      "q": "What if the director slot is already filled?",
-      "a": "Apply anyway — name the lane and ask to join as a Member. Every lane can use more members even when the director seat is taken."
-    },
-    {
-      "q": "What if my experience isn't funded yet?",
-      "a": "Plan anyway — lane leads help pitch sponsors and hold the vision until the block unlocks."
+      "a": "These are volunteer leadership roles when we host — you plan the lane; others may execute. Sponsor-funded experiences may include modest stipends for performers or vendors — not director compensation."
     },
     {
       "q": "What's the difference between site & ops and program?",
@@ -274,8 +279,8 @@
         "title": "Elk Grove, 2026",
         "tocLabel": "Elk Grove, 2026",
         "paragraphs": [
-          "Great Lantern Festival 2026 is a free, family-centered afternoon and evening at Derr-Okamoto Park in Elk Grove: Saturday, Sep 26, 4–9 PM, with food vendors, stage programming, and lantern procession at dusk.",
-          "This year's celebration is co-hosted by Vietnamese American Community of Sacramento (VACOS), Community Partners Advocate of Little Saigon Sacramento (cPALSs), Norcal Vietnamese Chamber of Commerce (NVCC), and Cosumnes Community Services District (CCSD), with support from sponsors, donors, and volunteers."
+          "We will not host Great Lantern Festival at Derr-Okamoto Park in 2026. The festival line continues — we're focusing this autumn on supporting sister Mid-Autumn celebrations and gathering interest for our team.",
+          "When we host again, GLF remains a free, family-centered afternoon and evening with food vendors, stage programming, and lantern procession at dusk, in partnership with Vietnamese American Community of Sacramento (VACOS), Community Partners Advocate of Little Saigon Sacramento (cPALSs), Norcal Vietnamese Chamber of Commerce (NVCC), and Cosumnes Community Services District (CCSD)."
         ]
       },
       {
@@ -315,7 +320,7 @@
           "image": "posters/2021.jpg"
         }
       ],
-      "note": "2026 Derr-Okamoto Park flier coming soon. Past fliers originally published on cpalss.com/projects/mid-autumn-festival."
+      "note": "No 2026 Derr-Okamoto Park flier — we are not hosting this year. Past fliers originally published on cpalss.com/projects/mid-autumn-festival."
     }
   },
   "hostActivations": {
@@ -538,12 +543,7 @@
         "a": "Yes — activation zones are for any tribe with a community and an identity to express. Cross-community villages (e.g. Chinese, Filipino, Russian) are welcome."
       }
     ],
-    "homepageCta": {
-      "title": "Already host a Mid-Autumn event?",
-      "body": "New this year are Custom Zones. Bring your community and host an activation within a corner of the Great Lantern Festival 2026 map.",
-      "buttonLabel": "Custom Zones",
-      "href": "/custom-zones/"
-    }
+    "homepageCta": null
   },
   "resources": {
     "headline": "Resources",
@@ -565,7 +565,7 @@
     "headline": "Mid-Autumn Festival Season",
     "title": "2026 season",
     "lead": "Celebrate Mid-Autumn Festival Season in Greater Sacramento from early September through early October!",
-    "intro": "Greater Sacramento's Mid-Autumn and Moon Festival calendar — community celebrations and our Elk Grove capstone weekend.",
+    "intro": "Greater Sacramento's Mid-Autumn and Moon Festival calendar — community celebrations across the region. Great Lantern Festival is not hosting its own Elk Grove weekend in 2026.",
     "listNote": "Dates marked estimated or tentative may change — check organizer listings before you go.",
     "contactNote": "Know a Mid-Autumn event we missed? Email contact@greatlantern.com."
   },
@@ -598,7 +598,7 @@
         "tocLabel": "Background",
         "paragraphs": [
           "Tết Trung Thu is the Vietnamese Mid-Autumn Festival — families gather under the full moon; children carry lanterns, share mooncakes, and drink tea. It is a night of reunion, gratitude, and hope. For Vietnamese communities in America, it reconnects generations and keeps cultural traditions alive in a new homeland. The lantern procession at dusk is the signature moment families remember.",
-          "The Great Lantern Festival of 2026 is the current iteration of this line: a free, family-centered afternoon and evening at Derr-Okamoto Park in Elk Grove (Saturday, Sep 26, 4–9 PM), with food vendors, stage programming, and lantern procession at dusk. It is co-hosted by Vietnamese American Community of Sacramento (VACOS), Community Partners Advocate of Little Saigon Sacramento (cPALSs), Norcal Vietnamese Chamber of Commerce (NVCC), and Cosumnes Community Services District (CCSD).",
+          "Great Lantern Festival continues this festival line. We will not host a Derr-Okamoto Park weekend in 2026; when we produce again, it remains a free, family-centered afternoon and evening with food vendors, stage programming, and lantern procession at dusk, in partnership with Vietnamese American Community of Sacramento (VACOS), Community Partners Advocate of Little Saigon Sacramento (cPALSs), Norcal Vietnamese Chamber of Commerce (NVCC), and Cosumnes Community Services District (CCSD).",
           "This festival line began in 2021 as Mid-Autumn Moon Celebration — a NVCC and cPALSs project at Florin Towne Centre on Florin Road in Sacramento's Little Saigon corridor. The first year was presented by those two organizations alone. In 2022 the same hosts returned for a second annual festival at Florin. In 2023 the celebration moved to Laguna Town Hall in Elk Grove, and VACOS joined as co-host — the tri-host coalition that has carried the festival since. Great Lantern Festival continues that spiritual line at Derr-Okamoto Park.",
           "Designers should treat Little Saigon Sacramento as the permanent cultural anchor of the brand, even when the printed location block reads Elk Grove. Past season fliers (2021–2024) are on the About page and show how host neighborhoods and partners evolved while the community identity stayed continuous."
         ]

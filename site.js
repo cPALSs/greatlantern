@@ -1214,21 +1214,23 @@
   function renderApplyBlock(site) {
     const apply = site.apply;
     const idealist = site.meta?.idealistUrl;
-    const idealistBtn = idealist
-      ? `<a class="btn btn-primary" href="${escapeHtml(idealist)}" target="_blank" rel="noopener">Apply on Idealist</a>`
-      : `<span class="btn btn-primary" style="opacity:0.65;cursor:default" title="Idealist link coming soon">Apply on Idealist</span>`;
-
     const mailto = `mailto:${apply.email}?subject=${encodeURIComponent(apply.emailSubject)}`;
+    const emailBtnLabel = apply.emailButtonLabel ?? `Email ${apply.email}`;
+    const emailBtn = `<a class="btn ${idealist ? "btn-secondary" : "btn-primary"}" href="${mailto}">${escapeHtml(emailBtnLabel)}</a>`;
+    const idealistBtn = idealist
+      ? `<a class="btn btn-primary" href="${escapeHtml(idealist)}" target="_blank" rel="noopener">${escapeHtml(apply.idealistLabel ?? "Apply on Idealist")}</a>`
+      : "";
+    const note = apply.emailNote ?? apply.idealistFallback;
 
     return `
     <div class="cta-row">
       ${idealistBtn}
-      <a class="btn btn-secondary" href="${mailto}">Email ${escapeHtml(apply.email)}</a>
+      ${emailBtn}
     </div>
     <ol class="steps-list">
       ${apply.steps.map((s) => `<li>${escapeHtml(s)}</li>`).join("")}
     </ol>
-    <p class="muted">${escapeHtml(apply.idealistFallback)}</p>
+    ${note ? `<p class="muted">${escapeHtml(note)}</p>` : ""}
   `;
   }
 
@@ -1246,9 +1248,11 @@
 
   function setPageTitle(site, pageTitle) {
     const suffix = site.meta?.titleSuffix ?? "Great Lantern Festival";
-    document.title = pageTitle
-      ? `${toTitleCase(pageTitle)} — ${suffix}`
-      : site.meta?.siteName ?? suffix;
+    if (pageTitle) {
+      document.title = `${toTitleCase(pageTitle)} — ${suffix}`;
+      return;
+    }
+    document.title = site.meta?.homeTitle ?? site.meta?.siteName ?? suffix;
   }
 
   function eventMetaLine1(event) {
@@ -1310,13 +1314,14 @@
   function renderTeamPage(site) {
     const intro = site.directorIntro;
     const meetings = site.productionMeetings;
+    const teamPage = site.teamPage ?? {};
     const contactEmail = site.apply?.email ?? "contact@greatlantern.com";
     const toc = [
       ...(meetings ? [{ id: "production-meetings", label: meetings.title ?? "Production meetings" }] : []),
-      { id: "intro", label: "Open roles & committees" },
+      { id: "intro", label: "Lanes & committees" },
       ...(site.lanes ?? []).map((lane) => ({ id: lane.id, label: lane.title })),
       { id: "phase2", label: site.phase2?.title ?? "Phase 2" },
-      { id: "apply", label: "How to apply" },
+      { id: "apply", label: "Share interest" },
       { id: "faq", label: "FAQ" },
     ];
 
@@ -1337,7 +1342,7 @@
 
     const introHtml = `
       <section class="host-doc-section content-section" id="intro" data-doc-section>
-        <h2>Open roles &amp; committees</h2>
+        <h2>Lanes &amp; committees</h2>
         <h3>${escapeHtml(intro.title)}</h3>
         ${intro.paragraphs.map((p) => `<p>${escapeHtml(p)}</p>`).join("")}
         <ul>${intro.notes.map((n) => `<li>${escapeHtml(n)}</li>`).join("")}</ul>
@@ -1383,7 +1388,7 @@
           ${lanesHtml}
           ${phase2Html}
           <section class="host-doc-section content-section" id="apply" data-doc-section>
-            <h2>How to apply</h2>
+            <h2>Share interest</h2>
             ${site.apply.intro ? `<p>${escapeHtml(site.apply.intro)}</p>` : ""}
             ${renderApplyBlock(site)}
             <div class="co-chairs">${renderCoChairs(site)}</div>
@@ -1395,7 +1400,8 @@
 
     return `
       <section class="hero">
-        <h1>Team</h1>
+        <h1>${escapeHtml(teamPage.headline ?? "Team")}</h1>
+        ${teamPage.lead ? `<p class="hero-lead">${escapeHtml(teamPage.lead)}</p>` : ""}
       </section>
       ${wrapDocLayout(toc, main)}`;
   }
