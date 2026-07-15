@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="light">
+<html lang="en" data-theme="auto">
 <head>
   <meta charset="UTF-8" />
   <!-- Google tag (gtag.js) -->
@@ -13,14 +13,17 @@
   <script>
     (function () {
       try {
-        var t = localStorage.getItem("maf-theme") || localStorage.getItem("maf2026-theme") || localStorage.getItem("build-theme");
-        if (t === "light" || t === "dark" || t === "auto") document.documentElement.setAttribute("data-theme", t);
+        var t = sessionStorage.getItem("maf-theme");
+        if (t === "light" || t === "dark") document.documentElement.setAttribute("data-theme", t);
       } catch (_) {}
     })();
   </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="site.css" />
 </head>
-<body>
+<body class="page-home">
   <div id="site-nav"></div>
   <main class="page-wrap" id="main">
     <p class="muted">Loading…</p>
@@ -39,21 +42,41 @@
         const h = site.hero;
         const c = site.cta;
         document.getElementById("main").innerHTML = `
-          <section class="hero">
-            <h1>${escapeHtml(e.name)}</h1>
-            ${renderEventSummary(site)}
-          </section>
-          <p class="home-intro">${escapeHtml(h.intro)}</p>
-          <section class="content-section">
-            <h2>${escapeHtml(h.headline)}</h2>
-            <p>${escapeHtml(h.subhead)}</p>
-            <p class="muted">${escapeHtml(h.body)}</p>
-            <div class="cta-row">
-              <a class="btn btn-primary" href="${escapeHtml(c.primaryHref)}">${escapeHtml(c.primaryLabel)}</a>
-              <a class="btn btn-secondary" href="${escapeHtml(c.secondaryHref)}" target="_blank" rel="noopener">${escapeHtml(c.secondaryLabel)}</a>
+          <div class="home-lead">
+            <div class="home-lantern" aria-hidden="true">
+              <img
+                class="home-lantern__img home-lantern__img--dark"
+                src="assets/lantern-dark.png"
+                alt=""
+                width="512"
+                height="1024"
+                decoding="async"
+              />
+              <img
+                class="home-lantern__img home-lantern__img--light"
+                src="assets/lantern-light.png"
+                alt=""
+                width="512"
+                height="1024"
+                decoding="async"
+              />
             </div>
-            ${h.ctaNote ? `<p class="muted">${escapeHtml(h.ctaNote)}</p>` : ""}
-          </section>
+            <section class="hero">
+              <h1 class="home-hero-title">${escapeHtml(e.name)}</h1>
+              ${renderEventSummary(site)}
+            </section>
+            <p class="home-intro">${escapeHtml(h.intro)}</p>
+            <section class="content-section home-recruit">
+              <h2>${escapeHtml(h.headline)}</h2>
+              <p>${escapeHtml(h.subhead)}</p>
+              <p class="muted">${escapeHtml(h.body)}</p>
+              <div class="cta-row">
+                <a class="btn btn-primary" href="${escapeHtml(c.primaryHref)}">${escapeHtml(c.primaryLabel)}</a>
+                <a class="btn btn-secondary" href="${escapeHtml(c.secondaryHref)}" target="_blank" rel="noopener">${escapeHtml(c.secondaryLabel)}</a>
+              </div>
+              ${h.ctaNote ? `<p class="muted">${escapeHtml(h.ctaNote)}</p>` : ""}
+            </section>
+          </div>
           <div class="home-cta-columns">
             <section class="content-section home-cta-column home-fund-cta">
               <h2>Fund The Festival</h2>

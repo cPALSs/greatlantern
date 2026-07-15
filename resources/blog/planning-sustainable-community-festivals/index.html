@@ -21,8 +21,8 @@
   <script>
     (function () {
       try {
-        var t = localStorage.getItem("maf-theme") || localStorage.getItem("maf2026-theme") || localStorage.getItem("build-theme");
-        if (t === "light" || t === "dark" || t === "auto") document.documentElement.setAttribute("data-theme", t);
+        var t = sessionStorage.getItem("maf-theme");
+        if (t === "light" || t === "dark") document.documentElement.setAttribute("data-theme", t);
       } catch (_) {}
     })();
   </script>

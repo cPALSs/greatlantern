@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="light">
+<html lang="en" data-theme="auto">
 <head>
   <meta charset="UTF-8" />
   <!-- Google tag (gtag.js) -->
@@ -13,8 +13,8 @@
   <script>
     (function () {
       try {
-        var t = localStorage.getItem("maf-theme") || localStorage.getItem("maf2026-theme") || localStorage.getItem("build-theme");
-        if (t === "light" || t === "dark" || t === "auto") document.documentElement.setAttribute("data-theme", t);
+        var t = sessionStorage.getItem("maf-theme");
+        if (t === "light" || t === "dark") document.documentElement.setAttribute("data-theme", t);
       } catch (_) {}
     })();
   </script>

@@ -1,6 +1,8 @@
-# greatlantern.com — site source (monorepo)
+# greatlantern.com — site source
 
 **Public site:** https://greatlantern.com · GitHub Pages repo [`cPALSs/greatlantern`](https://github.com/cPALSs/greatlantern)
+
+**This folder (`Sites/greatlantern`) is the canonical source of truth.** Edit here; push from this git repo when ready.
 
 **Festival Season Network:** https://festival.cpalss.com · repo [`cPALSs/festival`](https://github.com/cPALSs/festival)
 
@@ -32,12 +34,12 @@ Legacy redirects (via `clean-urls.js`): `/host.html` → `/custom-zones/`, `/bui
 - **`data/popups-2026.json`** — Fund The Popups data (from `build_popup_registry.py`)
 - **`data/festivals.json`** — BTF manifest
 - **`data/popups-festivals.json`** — Fund The Popups manifest
-- **`assets/custom-zones-hero.webp`** — Custom Zones hero image (replace with photography when ready)
+- **`assets/`** — hero imagery + theme lanterns (`lantern-dark.png` / `lantern-light.png`)
 - **`resources/blog/`** — static blog pages (generated; do not edit HTML by hand)
 
 ### Blog
 
-Source markdown lives in [`Festival Network/shared/content/blog/`](../../../../Festival%20Network/shared/content/blog/). Rebuild after editing:
+Source markdown lives in [`Festival Network/shared/content/blog/`](../../Festival%20Network/shared/content/blog/). Rebuild after editing:
 
 ```bash
 node "Festival Network/scripts/build-festival-site-blog.mjs" --site glf
@@ -45,12 +47,12 @@ node "Festival Network/scripts/build-festival-site-blog.mjs" --site glf
 npm run blog:build --prefix "Festival Network"
 ```
 
-The publish script runs this automatically before rsync.
+The refresh script runs this automatically.
 
-Refresh season events from the landscape Sheet:
+### Local preview
 
 ```bash
-cd "Projects - Mid-Autumn Festival/2026/Marketing/maf-site"
+cd Sites/greatlantern
 python3 -m http.server 8765
 ```
 
@@ -68,16 +70,22 @@ Refresh season events from the landscape Sheet:
 node "Festival Network/scripts/export-glf-season-events.mjs"
 ```
 
-## Publish
+## Refresh generated data
 
-From monorepo root (rsyncs this folder → [`Sites/greatlantern`](../../../../Sites/greatlantern); edit **here**, not in `Sites/`):
+From monorepo root (writes into this folder; does not push):
 
 ```bash
 ./scripts/publish_greatlantern_site.sh
-cd Sites/greatlantern && git add -A && git commit -m "Update site" && git push
 ```
 
-Live: https://greatlantern.com · see [`Sites/README.md`](../../../../Sites/README.md)
+Then commit and push **from this repo** when ready:
+
+```bash
+cd Sites/greatlantern
+git add -A && git commit -m "Update site" && git push
+```
+
+See [`Sites/README.md`](../README.md).
 
 ## DNS (greatlantern.com)
 
