@@ -293,35 +293,7 @@
           "Great Lantern Festival continues that spiritual line — the same community-built Mid-Autumn tradition, now at Derr-Okamoto Park under a broader coalition that still carries the founding partnership of NVCC and cPALSs."
         ]
       }
-    ],
-    "posterWall": {
-      "title": "Past fliers over the years",
-      "tocLabel": "Past fliers",
-      "intro": "Each season's festival flier reflects the host neighborhood and the community partners who made it happen.",
-      "posters": [
-        {
-          "year": 2024,
-          "venue": "Laguna Town Hall",
-          "image": "posters/2024.jpg"
-        },
-        {
-          "year": 2023,
-          "venue": "Laguna Town Hall",
-          "image": "posters/2023.jpg"
-        },
-        {
-          "year": 2022,
-          "venue": "Florin Towne Centre",
-          "image": "posters/2022.jpg"
-        },
-        {
-          "year": 2021,
-          "venue": "Florin Towne Centre",
-          "image": "posters/2021.jpg"
-        }
-      ],
-      "note": "No 2026 Derr-Okamoto Park flier — we are not hosting this year. Past fliers originally published on cpalss.com/projects/mid-autumn-festival."
-    }
+    ]
   },
   "hostActivations": {
     "meta": {
@@ -547,12 +519,17 @@
   },
   "resources": {
     "headline": "Resources",
-    "lead": "Season calendar and planning notes.",
+    "lead": "Season calendar, past fliers, and planning notes.",
     "links": [
       {
         "title": "Mid-Autumn Festival Season",
         "body": "Celebrate Mid-Autumn Festival Season across Greater Sacramento — early September through early October.",
         "href": "/resources/season/"
+      },
+      {
+        "title": "Media",
+        "body": "Past season fliers from this Mid-Autumn festival line.",
+        "href": "/resources/media/"
       },
       {
         "title": "Blog",
@@ -600,7 +577,7 @@
           "Tết Trung Thu is the Vietnamese Mid-Autumn Festival — families gather under the full moon; children carry lanterns, share mooncakes, and drink tea. It is a night of reunion, gratitude, and hope. For Vietnamese communities in America, it reconnects generations and keeps cultural traditions alive in a new homeland. The lantern procession at dusk is the signature moment families remember.",
           "Great Lantern Festival continues this festival line. We will not host a Derr-Okamoto Park weekend in 2026; when we produce again, it remains a free, family-centered afternoon and evening with food vendors, stage programming, and lantern procession at dusk, in partnership with Vietnamese American Community of Sacramento (VACOS), Community Partners Advocate of Little Saigon Sacramento (cPALSs), Norcal Vietnamese Chamber of Commerce (NVCC), and Cosumnes Community Services District (CCSD).",
           "This festival line began in 2021 as Mid-Autumn Moon Celebration — a NVCC and cPALSs project at Florin Towne Centre on Florin Road in Sacramento's Little Saigon corridor. The first year was presented by those two organizations alone. In 2022 the same hosts returned for a second annual festival at Florin. In 2023 the celebration moved to Laguna Town Hall in Elk Grove, and VACOS joined as co-host — the tri-host coalition that has carried the festival since. Great Lantern Festival continues that spiritual line at Derr-Okamoto Park.",
-          "Designers should treat Little Saigon Sacramento as the permanent cultural anchor of the brand, even when the printed location block reads Elk Grove. Past season fliers (2021–2024) are on the About page and show how host neighborhoods and partners evolved while the community identity stayed continuous."
+          "Designers should treat Little Saigon Sacramento as the permanent cultural anchor of the brand, even when the printed location block reads Elk Grove. Past season fliers (2021–2024) are on the Media page and show how host neighborhoods and partners evolved while the community identity stayed continuous."
         ]
       },
       {
@@ -650,24 +627,48 @@
           {
             "title": "1. Top Block (The Fixed Anchor)",
             "bullets": [
-              { "label": "Text", "text": "\"LITTLE SAIGON SACRAMENTO\"" },
-              { "label": "Style", "text": "A crisp, unpolished sans-serif or trade-union stamp font." },
-              { "label": "Purpose", "text": "Stays permanent across all future iterations — the spiritual home of this festival line (founded on Florin Road in Sacramento's Little Saigon corridor) and an explicit distinction from Southern California's Little Saigon." }
+              {
+                "label": "Text",
+                "text": "\"LITTLE SAIGON SACRAMENTO\""
+              },
+              {
+                "label": "Style",
+                "text": "A crisp, unpolished sans-serif or trade-union stamp font."
+              },
+              {
+                "label": "Purpose",
+                "text": "Stays permanent across all future iterations — the spiritual home of this festival line (founded on Florin Road in Sacramento's Little Saigon corridor) and an explicit distinction from Southern California's Little Saigon."
+              }
             ]
           },
           {
             "title": "2. Center Block (The Core Graphic)",
             "bullets": [
-              { "label": "The Main Art", "text": "A bold, solid representation of the full harvest moon. Superimposed over it is the elegant silhouette of a Hội An silk lantern. The lantern's bamboo ribs must be visible, and its long tassel should drop down dynamically to interact with the text." },
-              { "label": "The Logotype", "text": "\"Great Lantern Festival\" rendered in a bold, custom-drawn West Coast font. It must be able to break completely free from the frame to live as a standalone asset for premium streetwear drops and headwear collaborations (e.g., 3D puff embroidery on caps)." }
+              {
+                "label": "The Main Art",
+                "text": "A bold, solid representation of the full harvest moon. Superimposed over it is the elegant silhouette of a Hội An silk lantern. The lantern's bamboo ribs must be visible, and its long tassel should drop down dynamically to interact with the text."
+              },
+              {
+                "label": "The Logotype",
+                "text": "\"Great Lantern Festival\" rendered in a bold, custom-drawn West Coast font. It must be able to break completely free from the frame to live as a standalone asset for premium streetwear drops and headwear collaborations (e.g., 3D puff embroidery on caps)."
+              }
             ]
           },
           {
             "title": "3. Bottom Block (The Variable Location)",
             "bullets": [
-              { "label": "Text", "text": "\"ELK GROVE, CALIFORNIA\" (balanced with the festival year)." },
-              { "label": "Style", "text": "Matches the industrial block font of the top tier." },
-              { "label": "Purpose", "text": "Completely swappable — Elk Grove is the current home (Laguna Town Hall 2023–2024; Derr-Okamoto Park 2026), not the permanent cultural identity. If the festival hosts satellite events or pop-ups in other regional areas, the print shop can easily swap this block without touching the core art." }
+              {
+                "label": "Text",
+                "text": "\"ELK GROVE, CALIFORNIA\" (balanced with the festival year)."
+              },
+              {
+                "label": "Style",
+                "text": "Matches the industrial block font of the top tier."
+              },
+              {
+                "label": "Purpose",
+                "text": "Completely swappable — Elk Grove is the current home (Laguna Town Hall 2023–2024; Derr-Okamoto Park 2026), not the permanent cultural identity. If the festival hosts satellite events or pop-ups in other regional areas, the print shop can easily swap this block without touching the core art."
+              }
             ]
           }
         ]
@@ -677,9 +678,18 @@
         "title": "Ink, Palette, and Production Specs",
         "tocLabel": "Production Specs",
         "bullets": [
-          { "label": "Aesthetic", "text": "Flat-ink, high-contrast screen-print look. The lines should feel hand-carved and have a heavy, tactile presence on fabric. No smooth digital gradients or neon glows." },
-          { "label": "Color Palette", "text": "Sun-baked California harvest tones. Warm saffron gold, deep terracotta/burnt orange, and an earthy charcoal or midnight indigo for the heavy outline work." },
-          { "label": "Merchandise Intention", "text": "The assets must look exceptional screen-printed on heavyweight 240GSM box-fit t-shirts, canvas tote bags, and embroidered heavy-fleece hoodies." }
+          {
+            "label": "Aesthetic",
+            "text": "Flat-ink, high-contrast screen-print look. The lines should feel hand-carved and have a heavy, tactile presence on fabric. No smooth digital gradients or neon glows."
+          },
+          {
+            "label": "Color Palette",
+            "text": "Sun-baked California harvest tones. Warm saffron gold, deep terracotta/burnt orange, and an earthy charcoal or midnight indigo for the heavy outline work."
+          },
+          {
+            "label": "Merchandise Intention",
+            "text": "The assets must look exceptional screen-printed on heavyweight 240GSM box-fit t-shirts, canvas tote bags, and embroidered heavy-fleece hoodies."
+          }
         ]
       },
       {
@@ -690,9 +700,18 @@
           "To ensure absolute community trust and preserve the cultural integrity of the festival, the commissioned artist must provide an audit trail verifying the handmade nature of the artwork:"
         ],
         "bullets": [
-          { "label": "Process Recording", "text": "Continuous or step-by-step screen recordings (for digital illustration) or video timelapses (for traditional media) showing the art being drawn from initial rough sketch to final vector line work." },
-          { "label": "Layered Delivery", "text": "The final file must be delivered with its original, unflattened sketch and rough pencil layers intact beneath the final inks." },
-          { "label": "Marketing Utility", "text": "These process videos will be used across community social media channels to proudly showcase the human craftsmanship behind the festival's identity." }
+          {
+            "label": "Process Recording",
+            "text": "Continuous or step-by-step screen recordings (for digital illustration) or video timelapses (for traditional media) showing the art being drawn from initial rough sketch to final vector line work."
+          },
+          {
+            "label": "Layered Delivery",
+            "text": "The final file must be delivered with its original, unflattened sketch and rough pencil layers intact beneath the final inks."
+          },
+          {
+            "label": "Marketing Utility",
+            "text": "These process videos will be used across community social media channels to proudly showcase the human craftsmanship behind the festival's identity."
+          }
         ]
       }
     ],
@@ -727,5 +746,40 @@
         "href": "https://www.facebook.com/norcalvietnamesechamber/"
       }
     ]
+  },
+  "media": {
+    "headline": "Media",
+    "lead": "Past festival fliers from this Mid-Autumn festival line.",
+    "contactNote": "Media inquiries: contact@greatlantern.com",
+    "videosHeading": "Videos",
+    "videos": [],
+    "posterWall": {
+      "title": "Past fliers over the years",
+      "tocLabel": "Past fliers",
+      "intro": "Each season's festival flier reflects the host neighborhood and the community partners who made it happen.",
+      "posters": [
+        {
+          "year": 2024,
+          "venue": "Laguna Town Hall",
+          "image": "posters/2024.jpg"
+        },
+        {
+          "year": 2023,
+          "venue": "Laguna Town Hall",
+          "image": "posters/2023.jpg"
+        },
+        {
+          "year": 2022,
+          "venue": "Florin Towne Centre",
+          "image": "posters/2022.jpg"
+        },
+        {
+          "year": 2021,
+          "venue": "Florin Towne Centre",
+          "image": "posters/2021.jpg"
+        }
+      ],
+      "note": "No 2026 Derr-Okamoto Park flier — we are not hosting this year. Past fliers originally published on cpalss.com/projects/mid-autumn-festival."
+    }
   }
 }

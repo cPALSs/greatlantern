@@ -145,6 +145,7 @@
         href: "/resources/",
         children: [
           { id: "season", label: "Mid-Autumn Season", href: "/resources/season/" },
+          { id: "media", label: "Media", href: "/resources/media/" },
           { id: "blog", label: "Blog", href: "/resources/blog/" },
         ],
       },
@@ -1297,13 +1298,7 @@
       id: section.id || `section-${index}`,
       label: section.tocLabel || section.title,
     }));
-    if (about.posterWall) {
-      toc.push({
-        id: "posters",
-        label: about.posterWall.tocLabel || about.posterWall.title || "Festival posters",
-      });
-    }
-    const main = renderAboutSections(about) + renderPosterWall(about.posterWall);
+    const main = renderAboutSections(about);
     return `
       <section class="hero">
         <h1>${escapeHtml(about.headline)}</h1>
@@ -1407,7 +1402,7 @@
   }
 
   function renderPosterWall(posterWall) {
-    if (!posterWall) return "";
+    if (!posterWall || !(posterWall.posters ?? []).length) return "";
     const prefix = navPrefix();
     const cards = (posterWall.posters ?? [])
       .map((poster) => {
@@ -1435,6 +1430,103 @@
     </section>`;
   }
 
+  function renderMediaVideoCard(video) {
+    const id = String(video.youtubeId ?? "").trim();
+    const title = video.title ?? "Festival video";
+    const watchUrl = `https://www.youtube.com/watch?v=${encodeURIComponent(id)}`;
+    const embedSrc = `https://www.youtube-nocookie.com/embed/${encodeURIComponent(id)}?autoplay=1&rel=0`;
+    const poster = `https://i.ytimg.com/vi/${encodeURIComponent(id)}/hqdefault.jpg`;
+    return `
+      <figure class="video-card">
+        <div class="video-embed" data-youtube-id="${escapeHtml(id)}" data-embed-src="${escapeHtml(embedSrc)}">
+          <button type="button" class="video-play" aria-label="Play ${escapeHtml(title)}">
+            <img class="video-poster" src="${escapeHtml(poster)}" alt="" loading="lazy" width="480" height="360" />
+            <span class="video-play-icon" aria-hidden="true"></span>
+          </button>
+          <a class="video-fallback-link" href="${escapeHtml(watchUrl)}" target="_blank" rel="noopener">Watch on YouTube</a>
+        </div>
+        <figcaption class="video-caption">${escapeHtml(title)}</figcaption>
+      </figure>`;
+  }
+
+  function renderMediaPage(media) {
+    const videos = media?.videos ?? [];
+    const posterWall = media?.posterWall;
+    const videosHeading = media?.videosHeading ?? "Videos";
+    const hasPosters = (posterWall?.posters ?? []).length > 0;
+    const tocItems = [];
+    if (videos.length) tocItems.push({ id: "videos", label: videosHeading });
+    if (hasPosters) {
+      tocItems.push({
+        id: "posters",
+        label: posterWall.tocLabel ?? posterWall.title ?? "Past fliers",
+      });
+    }
+
+    const byYear = new Map();
+    for (const video of videos) {
+      const year = String(video.year ?? "Videos");
+      if (!byYear.has(year)) byYear.set(year, []);
+      byYear.get(year).push(video);
+    }
+    const years = [...byYear.keys()].sort((a, b) => String(b).localeCompare(String(a)));
+    const yearBlocks = years
+      .map((year) => {
+        const cards = byYear.get(year).map(renderMediaVideoCard).join("");
+        return `
+      <div class="media-year-section" aria-labelledby="media-year-${escapeHtml(year)}">
+        <h3 class="media-year-heading" id="media-year-${escapeHtml(year)}">${escapeHtml(year)}</h3>
+        <div class="video-grid">${cards}</div>
+      </div>`;
+      })
+      .join("");
+
+    const videosHtml = videos.length
+      ? `
+      <section class="host-doc-section content-section" id="videos" data-doc-section>
+        <h2>${escapeHtml(videosHeading)}</h2>
+        ${yearBlocks}
+      </section>`
+      : "";
+
+    const postersHtml = hasPosters ? renderPosterWall(posterWall) : "";
+    const contact = media?.contactNote
+      ? `<p class="muted media-contact-note">${escapeHtml(media.contactNote)}</p>`
+      : "";
+    const empty =
+      !videos.length && !hasPosters
+        ? `<p class="muted">Media coming soon.</p>`
+        : "";
+    const mainHtml = `${videosHtml}${postersHtml}${empty}${contact}`;
+
+    return `
+      <section class="hero">
+        <h1>${escapeHtml(media?.headline ?? "Media")}</h1>
+        ${media?.lead ? `<p class="hero-lead">${escapeHtml(media.lead)}</p>` : ""}
+      </section>
+      ${wrapDocLayout(tocItems, mainHtml)}`;
+  }
+
+  function initMediaPlayers(root = document) {
+    root.querySelectorAll(".video-embed[data-embed-src]").forEach((embed) => {
+      const button = embed.querySelector(".video-play");
+      if (!button || button.dataset.bound === "1") return;
+      button.dataset.bound = "1";
+      button.addEventListener("click", () => {
+        const src = embed.getAttribute("data-embed-src");
+        const title = button.getAttribute("aria-label")?.replace(/^Play\s+/, "") || "Festival video";
+        if (!src) return;
+        embed.innerHTML = `<iframe
+          src="${src}"
+          title="${escapeHtml(title)}"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowfullscreen
+          referrerpolicy="strict-origin-when-cross-origin"
+        ></iframe>`;
+      });
+    });
+  }
+
   function initPageShell(activePage) {
     mountNav(activePage);
     initTheme();
@@ -1458,6 +1550,8 @@
     renderTeamPage,
     renderResourcesPage,
     renderSeasonPage,
+    renderMediaPage,
+    initMediaPlayers,
     renderLogoDesignPage,
     renderPosterWall,
     renderApplyBlock,

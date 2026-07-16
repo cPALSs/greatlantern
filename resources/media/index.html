@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="auto">
+<head>
+  <meta charset="UTF-8" />
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-S6SFT9M0ME"></script>
+  <script src="../../analytics.js"></script>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Great Lantern Festival media — past Mid-Autumn festival fliers." />
+  <link rel="canonical" href="https://greatlantern.com/resources/media/" />
+  <meta property="og:title" content="Media — Great Lantern Festival" />
+  <meta property="og:description" content="Great Lantern Festival media — past Mid-Autumn festival fliers." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://greatlantern.com/resources/media/" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Media — Great Lantern Festival" />
+  <meta name="twitter:description" content="Great Lantern Festival media — past Mid-Autumn festival fliers." />
+
+  <title>Media — Great Lantern Festival</title>
+  <script src="../../clean-urls.js"></script>
+  <script>
+    (function () {
+      try {
+        var t = sessionStorage.getItem("maf-theme");
+        if (t === "light" || t === "dark") document.documentElement.setAttribute("data-theme", t);
+      } catch (_) {}
+    })();
+  </script>
+  <link rel="stylesheet" href="../../site.css" />
+</head>
+<body>
+  <div id="site-nav"></div>
+  <main class="page-wrap page-wrap--doc" id="main">
+    <div id="seo-prerender" class="seo-prerender">
+      <section class="hero">
+        <h1>Media</h1>
+        <p>Past festival fliers from this Mid-Autumn festival line.</p>
+      </section>
+    </div>
+  </main>
+  <div id="site-footer"></div>
+  <script src="../../doc-scroll.js"></script>
+  <script src="../../site.js"></script>
+  <script>
+    (async function () {
+      const {
+        initPageShell,
+        loadSiteData,
+        mountFooter,
+        renderMediaPage,
+        initMediaPlayers,
+        initPageToc,
+        setPageTitle,
+        escapeHtml,
+      } = window.MafSite;
+      initPageShell("media");
+      try {
+        const site = await loadSiteData();
+        setPageTitle(site, "Media");
+        document.getElementById("main").innerHTML = renderMediaPage(site.media);
+        initPageToc();
+        initMediaPlayers();
+        mountFooter(site);
+      } catch (err) {
+        document.getElementById("main").innerHTML = `<p class="error-panel">${escapeHtml(err.message)}</p>`;
+      }
+    })();
+  </script>
+</body>
+</html>
