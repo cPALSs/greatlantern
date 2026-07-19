@@ -39,10 +39,10 @@ Legacy redirects (via `clean-urls.js`): `/host.html` → `/custom-zones/`, `/bui
 
 ### Blog
 
-Source markdown lives in [`Festival Network/shared/content/blog/`](../../Festival%20Network/shared/content/blog/). Rebuild after editing:
+Source markdown lives in [`Operations/Festival Network/shared/content/blog/`](../../Festival%20Network/shared/content/blog/). Rebuild after editing:
 
 ```bash
-node "Festival Network/scripts/build-festival-site-blog.mjs" --site glf
+node "Operations/Festival Network/scripts/build-festival-site-blog.mjs" --site glf
 # or both sites:
 npm run blog:build --prefix "Festival Network"
 ```
@@ -67,7 +67,7 @@ python3 -m http.server 8765
 Refresh season events from the landscape Sheet:
 
 ```bash
-node "Festival Network/scripts/export-glf-season-events.mjs"
+node "Operations/Festival Network/scripts/export-glf-season-events.mjs"
 ```
 
 ## Refresh generated data
