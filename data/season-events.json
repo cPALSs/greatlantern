@@ -1,16 +1,8 @@
 {
-  "generatedAt": "2026-07-15T20:41:18.610Z",
+  "generatedAt": "2026-07-22T00:09:53.422Z",
   "sourceSpreadsheetId": "1Va0oCv09nyW98-JnWL9DuYYTsXG35cxjf_WqBZsySrA",
   "seasonYear": "2026",
   "events": [
-    {
-      "eventId": "ca-is-my-home-maf",
-      "dates": "Sep 11, 2026 5-10 PM (estimated)",
-      "name": "Mid-Autumn Festival",
-      "host": "California Is My Home",
-      "location": "District 56 - 8230 Civic Center Dr (expected), Elk Grove",
-      "href": "https://www.kcra.com/article/mid-autumn-festival-elk-grove-friday/66071496"
-    },
     {
       "eventId": "asm-nguyen-autumn-moon",
       "dates": "Sep 12, 2026 6:30–10 PM (estimated)",
@@ -44,20 +36,20 @@
       "href": "https://happeningnext.com/event/mid-autumn-festival-eid3a0crd8ljl"
     },
     {
+      "eventId": "ca-is-my-home-maf",
+      "dates": "Sep 20, 2026 2:00–8:30 PM",
+      "name": "Mid-Autumn Festival",
+      "host": "California Is My Home",
+      "location": "District 56 - 8230 Civic Center Dr, Elk Grove",
+      "href": "https://www.caismyhome.com/"
+    },
+    {
       "eventId": "sac-state-maf",
       "dates": "Sep 21, 2026 5-9 PM",
       "name": "APIDA Night Lights — Illuminating the Hive",
       "host": "Sac State APIDA Center",
       "location": "Acorn Amphitheatre, Sac State campus, Sacramento",
       "href": "https://www.instagram.com/p/DaOD6Xbvukn/"
-    },
-    {
-      "eventId": "annie-peony-mid-autumn-mural",
-      "dates": "Sep 23, 2026 – Sep 28, 2026",
-      "name": "Mid-Autumn Chinese Moon Festival Mural",
-      "host": "Annie Peony Gallery",
-      "location": "Annie Peony Gallery - 9635 Elk Grove Florin Rd",
-      "href": "https://www.exploreelkgrove.com/events/mid-autumn-chinese-moon-festival-mural-at-annie-peony-gallery/"
     },
     {
       "eventId": "cpalss-maf",
