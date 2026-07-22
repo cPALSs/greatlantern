@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-22T18:49:15.388Z",
+  "generatedAt": "2026-07-22T18:56:04.869Z",
   "sourceSpreadsheetId": "1Va0oCv09nyW98-JnWL9DuYYTsXG35cxjf_WqBZsySrA",
   "seasonYear": "2026",
   "events": [
@@ -9,7 +9,8 @@
       "name": "Annual Autumn Moon Festival",
       "host": "Assemblymember Stephanie Nguyen",
       "location": "Garcia Bend Park — 7654 Pocket Rd (expected), Sacramento",
-      "href": "https://nguyen.asmdc.org/event/20250920-annual-autumn-moon-festival"
+      "href": "https://nguyen.asmdc.org/event/20250920-annual-autumn-moon-festival",
+      "certainty": "estimated"
     },
     {
       "eventId": "sac-state-harvest-moon",
@@ -17,7 +18,8 @@
       "name": "Harvest Moon Festival",
       "host": "JSSCC + CSUS Asian Studies",
       "location": "Sac State Capistrano Hall + courtyard (expected), Sacramento",
-      "href": "https://jsscc.org/2025-program-and-events/"
+      "href": "https://jsscc.org/2025-program-and-events/",
+      "certainty": "estimated"
     },
     {
       "eventId": "caaps-lantern",
@@ -25,15 +27,17 @@
       "name": "Autumn Lantern Festival & Night Market",
       "host": "CAAPS",
       "location": "Sacramento",
-      "href": "https://www.acaaps.org/"
+      "href": "https://www.acaaps.org/",
+      "certainty": "tentative"
     },
     {
       "eventId": "riverside-umc-mid-autumn",
       "dates": "Sep 19, 2026 5-8:30 PM (estimated)",
-      "name": "Mid-Autumn Festival (community)",
+      "name": "13th Annual Mid-Autumn Festival (community)",
       "host": "Riverside United Methodist Church",
       "location": "803 Vallejo Way (expected), Sacramento",
-      "href": "https://happeningnext.com/event/mid-autumn-festival-eid3a0crd8ljl"
+      "href": "https://happeningnext.com/event/mid-autumn-festival-eid3a0crd8ljl",
+      "certainty": "estimated"
     },
     {
       "eventId": "ca-is-my-home-maf",
@@ -41,7 +45,8 @@
       "name": "Mid-Autumn Festival",
       "host": "California Is My Home",
       "location": "District 56 - 8230 Civic Center Dr, Elk Grove",
-      "href": "https://www.caismyhome.com/"
+      "href": "https://www.caismyhome.com/",
+      "certainty": "confirmed"
     },
     {
       "eventId": "sac-state-maf",
@@ -49,7 +54,8 @@
       "name": "APIDA Night Lights — Illuminating the Hive",
       "host": "Sac State APIDA Center",
       "location": "Acorn Amphitheatre, Sac State campus, Sacramento",
-      "href": "https://www.instagram.com/p/DaOD6Xbvukn/"
+      "href": "https://www.instagram.com/p/DaOD6Xbvukn/",
+      "certainty": "confirmed"
     },
     {
       "eventId": "ari-autumn-moon",
@@ -57,7 +63,8 @@
       "name": "Autumn Moon Festival",
       "host": "Asian Resources, Inc. (ARI)",
       "location": "New Happy Garden, 5731 Stockton Blvd, Sacramento",
-      "href": "https://www.facebook.com/AsianResourcesInc/posts/pfbid02zeQ5e4LuroDdAoxaFXRjbL9NiW4ns89feFfQWYQdUsCXDotxTPAaLE3xjf2Hiai3l"
+      "href": "https://www.facebook.com/AsianResourcesInc/posts/pfbid02zeQ5e4LuroDdAoxaFXRjbL9NiW4ns89feFfQWYQdUsCXDotxTPAaLE3xjf2Hiai3l",
+      "certainty": "confirmed"
     },
     {
       "eventId": "cpalss-maf",
@@ -66,7 +73,8 @@
       "host": "VACOS / cPALSs / NVCC",
       "location": "Derr-Okamoto Park, Elk Grove",
       "href": "/",
-      "capstone": true
+      "capstone": true,
+      "certainty": "cancelled"
     },
     {
       "eventId": "sf-supermarket-maf-rancho",
@@ -74,7 +82,8 @@
       "name": "SF Supermarket Mid-Autumn Festival",
       "host": "SF Supermarket (Shun Fat)",
       "location": "2738 Sunrise Blvd, Rancho Cordova",
-      "href": "https://www.instagram.com/p/DPEo69zER3x/"
+      "href": "https://www.instagram.com/p/DPEo69zER3x/",
+      "certainty": "estimated"
     }
   ]
 }
