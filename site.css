@@ -1082,6 +1082,22 @@ body.nav-open {
   margin-top: 0.15rem;
 }
 
+.season-event-opportunity {
+  display: block;
+  margin-top: 0.35rem;
+  font-size: 0.92rem;
+  color: var(--text);
+}
+
+.season-event-opportunity a {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+.season-event-opportunity a:hover {
+  text-decoration: underline;
+}
+
 .season-event-detail a,
 .season-event-title a {
   color: var(--accent);

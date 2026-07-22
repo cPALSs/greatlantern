@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-22T18:56:04.869Z",
+  "generatedAt": "2026-07-22T19:10:57.179Z",
   "sourceSpreadsheetId": "1Va0oCv09nyW98-JnWL9DuYYTsXG35cxjf_WqBZsySrA",
   "seasonYear": "2026",
   "events": [
@@ -23,12 +23,12 @@
     },
     {
       "eventId": "caaps-lantern",
-      "dates": "Sep 19, 2026 (tentative)",
-      "name": "Autumn Lantern Festival & Night Market",
+      "dates": "Sep 19, 2026 4–11 PM",
+      "name": "Asian Fest + Music Fest",
       "host": "CAAPS",
-      "location": "Sacramento",
-      "href": "https://www.acaaps.org/",
-      "certainty": "tentative"
+      "location": "3009 Power Inn Road, Sacramento",
+      "href": "https://www.acaaps.org/asian-fest/",
+      "certainty": "confirmed"
     },
     {
       "eventId": "riverside-umc-mid-autumn",

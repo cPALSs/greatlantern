@@ -544,7 +544,17 @@
     "lead": "Celebrate Mid-Autumn Festival Season in Greater Sacramento from early September through early October!",
     "intro": "Greater Sacramento's Mid-Autumn and Moon Festival calendar — community celebrations across the region. Great Lantern Festival is not hosting its own Elk Grove weekend in 2026.",
     "listNote": "Dates marked estimated or tentative may change — check organizer listings before you go.",
-    "contactNote": "Know a Mid-Autumn event we missed? Email contact@greatlantern.com."
+    "contactNote": "Know a Mid-Autumn event we missed? Email contact@greatlantern.com.",
+    "opportunityLines": [
+      {
+        "eventId": "caaps-lantern",
+        "label": "Open: vendors, volunteers, and performers — register on the event page"
+      },
+      {
+        "eventId": "ari-autumn-moon",
+        "label": "Sponsorship support welcome — see the host’s save-the-date"
+      }
+    ]
   },
   "logoDesign": {
     "headline": "Logo Design",

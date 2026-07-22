@@ -1025,7 +1025,7 @@
     return "confirmed";
   }
 
-  function renderSeasonEventItem(event) {
+  function renderSeasonEventItem(event, opportunityLabel) {
     const certainty = seasonEventCertainty(event);
     const soft =
       certainty === "estimated" ||
@@ -1038,17 +1038,32 @@
       ? `<a href="${escapeHtml(event.href)}"${externalLinkAttrs(event.href)}>${escapeHtml(event.name)}</a>`
       : escapeHtml(event.name);
     const hostPart = event.host ? ` · ${escapeHtml(event.host)}` : "";
+    const opportunityHtml = opportunityLabel
+      ? `<span class="season-event-opportunity">${
+          event.href
+            ? `<a href="${escapeHtml(event.href)}"${externalLinkAttrs(event.href)}>${escapeHtml(opportunityLabel)}</a>`
+            : escapeHtml(opportunityLabel)
+        }</span>`
+      : "";
     return `<li class="season-event-item${capstoneClass}${softClass}${certaintyClass}" data-certainty="${certainty}">
       <span class="season-event-dates">${escapeHtml(event.dates)}</span>
       <span class="season-event-title">${nameHtml}${hostPart}</span>
       <span class="season-event-location">${escapeHtml(event.location)}</span>
+      ${opportunityHtml}
     </li>`;
   }
 
   function renderSeasonPage(season, seasonData) {
     const events = seasonData?.events ?? [];
     const seasonTitle = season?.title ?? "Mid-Autumn Festival Season";
-    const listItems = events.map(renderSeasonEventItem).join("");
+    const opportunityById = Object.fromEntries(
+      (season?.opportunityLines ?? [])
+        .filter((row) => row?.eventId && row?.label)
+        .map((row) => [row.eventId, row.label]),
+    );
+    const listItems = events
+      .map((event) => renderSeasonEventItem(event, opportunityById[event.eventId]))
+      .join("");
     const listNote = season?.listNote
       ? `<p class="muted season-list-note">${escapeHtml(season.listNote)}</p>`
       : "";
