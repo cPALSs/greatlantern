@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-22T00:09:53.422Z",
+  "generatedAt": "2026-07-22T18:49:15.388Z",
   "sourceSpreadsheetId": "1Va0oCv09nyW98-JnWL9DuYYTsXG35cxjf_WqBZsySrA",
   "seasonYear": "2026",
   "events": [
@@ -50,6 +50,14 @@
       "host": "Sac State APIDA Center",
       "location": "Acorn Amphitheatre, Sac State campus, Sacramento",
       "href": "https://www.instagram.com/p/DaOD6Xbvukn/"
+    },
+    {
+      "eventId": "ari-autumn-moon",
+      "dates": "Sep 24, 2026 6:00–8:00 PM",
+      "name": "Autumn Moon Festival",
+      "host": "Asian Resources, Inc. (ARI)",
+      "location": "New Happy Garden, 5731 Stockton Blvd, Sacramento",
+      "href": "https://www.facebook.com/AsianResourcesInc/posts/pfbid02zeQ5e4LuroDdAoxaFXRjbL9NiW4ns89feFfQWYQdUsCXDotxTPAaLE3xjf2Hiai3l"
     },
     {
       "eventId": "cpalss-maf",
