@@ -1,11 +1,11 @@
 {
-  "generatedAt": "2026-07-22T19:10:57.179Z",
+  "generatedAt": "2026-07-29T03:32:48.329Z",
   "sourceSpreadsheetId": "1Va0oCv09nyW98-JnWL9DuYYTsXG35cxjf_WqBZsySrA",
   "seasonYear": "2026",
   "events": [
     {
       "eventId": "asm-nguyen-autumn-moon",
-      "dates": "Sep 12, 2026 6:30–10 PM (estimated)",
+      "dates": "Sat, Sep 12, 2026 6:30–10 PM (estimated Sat before MAF; low confidence)",
       "name": "Annual Autumn Moon Festival",
       "host": "Assemblymember Stephanie Nguyen",
       "location": "Garcia Bend Park — 7654 Pocket Rd (expected), Sacramento",
@@ -13,17 +13,8 @@
       "certainty": "estimated"
     },
     {
-      "eventId": "sac-state-harvest-moon",
-      "dates": "Sep 13, 2026 10 AM-3 PM (estimated)",
-      "name": "Harvest Moon Festival",
-      "host": "JSSCC + CSUS Asian Studies",
-      "location": "Sac State Capistrano Hall + courtyard (expected), Sacramento",
-      "href": "https://jsscc.org/2025-program-and-events/",
-      "certainty": "estimated"
-    },
-    {
       "eventId": "caaps-lantern",
-      "dates": "Sep 19, 2026 4–11 PM",
+      "dates": "Sat, Sep 19, 2026 4–11 PM",
       "name": "Asian Fest + Music Fest",
       "host": "CAAPS",
       "location": "3009 Power Inn Road, Sacramento",
@@ -32,7 +23,7 @@
     },
     {
       "eventId": "riverside-umc-mid-autumn",
-      "dates": "Sep 19, 2026 5-8:30 PM (estimated)",
+      "dates": "Sat, Sep 19, 2026 5-8:30 PM (estimated Sat before MAF; low confidence)",
       "name": "13th Annual Mid-Autumn Festival (community)",
       "host": "Riverside United Methodist Church",
       "location": "803 Vallejo Way (expected), Sacramento",
@@ -40,17 +31,26 @@
       "certainty": "estimated"
     },
     {
+      "eventId": "sac-state-harvest-moon",
+      "dates": "Sun, Sep 20, 2026 10 AM-3 PM (estimated Sun before MAF; low confidence)",
+      "name": "Harvest Moon Festival",
+      "host": "JSSCC + CSUS Asian Studies",
+      "location": "Sac State Capistrano Hall + courtyard (expected), Sacramento",
+      "href": "https://jsscc.org/2025-program-and-events/",
+      "certainty": "estimated"
+    },
+    {
       "eventId": "ca-is-my-home-maf",
-      "dates": "Sep 20, 2026 2:00–8:30 PM",
+      "dates": "Sun, Sep 20, 2026 2:00–8:30 PM",
       "name": "Mid-Autumn Festival",
       "host": "California Is My Home",
       "location": "District 56 - 8230 Civic Center Dr, Elk Grove",
-      "href": "https://www.facebook.com/permalink.php?story_fbid=pfbid02UNCEEqZwTqjJWH4KV1bsv8MQuit4guaMnNCJ3rbLnsuuG1z2EbdwvsKuzgP6EMr8l&id=61571274877849",
+      "href": "https://www.caismyhome.com/",
       "certainty": "confirmed"
     },
     {
       "eventId": "sac-state-maf",
-      "dates": "Sep 21, 2026 5-9 PM",
+      "dates": "Mon, Sep 21, 2026 5-9 PM",
       "name": "APIDA Night Lights — Illuminating the Hive",
       "host": "Sac State APIDA Center",
       "location": "Acorn Amphitheatre, Sac State campus, Sacramento",
@@ -59,7 +59,7 @@
     },
     {
       "eventId": "ari-autumn-moon",
-      "dates": "Sep 24, 2026 6:00–8:00 PM",
+      "dates": "Thu, Sep 24, 2026 6:00–8:00 PM",
       "name": "Autumn Moon Festival",
       "host": "Asian Resources, Inc. (ARI)",
       "location": "New Happy Garden, 5731 Stockton Blvd, Sacramento",
@@ -78,7 +78,7 @@
     },
     {
       "eventId": "sf-supermarket-maf-rancho",
-      "dates": "Oct 3, 2026 – Oct 4, 2026 (estimated)",
+      "dates": "Sat, Oct 3, 2026 – Sun, Oct 4, 2026 (estimated first Oct weekend; low confidence)",
       "name": "SF Supermarket Mid-Autumn Festival",
       "host": "SF Supermarket (Shun Fat)",
       "location": "2738 Sunrise Blvd, Rancho Cordova",
