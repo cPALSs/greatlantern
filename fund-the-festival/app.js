@@ -1040,10 +1040,10 @@ function coreFundingState() {
     if (!baselineCap) return null;
 
     const estimatedCore = sumEstimatedAssigned(["core"]);
-    const sponsorFill =
-      estimatedCore !== null
-        ? Math.min(estimatedCore, baselineCap)
-        : Math.min(sumEnabled(["core"]) + (state.extraCash || 0), baselineCap);
+    const coreContrib =
+      estimatedCore !== null ? estimatedCore : sumEnabled(["core"]) + (state.extraCash || 0);
+    const sponsorFill = Math.min(coreContrib, baselineCap);
+    const coreSurplus = coreContrib - sponsorFill;
     const remainingGap = Math.max(0, baselineCap - sponsorFill);
     const fundedTotal = sponsorFill;
 
@@ -1052,6 +1052,7 @@ function coreFundingState() {
       cashOffset: 0,
       sponsorGap: baselineCap,
       sponsorFill,
+      coreSurplus,
       remainingGap,
       fundedTotal,
       cashPct: 0,
@@ -1069,10 +1070,10 @@ function coreFundingState() {
   const cashOffset = Math.min(mvpCap, rawCash);
   const sponsorGap = Math.max(0, mvpCap - cashOffset);
   const estimatedCore = sumEstimatedAssigned(["core"]);
-  const sponsorFill =
-    estimatedCore !== null
-      ? Math.min(estimatedCore, sponsorGap)
-      : Math.min(sumEnabled(["core"]) + (state.extraCash || 0), sponsorGap);
+  const coreContrib =
+    estimatedCore !== null ? estimatedCore : sumEnabled(["core"]) + (state.extraCash || 0);
+  const sponsorFill = Math.min(coreContrib, sponsorGap);
+  const coreSurplus = coreContrib - sponsorFill;
   const remainingGap = Math.max(0, sponsorGap - sponsorFill);
   const fundedTotal = cashOffset + sponsorFill;
 
@@ -1081,6 +1082,7 @@ function coreFundingState() {
     cashOffset,
     sponsorGap,
     sponsorFill,
+    coreSurplus,
     remainingGap,
     fundedTotal,
     cashPct: (cashOffset / mvpCap) * 100,
@@ -1176,14 +1178,21 @@ function renderProgress() {
 
   if (isPopupsPage()) {
     const baselineCap = state.data.event.baselineCap ?? core?.mvpCap ?? 0;
-    const fundedBlue = (core?.fundedTotal ?? 0) + registryFunded + optionsFunded;
+    const visionRoom = Math.max(0, target - baselineCap);
+    // Baseline gifts past the baseline need are still real dollars, so credit the
+    // overflow against the registry/options half rather than dropping it.
+    const visionFunded = Math.min(
+      visionRoom,
+      registryFunded + optionsFunded + (core?.coreSurplus ?? 0),
+    );
+    const fundedBlue = (core?.fundedTotal ?? 0) + visionFunded;
     const toFullVision = Math.max(0, target - fundedBlue);
 
     document.getElementById("vision-label").textContent = `${progressLabel("visionBaselineLabel", "Program baseline")} ${fmt(baselineCap)}`;
     document.getElementById("target-label").textContent = `Target ${fmt(target)}`;
 
     const coreGap = core?.remainingGap ?? 0;
-    const visionGap = Math.max(0, target - baselineCap - registryFunded - optionsFunded);
+    const visionGap = Math.max(0, visionRoom - visionFunded);
     const fundedPct = target > 0 ? (fundedBlue / target) * 100 : 0;
     const coreGapPct = target > 0 ? (coreGap / target) * 100 : 0;
     const visionGapPct = target > 0 ? (visionGap / target) * 100 : 0;
@@ -1202,14 +1211,18 @@ function renderProgress() {
 
   const s = state.data.scenario;
   if (!core || !s) return;
-  const fundedBlue = core.cashOffset + core.sponsorFill + registryFunded;
+  const visionRoom = Math.max(0, target - s.mvpCap);
+  // Core gifts past the core gap are still real dollars — they displace the cash ops that
+  // would have paid that line, so the overflow is credited against the registry half.
+  const visionFunded = Math.min(visionRoom, registryFunded + core.coreSurplus);
+  const fundedBlue = core.fundedTotal + visionFunded;
   const toFullVision = Math.max(0, target - fundedBlue);
 
   document.getElementById("vision-label").textContent = `Core ops ${fmt(s.mvpCap)}`;
   document.getElementById("target-label").textContent = `Target ${fmt(target)}`;
 
   const coreGap = core.remainingGap;
-  const visionGap = Math.max(0, target - s.mvpCap - registryFunded);
+  const visionGap = Math.max(0, visionRoom - visionFunded);
   const fundedPct = (fundedBlue / target) * 100;
   const coreGapPct = (coreGap / target) * 100;
   const visionGapPct = (visionGap / target) * 100;
@@ -1220,7 +1233,7 @@ function renderProgress() {
     <div class="progress-seg vision-unfunded" style="width:${visionGapPct}%" title="Unfunded full vision"></div>
   `;
 
-  document.getElementById("vision-total-value").textContent = fmt(core.fundedTotal + registryFunded);
+  document.getElementById("vision-total-value").textContent = fmt(fundedBlue);
   document.getElementById("registry-funded-value").textContent = fmt(registryFunded);
   document.getElementById("to-vision-value").textContent = fmt(toFullVision);
 }
