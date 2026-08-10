@@ -137,6 +137,7 @@
           { id: "build", label: "Fund The Festival", href: "/fund-the-festival/" },
           { id: "popups", label: "Fund The Popups", href: "/fund-the-popups/" },
           { id: "logo-design", label: "Logo Design", href: "/logo-design/" },
+          { id: "rfp", label: "Vendor RFPs", href: "/rfp/" },
         ],
       },
       {
