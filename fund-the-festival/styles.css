@@ -438,7 +438,7 @@ select {
 
 .progress-footnote {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr;
   gap: 8px;
   margin-top: 8px;
 }
@@ -452,10 +452,6 @@ select {
 
 .progress-metric--start {
   text-align: left;
-}
-
-.progress-metric--center {
-  text-align: center;
 }
 
 .progress-metric--end {

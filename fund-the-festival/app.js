@@ -874,10 +874,6 @@ function renderPageChrome() {
   setText("core-progress-title", labels.coreTitle);
   setText("progress-title", labels.visionTitle);
   setText("core-funded-metric-label", labels.coreFundedLabel);
-  setText("core-sponsored-metric-label", labels.coreSponsoredLabel);
-  setText("core-needed-metric-label", labels.coreNeededLabel);
-  setText("registry-funded-metric-label", labels.visionRegistryLabel);
-  setText("vision-needed-metric-label", labels.visionNeededLabel);
 }
 
 function renderSectionHints() {
@@ -1049,15 +1045,18 @@ function coreFundingState() {
 
     return {
       mvpCap: baselineCap,
+      rawCash: 0,
       cashOffset: 0,
+      cashOverage: 0,
       sponsorGap: baselineCap,
       sponsorFill,
       coreSurplus,
       remainingGap,
       fundedTotal,
+      runningTotal: fundedTotal,
       cashPct: 0,
       sponsorPct: (sponsorFill / baselineCap) * 100,
-      fundedPct: (fundedTotal / baselineCap) * 100,
+      fundedPct: Math.min(100, (fundedTotal / baselineCap) * 100),
       cashOpsOnly: false,
     };
   }
@@ -1068,6 +1067,8 @@ function coreFundingState() {
 
   const rawCash = state.data.scenario.vendorRevenue ?? 0;
   const cashOffset = Math.min(mvpCap, rawCash);
+  /** Earned cash above MVP — still real dollars; credit toward full-vision bar. */
+  const cashOverage = Math.max(0, rawCash - mvpCap);
   const sponsorGap = Math.max(0, mvpCap - cashOffset);
   const estimatedCore = sumEstimatedAssigned(["core"]);
   const coreContrib =
@@ -1075,19 +1076,25 @@ function coreFundingState() {
   const sponsorFill = Math.min(coreContrib, sponsorGap);
   const coreSurplus = coreContrib - sponsorFill;
   const remainingGap = Math.max(0, sponsorGap - sponsorFill);
+  /** Toward MVP only (cash clamped) — bar / vision core segment. */
   const fundedTotal = cashOffset + sponsorFill;
+  /** Core panel running total — earned cash uncapped + sponsor fill into the gap. */
+  const runningTotal = rawCash + sponsorFill;
 
   return {
     mvpCap,
+    rawCash,
     cashOffset,
+    cashOverage,
     sponsorGap,
     sponsorFill,
     coreSurplus,
     remainingGap,
     fundedTotal,
+    runningTotal,
     cashPct: (cashOffset / mvpCap) * 100,
     sponsorPct: (sponsorFill / mvpCap) * 100,
-    fundedPct: (fundedTotal / mvpCap) * 100,
+    fundedPct: Math.min(100, (fundedTotal / mvpCap) * 100),
     cashOpsOnly: sponsorGap === 0,
   };
 }
@@ -1140,22 +1147,22 @@ function openRevenueModal() {
 function renderCoreProgress() {
   const core = coreFundingState();
   const labelEl = document.getElementById("core-label");
-  const targetEl = document.getElementById("core-target-label");
+  const neededLabelEl = document.getElementById("core-needed-label");
   const barEl = document.getElementById("core-progress-bar");
   const fundedEl = document.getElementById("core-funded-value");
-  const sponsoredEl = document.getElementById("core-sponsored-value");
-  const neededEl = document.getElementById("core-needed-value");
-  if (!core || !labelEl || !targetEl || !barEl || !fundedEl || !sponsoredEl || !neededEl) return;
+  const targetEl = document.getElementById("core-target-value");
+  if (!core || !labelEl || !neededLabelEl || !barEl || !fundedEl || !targetEl) return;
 
   const pct = Math.min(100, Math.round(core.fundedPct));
 
   if (isPopupsPage()) {
     labelEl.textContent = `${progressLabel("coreFundedLabel", "Baseline funded")} ${fmt(core.sponsorFill)}`;
-    targetEl.textContent = `Target ${fmt(core.mvpCap)}`;
   } else {
-    labelEl.textContent = `Est. revenue ${fmt(core.cashOffset)}`;
-    targetEl.textContent = `Target ${fmt(core.mvpCap)}`;
+    labelEl.textContent = `Est. pre-sponsor revenue ${fmt(core.rawCash)}`;
   }
+  neededLabelEl.textContent =
+    core.remainingGap === 0 ? "✓ Target met" : `${fmt(core.remainingGap)} to go`;
+  neededLabelEl.classList.toggle("progress-metric-value--closed", core.remainingGap === 0);
 
   barEl.setAttribute("aria-valuenow", String(pct));
   barEl.setAttribute("aria-valuemin", "0");
@@ -1164,10 +1171,8 @@ function renderCoreProgress() {
     <div class="progress-seg funded" style="width:${core.fundedPct}%" title="Core funded"></div>
   `;
 
-  fundedEl.textContent = fmt(core.fundedTotal);
-  sponsoredEl.textContent = fmt(core.sponsorFill);
-  neededEl.textContent = core.remainingGap === 0 ? "✓" : fmt(core.remainingGap);
-  neededEl.classList.toggle("progress-metric-value--closed", core.remainingGap === 0);
+  fundedEl.textContent = fmt(core.runningTotal);
+  targetEl.textContent = fmt(core.mvpCap);
 }
 
 function renderProgress() {
@@ -1183,13 +1188,16 @@ function renderProgress() {
     // overflow against the registry/options half rather than dropping it.
     const visionFunded = Math.min(
       visionRoom,
-      registryFunded + optionsFunded + (core?.coreSurplus ?? 0),
+      registryFunded + optionsFunded + (core?.coreSurplus ?? 0) + (core?.cashOverage ?? 0),
     );
     const fundedBlue = (core?.fundedTotal ?? 0) + visionFunded;
     const toFullVision = Math.max(0, target - fundedBlue);
 
     document.getElementById("vision-label").textContent = `${progressLabel("visionBaselineLabel", "Program baseline")} ${fmt(baselineCap)}`;
-    document.getElementById("target-label").textContent = `Target ${fmt(target)}`;
+    const neededLabelEl = document.getElementById("vision-needed-label");
+    neededLabelEl.textContent =
+      toFullVision === 0 ? "✓ Target met" : `${fmt(toFullVision)} to go`;
+    neededLabelEl.classList.toggle("progress-metric-value--closed", toFullVision === 0);
 
     const coreGap = core?.remainingGap ?? 0;
     const visionGap = Math.max(0, visionRoom - visionFunded);
@@ -1204,8 +1212,7 @@ function renderProgress() {
   `;
 
     document.getElementById("vision-total-value").textContent = fmt(fundedBlue);
-    document.getElementById("registry-funded-value").textContent = fmt(registryFunded + optionsFunded);
-    document.getElementById("to-vision-value").textContent = fmt(toFullVision);
+    document.getElementById("vision-target-value").textContent = fmt(target);
     return;
   }
 
@@ -1214,12 +1221,19 @@ function renderProgress() {
   const visionRoom = Math.max(0, target - s.mvpCap);
   // Core gifts past the core gap are still real dollars — they displace the cash ops that
   // would have paid that line, so the overflow is credited against the registry half.
-  const visionFunded = Math.min(visionRoom, registryFunded + core.coreSurplus);
+  // Same for earned cash above MVP (booths/parking/carnival overage).
+  const visionFunded = Math.min(
+    visionRoom,
+    registryFunded + core.coreSurplus + core.cashOverage,
+  );
   const fundedBlue = core.fundedTotal + visionFunded;
   const toFullVision = Math.max(0, target - fundedBlue);
 
   document.getElementById("vision-label").textContent = `Core ops ${fmt(s.mvpCap)}`;
-  document.getElementById("target-label").textContent = `Target ${fmt(target)}`;
+  const neededLabelEl = document.getElementById("vision-needed-label");
+  neededLabelEl.textContent =
+    toFullVision === 0 ? "✓ Target met" : `${fmt(toFullVision)} to go`;
+  neededLabelEl.classList.toggle("progress-metric-value--closed", toFullVision === 0);
 
   const coreGap = core.remainingGap;
   const visionGap = Math.max(0, visionRoom - visionFunded);
@@ -1234,8 +1248,7 @@ function renderProgress() {
   `;
 
   document.getElementById("vision-total-value").textContent = fmt(fundedBlue);
-  document.getElementById("registry-funded-value").textContent = fmt(registryFunded);
-  document.getElementById("to-vision-value").textContent = fmt(toFullVision);
+  document.getElementById("vision-target-value").textContent = fmt(target);
 }
 
 function giftLabel(gift) {
