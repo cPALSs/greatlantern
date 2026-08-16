@@ -836,6 +836,21 @@ body.nav-open {
   margin: 1.5rem 0;
 }
 
+.skills-projects-grid {
+  display: grid;
+  gap: 1rem;
+}
+
+@media (min-width: 720px) {
+  .skills-projects-grid {
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  }
+}
+
+.skills-project-card .cta-row {
+  margin-bottom: 0.35rem;
+}
+
 @media (max-width: 479px) {
   .cta-row {
     flex-direction: column;
@@ -1195,20 +1210,48 @@ body.nav-open {
 }
 
 @media (min-width: 768px) {
-  .lane-section {
+  .lane-section:not(.lane-section--list) {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 1.25rem;
   }
 
-  .lane-header {
+  .lane-section:not(.lane-section--list) .lane-header {
     grid-column: 1 / -1;
   }
 
-  .lane-section .role-card {
+  .lane-section:not(.lane-section--list) .role-card {
     margin: 0;
     height: 100%;
   }
+}
+
+.lane-section--list {
+  display: block;
+}
+
+.lane-section--list .lane-header {
+  grid-column: auto;
+}
+
+.responsibility-list {
+  margin: 0 0 1rem;
+  padding-left: 1.25rem;
+  color: var(--text);
+}
+
+.responsibility-list li {
+  margin: 0 0 0.65rem;
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+.responsibility-list li:last-child {
+  margin-bottom: 0;
+}
+
+.responsibility-list strong {
+  font-weight: 600;
 }
 
 .lane-header h2 {
@@ -1319,6 +1362,73 @@ body.nav-open {
 
 .co-chair-title {
   font-size: 0.95rem;
+  color: var(--muted);
+}
+
+.roster-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.roster-card {
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+  max-width: 42rem;
+}
+
+.roster-photo {
+  flex: 0 0 auto;
+  width: 88px;
+  height: 88px;
+  border-radius: 50%;
+  object-fit: cover;
+  background: var(--border);
+}
+
+.roster-photo--placeholder {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: var(--muted);
+  border: 1px solid var(--border);
+}
+
+.roster-card-text {
+  min-width: 0;
+}
+
+.roster-name-row {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  min-width: 0;
+}
+
+.roster-ig {
+  display: inline-flex;
+  color: var(--muted);
+}
+
+.roster-ig:hover,
+.roster-ig:focus-visible {
+  color: var(--accent);
+}
+
+.roster-ig .social-icon {
+  width: 1.05rem;
+  height: 1.05rem;
+}
+
+.roster-vision {
+  margin: 0.5rem 0 0;
+  font-size: 0.95rem;
+  line-height: 1.5;
   color: var(--muted);
 }
 
@@ -1532,7 +1642,7 @@ body.nav-open {
 .hero-lead {
   font-size: 1.15rem;
   font-weight: 600;
-  margin: 1rem 0 0.75rem;
+  margin: 0 0 0.75rem;
 }
 
 .hero-subhead {
@@ -2048,7 +2158,8 @@ body.nav-open {
   .page-wrap--doc > .hero:has(+ .host-doc-layout) {
     display: grid;
     grid-template-columns: 200px minmax(0, 1fr);
-    gap: 2.5rem;
+    column-gap: 2.5rem;
+    row-gap: 0;
     align-items: end;
     padding-bottom: 0.75rem;
   }

@@ -14,11 +14,25 @@
       .replace(/"/g, "&quot;");
   }
 
+  /** First “Open roles” in already-escaped HTML → link to the roles page. */
+  function linkFirstOpenRoles(html) {
+    return String(html).replace(/Open roles/, '<a href="/team/roles/">Open roles</a>');
+  }
+
   /** Cursor Simple Browser opens a new OS tab per target="_blank"; skip on localhost preview. */
   function externalLinkAttrs(href) {
     if (!href || !href.startsWith("http")) return "";
     const local = /^(localhost|127\.0\.0\.1)$/.test(window.location.hostname);
     return local ? ' rel="noopener"' : ' target="_blank" rel="noopener"';
+  }
+
+  /** Sister EGLNY origin — local preview uses the EGLNY http.server, not production. */
+  function eglnyUrl(pathname) {
+    const host = window.location.hostname;
+    const origin =
+      host === "localhost" || host === "127.0.0.1" ? "http://localhost:8765" : "https://eglny.com";
+    const path = pathname.startsWith("/") ? pathname : `/${pathname}`;
+    return `${origin}${path}`;
   }
 
   function formatProse(text) {
@@ -123,21 +137,33 @@
       .join("");
   }
 
+  function navLinkLabel(item) {
+    return item.navLabel ?? toTitleCase(item.label);
+  }
+
   function getNavPages() {
     return [
-      { id: "home", label: "Home", href: "/" },
-      { id: "about", label: "About", href: "/about/" },
-      { id: "team", label: "Team", href: "/team/" },
+      {
+        id: "about",
+        label: "About",
+        href: "/about/",
+        children: [
+          { id: "blog", label: "Blog", href: "/resources/blog/" },
+          { id: "media", label: "Media", href: "/resources/media/" },
+        ],
+      },
       {
         id: "production",
         label: "Production",
-        href: "/custom-zones/",
+        href: "/production/",
         children: [
-          { id: "host", label: "Custom Zones", href: "/custom-zones/" },
-          { id: "build", label: "Fund The Festival", href: "/fund-the-festival/" },
-          { id: "popups", label: "Fund The Popups", href: "/fund-the-popups/" },
-          { id: "logo-design", label: "Logo Design", href: "/logo-design/" },
-          { id: "rfp", label: "Vendor RFPs", href: "/rfp/" },
+          { id: "team", label: "Team", href: "/team/" },
+          { id: "roles", label: "Open roles", navLabel: "Open roles", href: "/team/roles/" },
+          { id: "volunteer", label: "Volunteering", navLabel: "Volunteering", href: "/production/volunteer/" },
+          { id: "build", label: "Fund The Festival", navLabel: "Fund The Festival", href: "/fund-the-festival/" },
+          { id: "popups", label: "Fund The Popups", navLabel: "Fund The Popups", href: "/fund-the-popups/" },
+          { id: "host", label: "Custom Zones", navLabel: "Custom Zones", href: "/custom-zones/" },
+          { id: "rfp", label: "RFPs", navLabel: "RFPs", href: eglnyUrl("/rfp/") },
         ],
       },
       {
@@ -146,8 +172,6 @@
         href: "/resources/",
         children: [
           { id: "season", label: "Mid-Autumn Season", href: "/resources/season/" },
-          { id: "media", label: "Media", href: "/resources/media/" },
-          { id: "blog", label: "Blog", href: "/resources/blog/" },
         ],
       },
     ];
@@ -162,14 +186,15 @@
           const sublinks = page.children
             .map((child) => {
               const childCurrent = child.id === activePage ? ' aria-current="page"' : "";
-              const external = child.external ? ' target="_blank" rel="noopener"' : "";
-              return `<div class="site-nav-sublink-wrap"><a class="site-nav-sublink" href="${child.href}"${childCurrent}${external}>${escapeHtml(toTitleCase(child.label))}</a></div>`;
+              const extra =
+                child.external || String(child.href).startsWith("http") ? externalLinkAttrs(child.href) : "";
+              return `<div class="site-nav-sublink-wrap"><a class="site-nav-sublink" href="${escapeHtml(child.href)}"${childCurrent}${extra}>${escapeHtml(navLinkLabel(child))}</a></div>`;
             })
             .join("");
-          return `<div class="site-nav-group${childActive ? " is-active" : ""}"><a class="site-nav-parent" href="${page.href}"${parentCurrent}>${escapeHtml(toTitleCase(page.label))}</a><div class="site-nav-submenu">${sublinks}</div></div>`;
+          return `<div class="site-nav-group${childActive ? " is-active" : ""}"><a class="site-nav-parent" href="${page.href}"${parentCurrent}>${escapeHtml(navLinkLabel(page))}</a><div class="site-nav-submenu">${sublinks}</div></div>`;
         }
         const current = page.id === activePage ? ' aria-current="page"' : "";
-        return `<a href="${page.href}"${current}>${escapeHtml(toTitleCase(page.label))}</a>`;
+        return `<a href="${page.href}"${current}>${escapeHtml(navLinkLabel(page))}</a>`;
       })
       .join("");
   }
@@ -269,7 +294,7 @@
   }
 
   function renderFooterNavLinks(pages) {
-    const linkLabel = (page) => escapeHtml(toTitleCase(page.label));
+    const linkLabel = (page) => escapeHtml(navLinkLabel(page));
     const leafItems = [];
     const columns = [];
 
@@ -277,8 +302,9 @@
       if (page.children?.length) {
         const items = [`<a href="${page.href}">${linkLabel(page)}</a>`];
         for (const child of page.children) {
-          const external = child.external ? ' target="_blank" rel="noopener"' : "";
-          items.push(`<a href="${child.href}"${external}>${linkLabel(child)}</a>`);
+          const extra =
+            child.external || String(child.href).startsWith("http") ? externalLinkAttrs(child.href) : "";
+          items.push(`<a href="${escapeHtml(child.href)}"${extra}>${linkLabel(child)}</a>`);
         }
         columns.push(`<div class="site-footer-nav-col">${items.join("")}</div>`);
       } else {
@@ -808,6 +834,13 @@
     </div>`;
   }
 
+  function slugifyHeading(text) {
+    return String(text)
+      .toLowerCase()
+      .replace(/[^\p{L}\p{N}]+/gu, "-")
+      .replace(/^-+|-+$/g, "");
+  }
+
   function initPageToc() {
     return window.DocScroll.init();
   }
@@ -1056,7 +1089,7 @@
 
   function renderSeasonPage(season, seasonData) {
     const events = seasonData?.events ?? [];
-    const seasonTitle = season?.title ?? "Mid-Autumn Festival Season";
+    const seasonTitle = season?.title ?? "Mid-Autumn Season";
     const opportunityById = Object.fromEntries(
       (season?.opportunityLines ?? [])
         .filter((row) => row?.eventId && row?.label)
@@ -1083,22 +1116,29 @@
 
     return `
       <section class="hero">
-        <h1>${escapeHtml(season?.headline ?? "Mid-Autumn Festival Season")}</h1>
+        <h1>${escapeHtml(season?.headline ?? "Mid-Autumn Season")}</h1>
         ${season?.lead ? `<p class="hero-lead">${escapeHtml(season.lead)}</p>` : ""}
       </section>
       ${wrapDocLayout(toc, seasonSection)}`;
   }
 
+  function resolvePublicHref(link) {
+    if (link?.eglny) return eglnyUrl(link.href);
+    return link?.href ?? "";
+  }
+
   function renderResourcesPage(resources) {
     const links = resources?.links ?? [];
     const cards = links
-      .map(
-        (link) => `
-      <a class="resource-card" href="${escapeHtml(link.href)}">
+      .map((link) => {
+        const href = resolvePublicHref(link);
+        const extra = link.eglny || link.external ? externalLinkAttrs(href) : "";
+        return `
+      <a class="resource-card" href="${escapeHtml(href)}"${extra}>
         <h2>${escapeHtml(link.title)}</h2>
         ${link.body ? `<p>${escapeHtml(link.body)}</p>` : ""}
-      </a>`,
-      )
+      </a>`;
+      })
       .join("");
 
     return `
@@ -1107,6 +1147,45 @@
         ${resources?.lead ? `<p class="hero-lead">${escapeHtml(resources.lead)}</p>` : ""}
       </section>
       <div class="resource-card-grid">${cards}</div>`;
+  }
+
+  function renderProductionPage(production) {
+    return renderResourcesPage({
+      headline: production?.headline ?? "Production",
+      lead: production?.lead,
+      links: production?.links,
+    });
+  }
+
+  function renderVolunteerPage(site) {
+    const block = site.teamPage?.skillsProjects;
+    const skillsTitle = block?.sectionTitle ?? "Skills projects";
+    const projects = block?.projects ?? [];
+    const ctaClass = projects.length === 1 ? "btn btn-primary" : "btn btn-secondary";
+    const skillsHtml = `
+          <section class="host-doc-section" id="skills-projects" data-doc-section>
+            <h2>${escapeHtml(skillsTitle)}</h2>
+            ${block?.intro ? `<p>${escapeHtml(block.intro)}</p>` : ""}
+            <div class="skills-projects-grid">${projects
+              .map((p) => {
+                const href = p.href ?? p.idealistUrl;
+                const extra = href && String(href).startsWith("http") ? externalLinkAttrs(href) : "";
+                const cta = href
+                  ? `<p class="cta-row"><a class="${ctaClass}" href="${escapeHtml(href)}"${extra}>${escapeHtml(p.ctaLabel ?? p.idealistCtaLabel ?? "Learn more")}</a></p>`
+                  : "";
+                return `
+            <article class="role-card skills-project-card" id="${escapeHtml(p.id)}">
+              <h3>${escapeHtml(p.title)}</h3>
+              ${p.blurb ? `<p>${escapeHtml(p.blurb)}</p>` : ""}
+              ${p.commitment ? `<p class="muted"><strong>Commitment:</strong> ${escapeHtml(p.commitment)}</p>` : ""}
+              ${cta}
+              ${p.note ? `<p class="muted">${escapeHtml(p.note)}</p>` : ""}
+            </article>`;
+              })
+              .join("")}</div>
+          </section>`;
+    const toc = [{ id: "skills-projects", label: skillsTitle }];
+    return wrapDocLayout(toc, skillsHtml);
   }
 
   function renderBriefBullets(bullets) {
@@ -1217,11 +1296,13 @@
     return match ? match[1].trim() : "";
   }
 
-  function renderRoleCard(role) {
+  function renderRoleCard(role, cardFields) {
+    const fields = cardFields ?? ["test", "ship"];
+    const show = (name) => fields.includes(name);
     const title = role.emoji ? `${role.emoji} ${role.title}` : role.title;
     const phase2 = role.phase2 ? " phase2" : "";
 
-    const test = role.test ? `<p class="role-test">${escapeHtml(role.test)}</p>` : "";
+    const test = show("test") && role.test ? `<p class="role-test">${escapeHtml(role.test)}</p>` : "";
 
     const directorName = roleDirectorName(role);
     const director = directorName
@@ -1230,27 +1311,49 @@
     const filled = directorName ? " role-card--filled" : "";
 
     const deliverable = role.ship ?? role.own;
-    const shipBlock = deliverable
-      ? `<div class="role-field">
+    const shipBlock =
+      show("ship") && deliverable
+        ? `<div class="role-field">
         <p class="role-field-label">You'd ship</p>
         <p class="role-field-text">${escapeHtml(deliverable)}</p>
       </div>`
-      : "";
-
-    const fit = role.fit
-      ? `<div class="role-field">
-        <p class="role-field-label">Good fit if you</p>
-        <p class="role-field-text">${escapeHtml(role.fit)}</p>
-      </div>`
-      : "";
+        : "";
 
     return `<article class="role-card${phase2}${filled}">
       <h3>${escapeHtml(title)}</h3>
       ${director}
       ${test}
       ${shipBlock}
-      ${fit}
     </article>`;
+  }
+
+  function renderResponsibilityList(roles) {
+    const items = (roles ?? [])
+      .map((role) => {
+        const detail = role.own ?? role.ship ?? "";
+        return `<li><strong>${escapeHtml(role.title)}</strong>${
+          detail ? ` — ${escapeHtml(detail)}` : ""
+        }</li>`;
+      })
+      .join("");
+    return `<ul class="responsibility-list">${items}</ul>`;
+  }
+
+  function renderLaneSection(lane) {
+    const body =
+      lane.layout === "responsibility-list"
+        ? renderResponsibilityList(lane.roles)
+        : (lane.roles ?? []).map((role) => renderRoleCard(role, lane.cardFields)).join("");
+    const layoutClass =
+      lane.layout === "responsibility-list" ? " lane-section--list" : "";
+    return `
+          <section class="host-doc-section lane-section${layoutClass}" id="${escapeHtml(lane.id)}" data-doc-section>
+            <div class="lane-header">
+              <h2>${escapeHtml(lane.title)}</h2>
+              <p><strong>${escapeHtml(lane.subtitle)}</strong>${lane.intro ? " — " + escapeHtml(lane.intro) : ""}</p>
+            </div>
+            ${body}
+          </section>`;
   }
 
   function renderApplyBlock(site) {
@@ -1290,11 +1393,7 @@
 
   function setPageTitle(site, pageTitle) {
     const suffix = site.meta?.titleSuffix ?? "Great Lantern Festival";
-    if (pageTitle) {
-      document.title = `${toTitleCase(pageTitle)} — ${suffix}`;
-      return;
-    }
-    document.title = site.meta?.homeTitle ?? site.meta?.siteName ?? suffix;
+    document.title = pageTitle ? `${pageTitle} — ${suffix}` : site.meta?.homeTitle ?? site.meta?.siteName ?? suffix;
   }
 
   function eventMetaLine1(event) {
@@ -1347,68 +1446,80 @@
       ${wrapDocLayout(toc, main)}`;
   }
 
-  function renderTeamPage(site) {
-    const intro = site.directorIntro;
-    const meetings = site.productionMeetings;
-    const teamPage = site.teamPage ?? {};
-    const contactEmail = site.apply?.email ?? "contact@greatlantern.com";
-    const toc = [
-      ...(meetings ? [{ id: "production-meetings", label: meetings.title ?? "Production meetings" }] : []),
-      { id: "intro", label: "Lanes & committees" },
-      ...(site.lanes ?? []).map((lane) => ({ id: lane.id, label: lane.title })),
-      { id: "phase2", label: site.phase2?.title ?? "Phase 2" },
-      { id: "apply", label: "Share interest" },
-      { id: "faq", label: "FAQ" },
-    ];
+  function rosterInitials(name) {
+    return String(name ?? "")
+      .split(/\s+/)
+      .filter(Boolean)
+      .slice(0, 2)
+      .map((word) => word.charAt(0))
+      .join("")
+      .toUpperCase();
+  }
 
-    const meetingsHtml = meetings
-      ? `
-      <section class="host-doc-section content-section" id="production-meetings" data-doc-section>
-        <h2>${escapeHtml(meetings.title ?? "Production meetings")}</h2>
-        ${meetings.intro ? `<p>${escapeHtml(meetings.intro)}</p>` : ""}
-        <ul>
-          <li>${escapeHtml(meetings.zoom).replace(
-            escapeHtml(contactEmail),
-            `<a href="mailto:${escapeHtml(contactEmail)}">${escapeHtml(contactEmail)}</a>`,
-          )}</li>
-          <li><a href="${escapeHtml(meetings.discordHref)}"${externalLinkAttrs(meetings.discordHref)}>${escapeHtml(meetings.discordLabel ?? "Join the Discord")}</a></li>
-        </ul>
-      </section>`
+  function renderRosterMemberCard(m) {
+    const photo = m.photo;
+    const img = photo
+      ? `<img class="roster-photo" src="${escapeHtml(photo)}" alt="" width="88" height="88" loading="lazy" />`
+      : `<span class="roster-photo roster-photo--placeholder" aria-hidden="true">${escapeHtml(rosterInitials(m.name))}</span>`;
+    const vision =
+      m.vision != null && String(m.vision).trim()
+        ? `<p class="roster-vision">${escapeHtml(m.vision)}</p>`
+        : "";
+    const handle = String(m.instagram ?? "")
+      .trim()
+      .replace(/^@/, "");
+    const ig = handle
+      ? `<a
+            class="roster-ig"
+            href="https://www.instagram.com/${escapeHtml(handle)}/"
+            ${externalLinkAttrs(`https://www.instagram.com/${handle}/`)}
+            aria-label="${escapeHtml(m.name)} on Instagram (@${escapeHtml(handle)})"
+          >${renderSocialIcon("Instagram")}</a>`
       : "";
+    return `
+    <div class="roster-card">
+      ${img}
+      <div class="roster-card-text">
+        <div class="roster-name-row">
+          <p class="co-chair-name">${escapeHtml(m.name)}</p>
+          ${ig}
+        </div>
+        <p class="co-chair-title">${escapeHtml(m.title)}</p>
+        ${vision}
+      </div>
+    </div>`;
+  }
 
-    const introHtml = `
-      <section class="host-doc-section content-section" id="intro" data-doc-section>
-        <h2>Lanes &amp; committees</h2>
-        <h3>${escapeHtml(intro.title)}</h3>
-        ${intro.paragraphs.map((p) => `<p>${escapeHtml(p)}</p>`).join("")}
-        <ul>${intro.notes.map((n) => `<li>${escapeHtml(n)}</li>`).join("")}</ul>
-      </section>`;
-
-    const lanesHtml = (site.lanes ?? [])
-      .map(
-        (lane) => `
-          <section class="host-doc-section lane-section" id="${escapeHtml(lane.id)}" data-doc-section>
-            <div class="lane-header">
-              <h2>${escapeHtml(lane.title)}</h2>
-              <p><strong>${escapeHtml(lane.subtitle)}</strong>${lane.intro ? " — " + escapeHtml(lane.intro) : ""}</p>
-            </div>
-            ${lane.roles.map(renderRoleCard).join("")}
-          </section>`,
-      )
+  function renderRosterSection(site) {
+    const roster = site.teamPage?.roster;
+    if (!roster) return "";
+    const groups = roster.groups ?? [];
+    if (!groups.length) return "";
+    return groups
+      .map((group) => {
+        const id = group.title ? slugifyHeading(group.title) : "roster";
+        const heading = `<h2>${escapeHtml(group.title ?? roster.title ?? "Team")}</h2>`;
+        const cards = (group.members ?? []).map(renderRosterMemberCard).join("");
+        return `
+          <section class="host-doc-section content-section" id="${escapeHtml(id)}" data-doc-section>
+            ${heading}
+            <div class="roster-grid">${cards}</div>
+          </section>`;
+      })
       .join("");
+  }
 
-    const phase2 = site.phase2;
-    const phase2Html = phase2
-      ? `
-          <section class="host-doc-section content-section" id="phase2" data-doc-section>
-            <h2>${escapeHtml(phase2.title)}</h2>
-            <p>${escapeHtml(phase2.intro)}</p>
-            <ul>${phase2.roles.map((r) => `<li>${escapeHtml(r)}</li>`).join("")}</ul>
-            <p><a href="${escapeHtml(phase2.registryHref)}">See the registry →</a></p>
-          </section>`
-      : "";
+  function renderRosterPage(site) {
+    const groups = site.teamPage?.roster?.groups ?? [];
+    const toc = groups.filter((group) => group.title).map((group) => ({
+      id: slugifyHeading(group.title),
+      label: group.title,
+    }));
+    return wrapDocLayout(toc, renderRosterSection(site));
+  }
 
-    const faqHtml = (site.faq ?? [])
+  function renderFaqBlock(site) {
+    return (site.faq ?? [])
       .map(
         (f) => `
           <div class="faq-item">
@@ -1417,29 +1528,69 @@
           </div>`,
       )
       .join("");
+  }
 
-    const main = `
-          ${meetingsHtml}
-          ${introHtml}
-          ${lanesHtml}
-          ${phase2Html}
+  function renderApplySection(site) {
+    const join = site.teamPage?.join ?? {};
+    const apply = site.apply ?? {};
+    const contactEmail = apply.email ?? "contact@greatlantern.com";
+    const mailtoGuest = `mailto:${contactEmail}?subject=${encodeURIComponent("GLF Zoom guest")}`;
+    const discordBtn = join.discordHref
+      ? `<p class="cta-row"><a class="btn btn-tertiary" href="${escapeHtml(join.discordHref)}"${externalLinkAttrs(join.discordHref)}>${escapeHtml(join.discordLabel ?? "Join the Discord")}</a></p>`
+      : "";
+    return `
           <section class="host-doc-section content-section" id="apply" data-doc-section>
-            <h2>Share interest</h2>
-            ${site.apply.intro ? `<p>${escapeHtml(site.apply.intro)}</p>` : ""}
+            <h2>Apply &amp; get involved</h2>
+            <h3>Apply to an open role</h3>
+            <p>${escapeHtml(join.applyNote ?? "Email us — name the role or vision you're interested in.")}</p>
             ${renderApplyBlock(site)}
-            <div class="co-chairs">${renderCoChairs(site)}</div>
+            <h3>Attend Zoom calls</h3>
+            <p>${escapeHtml(join.zoom ?? site.productionMeetings?.zoom ?? "Email us if you'd like to join a guest call.")}</p>
+            <p class="cta-row"><a class="btn btn-tertiary" href="${mailtoGuest}">Email ${escapeHtml(contactEmail)}</a></p>
+            <h3>Join Discord</h3>
+            ${join.discordNote ? `<p>${escapeHtml(join.discordNote)}</p>` : ""}
+            ${discordBtn}
+          </section>`;
+  }
+
+  function renderOpenRolesPage(site) {
+    const intro = site.directorIntro;
+    const lanesHtml = (site.lanes ?? []).map(renderLaneSection).join("");
+    const unlock = site.phase2;
+    const unlockHtml = unlock
+      ? `
+          <section class="host-doc-section content-section" id="sponsor-unlocks" data-doc-section>
+            <h2>${escapeHtml(unlock.title ?? "Sponsor unlocks")}</h2>
+            <p>${escapeHtml(unlock.intro)}</p>
+            <ul>${unlock.roles.map((r) => `<li>${escapeHtml(r)}</li>`).join("")}</ul>
+            <p class="cta-row"><a class="btn btn-tertiary" href="${escapeHtml(unlock.registryHref)}">See the registry</a></p>
+          </section>`
+      : "";
+    const toc = [
+      { id: "what-is-a-director", label: intro?.title ?? "What is a director?" },
+      { id: "apply", label: "Apply & get involved" },
+      { id: "faq", label: "FAQ" },
+      ...(site.lanes ?? []).map((lane) => ({ id: lane.id, label: lane.title })),
+      ...(unlock ? [{ id: "sponsor-unlocks", label: unlock.title ?? "Sponsor unlocks" }] : []),
+    ];
+    const mainHtml = `
+          <section class="host-doc-section content-section" id="what-is-a-director" data-doc-section>
+            <h2>${escapeHtml(intro.title)}</h2>
+            ${intro.paragraphs.map((p) => `<p>${escapeHtml(p)}</p>`).join("")}
+            <ul>${intro.notes.map((n) => `<li>${escapeHtml(n)}</li>`).join("")}</ul>
           </section>
+          ${renderApplySection(site)}
           <section class="host-doc-section content-section" id="faq" data-doc-section>
             <h2>FAQ</h2>
-            ${faqHtml}
-          </section>`;
+            ${renderFaqBlock(site)}
+          </section>
+          ${lanesHtml}
+          ${unlockHtml}`;
+    return wrapDocLayout(toc, mainHtml);
+  }
 
-    return `
-      <section class="hero">
-        <h1>${escapeHtml(teamPage.headline ?? "Team")}</h1>
-        ${teamPage.lead ? `<p class="hero-lead">${escapeHtml(teamPage.lead)}</p>` : ""}
-      </section>
-      ${wrapDocLayout(toc, main)}`;
+  function renderTeamPage(site) {
+    return renderRosterPage(site);
   }
 
   function renderPosterWall(posterWall) {
@@ -1568,16 +1719,29 @@
     });
   }
 
-  function initPageShell(activePage) {
+  function revealPage() {
+    document.documentElement.classList.add("is-hydrated");
+  }
+
+  /**
+   * @param {string} activePage
+   * @param {{ autoReveal?: boolean }} [options] autoReveal for pages with static main (blog, FTF)
+   */
+  function initPageShell(activePage, options = {}) {
     mountNav(activePage);
     initTheme();
     initNavMenu();
-    loadSiteData()
+    const ready = loadSiteData()
       .then((site) => {
         injectNavSocial(site?.footer?.socialLinks);
         mountFooter(site);
+        return site;
       })
-      .catch(() => {});
+      .catch(() => null);
+    if (options.autoReveal) {
+      ready.finally(() => revealPage());
+    }
+    return ready;
   }
 
   window.MafSite = {
@@ -1589,7 +1753,11 @@
     renderAboutPage,
     renderAboutSections,
     renderTeamPage,
+    renderRosterPage,
+    renderOpenRolesPage,
     renderResourcesPage,
+    renderProductionPage,
+    renderVolunteerPage,
     renderSeasonPage,
     renderMediaPage,
     initMediaPlayers,
@@ -1605,6 +1773,8 @@
     renderRoleCard,
     setPageTitle,
     escapeHtml,
+    linkFirstOpenRoles,
     navPrefix,
+    revealPage,
   };
 })();

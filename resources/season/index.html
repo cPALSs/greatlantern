@@ -2,20 +2,44 @@
 <html lang="en" data-theme="auto">
 <head>
   <meta charset="UTF-8" />
+  <style>
+    html { background: #0f1419; color-scheme: dark; }
+    html[data-theme="light"] { background: #ffffff; color-scheme: light; }
+    @media (prefers-color-scheme: light) {
+      html[data-theme="auto"] { background: #ffffff; color-scheme: light; }
+    }
+    html.js:not(.is-hydrated) body { visibility: hidden; }
+  </style>
+  <script>
+    document.documentElement.classList.add("js");
+    setTimeout(function () { document.documentElement.classList.add("is-hydrated"); }, 3000);
+  </script>
+
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-G3HQX0SYHS"></script>
   <script src="../../analytics.js"></script>
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="Mid-Autumn Festival Season in Greater Sacramento — early September through early October community celebrations." />
+  <title>Mid-Autumn Season — Great Lantern Festival</title>
+  <script src="../../clean-urls.js"></script>
+  <script>
+    (function () {
+      try {
+        var t = sessionStorage.getItem("maf-theme");
+        if (t === "light" || t === "dark") document.documentElement.setAttribute("data-theme", t);
+      } catch (_) {}
+    })();
+  </script>
+  <link rel="stylesheet" href="../../site.css" />
+  <meta name="description" content="Mid-Autumn Season in Greater Sacramento — early September through early October community celebrations." />
   <link rel="canonical" href="https://greatlantern.com/resources/season/" />
-  <meta property="og:title" content="Mid-Autumn Festival Season — Great Lantern Festival" />
-  <meta property="og:description" content="Mid-Autumn Festival Season in Greater Sacramento — early September through early October community celebrations." />
+  <meta property="og:title" content="Mid-Autumn Season — Great Lantern Festival" />
+  <meta property="og:description" content="Mid-Autumn Season in Greater Sacramento — early September through early October community celebrations." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://greatlantern.com/resources/season/" />
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Mid-Autumn Festival Season — Great Lantern Festival" />
-  <meta name="twitter:description" content="Mid-Autumn Festival Season in Greater Sacramento — early September through early October community celebrations." />
+  <meta name="twitter:title" content="Mid-Autumn Season — Great Lantern Festival" />
+  <meta name="twitter:description" content="Mid-Autumn Season in Greater Sacramento — early September through early October community celebrations." />
   <meta property="og:image" content="https://greatlantern.com/assets/og-default.jpg?v=1784751735" />
   <meta name="twitter:image" content="https://greatlantern.com/assets/og-default.jpg?v=1784751735" />
   <script type="application/ld+json">
@@ -30,9 +54,9 @@
       "position": 1,
       "item": {
         "@type": "Thing",
-        "name": "Annual Autumn Moon Festival",
-        "url": "https://nguyen.asmdc.org/event/20250920-annual-autumn-moon-festival",
-        "description": "Assemblymember Stephanie Nguyen — Garcia Bend Park — 7654 Pocket Rd (expected), Sacramento — Sat, Sep 12, 2026 6:30–10 PM (estimated Sat before MAF; low confidence)"
+        "name": "Mid-Autumn Community Festival",
+        "url": "https://www.sac-rumc.org/mid-autumn",
+        "description": "Riverside United Methodist Church — 803 Vallejo Way, Sacramento — Sat, Sep 12, 2026 4:00–7:30 PM"
       }
     },
     {
@@ -40,9 +64,9 @@
       "position": 2,
       "item": {
         "@type": "Thing",
-        "name": "Asian Fest + Music Fest",
-        "url": "https://www.acaaps.org/asian-fest/",
-        "description": "CAAPS — 3009 Power Inn Road, Sacramento — Sat, Sep 19, 2026 4–11 PM"
+        "name": "Annual Autumn Moon Festival",
+        "url": "https://nguyen.asmdc.org/event/20250920-annual-autumn-moon-festival",
+        "description": "Assemblymember Stephanie Nguyen — Garcia Bend Park — 7654 Pocket Rd (expected), Sacramento — Sat, Sep 12, 2026 6:30–10 PM (estimated Sat before MAF; low confidence)"
       }
     },
     {
@@ -50,9 +74,9 @@
       "position": 3,
       "item": {
         "@type": "Thing",
-        "name": "13th Annual Mid-Autumn Festival (community)",
-        "url": "https://happeningnext.com/event/mid-autumn-festival-eid3a0crd8ljl",
-        "description": "Riverside United Methodist Church — 803 Vallejo Way (expected), Sacramento — Sat, Sep 19, 2026 5-8:30 PM (estimated Sat before MAF; low confidence)"
+        "name": "Asian Fest + Music Fest",
+        "url": "https://www.acaaps.org/asian-fest/",
+        "description": "CAAPS — 3009 Power Inn Road, Sacramento — Sat, Sep 19, 2026 4–11 PM"
       }
     },
     {
@@ -119,33 +143,24 @@
 }
   </script>
 
-  <title>Mid-Autumn Festival Season — Great Lantern Festival</title>
-  <script src="../../clean-urls.js"></script>
-  <script>
-    (function () {
-      try {
-        var t = sessionStorage.getItem("maf-theme");
-        if (t === "light" || t === "dark") document.documentElement.setAttribute("data-theme", t);
-      } catch (_) {}
-    })();
-  </script>
-  <link rel="stylesheet" href="../../site.css" />
-</head>
+  </head>
 <body>
   <div id="site-nav"></div>
   <main class="page-wrap page-wrap--doc" id="main">
     <div id="seo-prerender" class="seo-prerender">
       <section class="hero">
-        <h1>Mid-Autumn Festival Season</h1>
-        <p>Celebrate Mid-Autumn Festival Season in Greater Sacramento from early September through early October!</p>
+        <h1>Mid-Autumn Season</h1>
+        <p>Celebrate Mid-Autumn Season in Greater Sacramento from early September through early October!</p>
         <p>Greater Sacramento's Mid-Autumn and Moon Festival calendar — community celebrations across the region. Great Lantern Festival is not hosting its own Elk Grove weekend in 2026.</p>
+        <p>Dates marked estimated or tentative may change — check organizer listings before you go.</p>
+        <p>Know a Mid-Autumn event we missed? Email contact@greatlantern.com.</p>
       </section>
       <section>
         <h2>Season events</h2>
         <ul>
+          <li><strong>Mid-Autumn Community Festival</strong> — Sat, Sep 12, 2026 4:00–7:30 PM</li>
           <li><strong>Annual Autumn Moon Festival</strong> — Sat, Sep 12, 2026 6:30–10 PM (estimated Sat before MAF; low confidence)</li>
           <li><strong>Asian Fest + Music Fest</strong> — Sat, Sep 19, 2026 4–11 PM</li>
-          <li><strong>13th Annual Mid-Autumn Festival (community)</strong> — Sat, Sep 19, 2026 5-8:30 PM (estimated Sat before MAF; low confidence)</li>
           <li><strong>Harvest Moon Festival</strong> — Sun, Sep 20, 2026 10 AM-3 PM (estimated Sun before MAF; low confidence)</li>
           <li><strong>Mid-Autumn Festival</strong> — Sun, Sep 20, 2026 2:00–8:30 PM</li>
           <li><strong>APIDA Night Lights — Illuminating the Hive</strong> — Mon, Sep 21, 2026 5-9 PM</li>
@@ -170,16 +185,19 @@
         initPageToc,
         setPageTitle,
         escapeHtml,
+        revealPage,
       } = window.MafSite;
       initPageShell("season");
       try {
         const [site, seasonData] = await Promise.all([loadSiteData(), loadSeasonEvents()]);
-        setPageTitle(site, "Mid-Autumn Festival Season");
+        setPageTitle(site, "Mid-Autumn Season");
         document.getElementById("main").innerHTML = renderSeasonPage(site.season, seasonData);
         initPageToc();
         mountFooter(site);
+        if (typeof revealPage === "function") revealPage();
       } catch (err) {
         document.getElementById("main").innerHTML = `<p class="error-panel">${escapeHtml(err.message)}</p>`;
+        if (typeof revealPage === "function") revealPage();
       }
     })();
   </script>

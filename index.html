@@ -2,11 +2,38 @@
 <html lang="en" data-theme="auto">
 <head>
   <meta charset="UTF-8" />
+  <style>
+    html { background: #0f1419; color-scheme: dark; }
+    html[data-theme="light"] { background: #ffffff; color-scheme: light; }
+    @media (prefers-color-scheme: light) {
+      html[data-theme="auto"] { background: #ffffff; color-scheme: light; }
+    }
+    html.js:not(.is-hydrated) body { visibility: hidden; }
+  </style>
+  <script>
+    document.documentElement.classList.add("js");
+    setTimeout(function () { document.documentElement.classList.add("is-hydrated"); }, 3000);
+  </script>
+
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-G3HQX0SYHS"></script>
   <script src="analytics.js"></script>
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Great Lantern Festival — Not hosting in 2026</title>
+  <script src="clean-urls.js"></script>
+  <script>
+    (function () {
+      try {
+        var t = sessionStorage.getItem("maf-theme");
+        if (t === "light" || t === "dark") document.documentElement.setAttribute("data-theme", t);
+      } catch (_) {}
+    })();
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="site.css" />
   <meta name="description" content="Great Lantern Festival will not be hosted in 2026. Share interest via contact@greatlantern.com for future team roles and sister Mid-Autumn events such as APIDA Night Lights." />
   <link rel="canonical" href="https://greatlantern.com/" />
   <meta property="og:title" content="Great Lantern Festival — Not hosting in 2026" />
@@ -70,21 +97,7 @@
 }
   </script>
 
-  <title>Great Lantern Festival — Not hosting in 2026</title>
-  <script src="clean-urls.js"></script>
-  <script>
-    (function () {
-      try {
-        var t = sessionStorage.getItem("maf-theme");
-        if (t === "light" || t === "dark") document.documentElement.setAttribute("data-theme", t);
-      } catch (_) {}
-    })();
-  </script>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="site.css" />
-</head>
+  </head>
 <body class="page-home">
   <div id="site-nav"></div>
   <main class="page-wrap" id="main">
@@ -98,7 +111,7 @@
       <section>
         <h2>Not hosting in 2026</h2>
         <p>We will not be hosting Great Lantern Festival at Derr-Okamoto Park this year.</p>
-        <p><a href="mailto:contact@greatlantern.com?subject=GLF%20team%20%26%20season%20interest">Email interest</a> · <a href="/resources/season/">Season calendar</a> · <a href="/fund-the-popups/">Fund The Popups</a></p>
+        <p><a href="mailto:contact@greatlantern.com?subject=GLF%20team%20%26%20season%20interest">Email interest</a> · <a href="/fund-the-popups/">Fund The Popups</a></p>
       </section>
     </div>
   </main>
@@ -107,7 +120,7 @@
   <script src="site.js"></script>
   <script>
     (async function () {
-      const { initPageShell, loadSiteData, mountFooter, renderEventSummary, setPageTitle, escapeHtml } = window.MafSite;
+      const { initPageShell, loadSiteData, mountFooter, renderEventSummary, setPageTitle, escapeHtml, revealPage } = window.MafSite;
       initPageShell("home");
       try {
         const site = await loadSiteData();
@@ -156,7 +169,7 @@
           </div>
           <div class="home-cta-columns">
             <section class="content-section home-cta-column home-fund-cta">
-              <h2>Mid-Autumn Festival Season</h2>
+              <h2>Mid-Autumn Season</h2>
               <p>Celebrate Mid-Autumn across Greater Sacramento — including sister events such as Sac State APIDA Night Lights — while we pause our own Derr-Okamoto weekend.</p>
               <div class="cta-row">
                 <a class="btn btn-secondary" href="/resources/season/">Season calendar</a>
@@ -170,7 +183,9 @@
               </div>
             </section>
           </div>
-          <div class="home-cta-columns">
+          ${
+            site.logoDesign?.homepageCta || site.hostActivations?.homepageCta
+              ? `<div class="home-cta-columns">
             <div class="home-cta-column home-cta-stack">
               ${site.logoDesign?.homepageCta ? (() => {
                 const lc = site.logoDesign.homepageCta;
@@ -195,11 +210,15 @@
               </div>
             </section>`;
             })() : ""}
-          </div>
+          </div>`
+              : ""
+          }
         `;
         mountFooter(site);
+        if (typeof revealPage === "function") revealPage();
       } catch (err) {
         document.getElementById("main").innerHTML = `<p class="error-panel">${escapeHtml(err.message)}</p>`;
+        if (typeof revealPage === "function") revealPage();
       }
     })();
   </script>

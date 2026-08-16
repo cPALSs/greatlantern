@@ -17,11 +17,11 @@
 
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-G3HQX0SYHS"></script>
-  <script src="../analytics.js"></script>
+  <script src="../../analytics.js"></script>
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Team — Great Lantern Festival</title>
-  <script src="../clean-urls.js"></script>
+  <title>Volunteering — Great Lantern Festival</title>
+  <script src="../../clean-urls.js"></script>
   <script>
     (function () {
       try {
@@ -30,16 +30,16 @@
       } catch (_) {}
     })();
   </script>
-  <link rel="stylesheet" href="../site.css" />
-  <meta name="description" content="Meet the Steering Committee for Great Lantern Festival — Bao Thien Ngo (cPALSs) and Thuy Pham (VACOS)." />
-  <link rel="canonical" href="https://greatlantern.com/team/" />
-  <meta property="og:title" content="Team — Great Lantern Festival" />
-  <meta property="og:description" content="Meet the Steering Committee for Great Lantern Festival — Bao Thien Ngo (cPALSs) and Thuy Pham (VACOS)." />
+  <link rel="stylesheet" href="../../site.css" />
+  <meta name="description" content="Volunteer skills projects for Great Lantern Festival — Logo Design is the open project while the festival is paused for 2026." />
+  <link rel="canonical" href="https://greatlantern.com/production/volunteer/" />
+  <meta property="og:title" content="Volunteering — Great Lantern Festival" />
+  <meta property="og:description" content="Volunteer skills projects for Great Lantern Festival — Logo Design is the open project while the festival is paused for 2026." />
   <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://greatlantern.com/team/" />
+  <meta property="og:url" content="https://greatlantern.com/production/volunteer/" />
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Team — Great Lantern Festival" />
-  <meta name="twitter:description" content="Meet the Steering Committee for Great Lantern Festival — Bao Thien Ngo (cPALSs) and Thuy Pham (VACOS)." />
+  <meta name="twitter:title" content="Volunteering — Great Lantern Festival" />
+  <meta name="twitter:description" content="Volunteer skills projects for Great Lantern Festival — Logo Design is the open project while the festival is paused for 2026." />
   <meta property="og:image" content="https://greatlantern.com/assets/og-default.jpg?v=1784751735" />
   <meta name="twitter:image" content="https://greatlantern.com/assets/og-default.jpg?v=1784751735" />
 
@@ -49,43 +49,43 @@
   <main class="page-wrap page-wrap--doc" id="main">
     <div id="seo-prerender" class="seo-prerender">
       <section class="hero">
-        <h1>Team</h1>
-        <p>Steering Committee for Great Lantern Festival. We're not hosting a Derr-Okamoto weekend in 2026 — we're still gathering the people who will produce when we return, and who can help sister Mid-Autumn events now.</p>
+        <h1>Volunteering</h1>
+        <p>We're not hosting Great Lantern Festival in 2026. The open skills project right now is a handmade logo system — read the brief and email a proposal. For director lanes, go to <a href="/team/roles/">Open roles</a>.</p>
       </section>
-      <section><h2>Steering Committee</h2><p>Bao Thien Ngo, Thuy Pham</p></section>
+      <section>
+        <h2>Skills projects</h2>
+        <h3>Logo Design</h3>
+        <p>We're commissioning a handmade logo system for Great Lantern Festival — modular branding rooted in Little Saigon Sacramento and Tết Trung Thu. Artists: read the brief and email us with questions or a proposal.</p>
+      </section>
     </div>
   </main>
   <div id="site-footer"></div>
-  <script src="../doc-scroll.js"></script>
-  <script src="../site.js"></script>
+  <script src="../../doc-scroll.js"></script>
+  <script src="../../site.js"></script>
   <script>
     (async function () {
       const {
         initPageShell,
         loadSiteData,
         mountFooter,
-        renderRosterPage,
+        renderVolunteerPage,
         initPageToc,
         setPageTitle,
         escapeHtml,
+        linkFirstOpenRoles,
         revealPage,
       } = window.MafSite;
-      initPageShell("team");
+      initPageShell("volunteer");
       try {
         const site = await loadSiteData();
-        setPageTitle(site, "Team");
-        const rosterPage = site.teamPage?.rosterPage ?? {};
-        const roster = site.teamPage?.roster ?? {};
+        const block = site.teamPage?.skillsProjects;
+        setPageTitle(site, block?.headline ?? block?.title ?? "Volunteering");
         document.getElementById("main").innerHTML = `
           <section class="hero">
-            <h1>${escapeHtml(rosterPage.headline ?? roster.title ?? "Team")}</h1>
-            ${
-              rosterPage.lead || roster.intro
-                ? `<p class="hero-lead">${escapeHtml(rosterPage.lead ?? roster.intro)}</p>`
-                : ""
-            }
+            <h1>${escapeHtml(block?.headline ?? block?.title ?? "Volunteering")}</h1>
+            ${block?.lead ? `<p class="hero-lead">${linkFirstOpenRoles(escapeHtml(block.lead))}</p>` : ""}
           </section>
-          ${renderRosterPage(site)}
+          ${renderVolunteerPage(site)}
         `;
         initPageToc();
         mountFooter(site);

@@ -2,23 +2,24 @@
 <html lang="en" data-theme="auto">
 <head>
   <meta charset="UTF-8" />
+  <style>
+    html { background: #0f1419; color-scheme: dark; }
+    html[data-theme="light"] { background: #ffffff; color-scheme: light; }
+    @media (prefers-color-scheme: light) {
+      html[data-theme="auto"] { background: #ffffff; color-scheme: light; }
+    }
+    html.js:not(.is-hydrated) body { visibility: hidden; }
+  </style>
+  <script>
+    document.documentElement.classList.add("js");
+    setTimeout(function () { document.documentElement.classList.add("is-hydrated"); }, 3000);
+  </script>
+
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-G3HQX0SYHS"></script>
   <script src="../analytics.js"></script>
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="Fund portable lantern photo popups across Greater Sacramento's autumn season — backdrops, craft stations, and family portraits at community events." />
-  <link rel="canonical" href="https://greatlantern.com/fund-the-popups/" />
-  <meta property="og:title" content="Fund The Popups — Great Lantern Festival" />
-  <meta property="og:description" content="Fund portable lantern photo popups across Greater Sacramento's autumn season — backdrops, craft stations, and family portraits at community events." />
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://greatlantern.com/fund-the-popups/" />
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Fund The Popups — Great Lantern Festival" />
-  <meta name="twitter:description" content="Fund portable lantern photo popups across Greater Sacramento's autumn season — backdrops, craft stations, and family portraits at community events." />
-  <meta property="og:image" content="https://greatlantern.com/assets/og-default.jpg?v=1784751735" />
-  <meta name="twitter:image" content="https://greatlantern.com/assets/og-default.jpg?v=1784751735" />
-
   <title>Fund The Popups — Great Lantern Festival</title>
   <script src="../clean-urls.js"></script>
   <script>
@@ -35,6 +36,18 @@
   </script>
   <link rel="stylesheet" href="../site.css" />
   <link rel="stylesheet" href="../fund-the-festival/styles.css" />
+  <meta name="description" content="Fund portable lantern photo popups across Greater Sacramento's autumn season — backdrops, craft stations, and family portraits at community events." />
+  <link rel="canonical" href="https://greatlantern.com/fund-the-popups/" />
+  <meta property="og:title" content="Fund The Popups — Great Lantern Festival" />
+  <meta property="og:description" content="Fund portable lantern photo popups across Greater Sacramento's autumn season — backdrops, craft stations, and family portraits at community events." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://greatlantern.com/fund-the-popups/" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Fund The Popups — Great Lantern Festival" />
+  <meta name="twitter:description" content="Fund portable lantern photo popups across Greater Sacramento's autumn season — backdrops, craft stations, and family portraits at community events." />
+  <meta property="og:image" content="https://greatlantern.com/assets/og-default.jpg?v=1784751735" />
+  <meta name="twitter:image" content="https://greatlantern.com/assets/og-default.jpg?v=1784751735" />
+
   <style>
     body { margin: 0; }
     .build-shell .page { max-width: 1100px; margin: 0 auto; padding: 1.5rem 1rem 2rem; }
@@ -229,7 +242,7 @@
   <script src="../doc-scroll.js"></script>
   <script src="../site.js"></script>
   <script>
-    if (window.MafSite) window.MafSite.initPageShell("popups");
+    if (window.MafSite) window.MafSite.initPageShell("popups", { autoReveal: true });
   </script>
   <script src="../fund-the-festival/app.js"></script>
 </body>

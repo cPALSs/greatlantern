@@ -1,7 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta name="description" content="Redirecting to https://greatlantern.com/team/" />
+  <meta charset="UTF-8" />
+  <style>
+    html { background: #0f1419; color-scheme: dark; }
+    html[data-theme="light"] { background: #ffffff; color-scheme: light; }
+    @media (prefers-color-scheme: light) {
+      html[data-theme="auto"] { background: #ffffff; color-scheme: light; }
+    }
+    html.js:not(.is-hydrated) body { visibility: hidden; }
+  </style>
+  <script>
+    document.documentElement.classList.add("js");
+    setTimeout(function () { document.documentElement.classList.add("is-hydrated"); }, 3000);
+  </script>
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-G3HQX0SYHS"></script>
+  <script src="analytics.js"></script>
+
+  <title>Team — Great Lantern Festival</title>
+  <script src="clean-urls.js"></script>
+        <meta name="description" content="Redirecting to https://greatlantern.com/team/" />
   <link rel="canonical" href="https://greatlantern.com/team/" />
   <meta property="og:title" content="Team — Great Lantern Festival" />
   <meta property="og:description" content="Redirecting to https://greatlantern.com/team/" />
@@ -12,14 +32,6 @@
   <meta name="twitter:description" content="Redirecting to https://greatlantern.com/team/" />
   <meta property="og:image" content="https://greatlantern.com/assets/og-default.jpg?v=1784751735" />
   <meta name="twitter:image" content="https://greatlantern.com/assets/og-default.jpg?v=1784751735" />
-
-  <meta charset="UTF-8" />
-  <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-G3HQX0SYHS"></script>
-  <script src="analytics.js"></script>
-
-  <title>Team — Great Lantern Festival</title>
-  <script src="clean-urls.js"></script>
 </head>
 <body>
   <p>Redirecting to <a href="/team/">Team</a>…</p>

@@ -20,7 +20,7 @@
   <script src="../analytics.js"></script>
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>About Great Lantern Festival</title>
+  <title>Production — Great Lantern Festival</title>
   <script src="../clean-urls.js"></script>
   <script>
     (function () {
@@ -31,15 +31,15 @@
     })();
   </script>
   <link rel="stylesheet" href="../site.css" />
-  <meta name="description" content="About Great Lantern Festival — Tết Trung Thu, festival origins, and the autumn 2026 pause at Derr-Okamoto Park." />
-  <link rel="canonical" href="https://greatlantern.com/about/" />
-  <meta property="og:title" content="About Great Lantern Festival" />
-  <meta property="og:description" content="About Great Lantern Festival — Tết Trung Thu, festival origins, and the autumn 2026 pause at Derr-Okamoto Park." />
+  <meta name="description" content="Great Lantern Festival production — team, open roles, volunteering, custom zones, Fund The Festival, Fund The Popups, logo design, and RFPs." />
+  <link rel="canonical" href="https://greatlantern.com/production/" />
+  <meta property="og:title" content="Production — Great Lantern Festival" />
+  <meta property="og:description" content="Great Lantern Festival production — team, open roles, volunteering, custom zones, Fund The Festival, Fund The Popups, logo design, and RFPs." />
   <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://greatlantern.com/about/" />
+  <meta property="og:url" content="https://greatlantern.com/production/" />
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="About Great Lantern Festival" />
-  <meta name="twitter:description" content="About Great Lantern Festival — Tết Trung Thu, festival origins, and the autumn 2026 pause at Derr-Okamoto Park." />
+  <meta name="twitter:title" content="Production — Great Lantern Festival" />
+  <meta name="twitter:description" content="Great Lantern Festival production — team, open roles, volunteering, custom zones, Fund The Festival, Fund The Popups, logo design, and RFPs." />
   <meta property="og:image" content="https://greatlantern.com/assets/og-default.jpg?v=1784751735" />
   <meta name="twitter:image" content="https://greatlantern.com/assets/og-default.jpg?v=1784751735" />
 
@@ -49,10 +49,9 @@
   <main class="page-wrap page-wrap--doc" id="main">
     <div id="seo-prerender" class="seo-prerender">
       <section class="hero">
-        <h1>About Great Lantern Festival</h1>
+        <h1>Production</h1>
+        <p>Team, open roles, volunteering, custom zones, sponsor tools, and open RFPs. Great Lantern Festival is not hosting in 2026; preferred-provider RFPs live on Elk Grove Lunar New Year Tết.</p>
       </section>
-      <section><h2>Tết Trung Thu</h2><p>Mid-Autumn Festival, known as Tết Trung Thu in Vietnamese culture, is a cherished celebration when families gather under the full moon. Children carry lanterns, share mooncakes, and drink tea — a night of reunion, gratitude, and hope.</p></section>
-      
     </div>
   </main>
   <div id="site-footer"></div>
@@ -60,14 +59,13 @@
   <script src="../site.js"></script>
   <script>
     (async function () {
-      const { initPageShell, loadSiteData, mountFooter, renderAboutPage, initPageToc, escapeHtml, revealPage } =
+      const { initPageShell, loadSiteData, mountFooter, renderProductionPage, setPageTitle, escapeHtml, revealPage } =
         window.MafSite;
-      initPageShell("about");
+      initPageShell("production");
       try {
         const site = await loadSiteData();
-        document.title = site.about?.headline ?? "About Great Lantern Festival";
-        document.getElementById("main").innerHTML = renderAboutPage(site.about);
-        initPageToc();
+        setPageTitle(site, "Production");
+        document.getElementById("main").innerHTML = renderProductionPage(site.production);
         mountFooter(site);
         if (typeof revealPage === "function") revealPage();
       } catch (err) {

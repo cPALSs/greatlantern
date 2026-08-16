@@ -1,8 +1,17 @@
 {
-  "generatedAt": "2026-08-11T11:00:23.114Z",
+  "generatedAt": "2026-08-16T07:37:14.353Z",
   "sourceSpreadsheetId": "1Va0oCv09nyW98-JnWL9DuYYTsXG35cxjf_WqBZsySrA",
   "seasonYear": "2026",
   "events": [
+    {
+      "eventId": "riverside-umc-mid-autumn",
+      "dates": "Sat, Sep 12, 2026 4:00–7:30 PM",
+      "name": "Mid-Autumn Community Festival",
+      "host": "Riverside United Methodist Church",
+      "location": "803 Vallejo Way, Sacramento",
+      "href": "https://www.sac-rumc.org/mid-autumn",
+      "certainty": "confirmed"
+    },
     {
       "eventId": "asm-nguyen-autumn-moon",
       "dates": "Sat, Sep 12, 2026 6:30–10 PM (estimated Sat before MAF; low confidence)",
@@ -20,15 +29,6 @@
       "location": "3009 Power Inn Road, Sacramento",
       "href": "https://www.acaaps.org/asian-fest/",
       "certainty": "confirmed"
-    },
-    {
-      "eventId": "riverside-umc-mid-autumn",
-      "dates": "Sat, Sep 19, 2026 5-8:30 PM (estimated Sat before MAF; low confidence)",
-      "name": "13th Annual Mid-Autumn Festival (community)",
-      "host": "Riverside United Methodist Church",
-      "location": "803 Vallejo Way (expected), Sacramento",
-      "href": "https://happeningnext.com/event/mid-autumn-festival-eid3a0crd8ljl",
-      "certainty": "estimated"
     },
     {
       "eventId": "sac-state-harvest-moon",

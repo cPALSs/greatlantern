@@ -6,22 +6,27 @@
 
 **Festival Season Network:** https://festival.cpalss.com · repo [`cPALSs/festival`](https://github.com/cPALSs/festival)
 
-Unified Great Lantern Festival hub — clean URLs, no `.html` in public paths.
+Unified Great Lantern Festival hub — logotype home, **About** (story + media + blog), **Production** (team + open roles + volunteering + tools + RFPs on EGLNY), **Resources** (season). No Home nav item. No Visit hub yet (festival paused 2026; no guest-guide page).
 
 ## Pages
 
 | URL | Source |
 |-----|--------|
-| `/` | `index.html` (redirects `/index.html` → `/`) |
-| `/team/` | `team/index.html` |
-| `/about/` | `about/index.html` |
-| `/resources/` | **Resources** hub — season calendar and blog |
-| `/resources/season/` | **Mid-Autumn Festival Season** calendar |
-| `/resources/blog/` | **Blog** — SEO-safe planning notes (generated from shared markdown) |
-| `/custom-zones/` | **Custom Zones** — hero, prompts, examples, desktop TOC |
-| `/fund-the-festival/` | **Fund The Festival** — interactive sponsor registry |
-| `/fund-the-popups/` | **Fund The Popups** — portable lantern photo activations registry |
-| `/logo-design/` | **Logo Design** — official branding brief + human-artistry audit trail |
+| `/` | `index.html` — home via logotype (no Home nav item) |
+| `/about/` | Festival story (About umbrella) |
+| `/team/` | **Team** — Steering Committee roster — under **Production** |
+| `/team/roles/` | **Open roles** — director lanes and how we organize — under **Production** |
+| `/production/` | **Production** hub — team, open roles, volunteering, tools, RFPs |
+| `/production/volunteer/` | **Volunteering** — skills projects (Logo Design) |
+| `/resources/` | **Resources** hub — season calendar |
+| `/resources/season/` | **Mid-Autumn Season** calendar — under **Resources** |
+| `/resources/media/` | Past season fliers — under **About** |
+| `/resources/blog/` | **Blog** — SEO-safe planning notes (generated from shared markdown) — under **About** |
+| `/custom-zones/` | **Custom Zones** — named corners — under **Production** |
+| `/fund-the-festival/` | **Fund The Festival** — interactive sponsor registry — under **Production** |
+| `/fund-the-popups/` | **Fund The Popups** — portable lantern photo activations — under **Production** |
+| `/logo-design/` | **Logo Design** — branding brief — under **Production** |
+| `/rfp/` | bounce to EGLNY **RFPs** (`eglny.com/rfp/` · local `localhost:8765/rfp/`) |
 
 Legacy redirects (via `clean-urls.js`): `/host.html` → `/custom-zones/`, `/build/` → `/fund-the-festival/`, `/about.html` → `/about/`, `/team.html` → `/team/`.
 
@@ -57,12 +62,19 @@ python3 -m http.server 8765
 ```
 
 - http://localhost:8765/
-- http://localhost:8765/resources/
-- http://localhost:8765/resources/season/
-- http://localhost:8765/resources/blog/
+- http://localhost:8765/about/
+- http://localhost:8765/team/
+- http://localhost:8765/team/roles/
+- http://localhost:8765/production/
+- http://localhost:8765/production/volunteer/
 - http://localhost:8765/custom-zones/
 - http://localhost:8765/fund-the-festival/
+- http://localhost:8765/fund-the-popups/
 - http://localhost:8765/logo-design/
+- http://localhost:8765/resources/
+- http://localhost:8765/resources/season/
+- http://localhost:8765/resources/media/
+- http://localhost:8765/resources/blog/
 
 Refresh season events from the landscape Sheet:
 

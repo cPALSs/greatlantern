@@ -2,6 +2,19 @@
 <html lang="en" data-theme="auto">
 <head>
   <meta charset="UTF-8" />
+  <style>
+    html { background: #0f1419; color-scheme: dark; }
+    html[data-theme="light"] { background: #ffffff; color-scheme: light; }
+    @media (prefers-color-scheme: light) {
+      html[data-theme="auto"] { background: #ffffff; color-scheme: light; }
+    }
+    html.js:not(.is-hydrated) body { visibility: hidden; }
+  </style>
+  <script>
+    document.documentElement.classList.add("js");
+    setTimeout(function () { document.documentElement.classList.add("is-hydrated"); }, 3000);
+  </script>
+
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-S6SFT9M0ME"></script>
   <script src="../../analytics.js"></script>
 
@@ -52,6 +65,7 @@
         initPageToc,
         setPageTitle,
         escapeHtml,
+        revealPage,
       } = window.MafSite;
       initPageShell("media");
       try {
@@ -61,8 +75,10 @@
         initPageToc();
         initMediaPlayers();
         mountFooter(site);
+        if (typeof revealPage === "function") revealPage();
       } catch (err) {
         document.getElementById("main").innerHTML = `<p class="error-panel">${escapeHtml(err.message)}</p>`;
+        if (typeof revealPage === "function") revealPage();
       }
     })();
   </script>
