@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-16T07:37:14.353Z",
+  "generatedAt": "2026-08-18T23:40:13.078Z",
   "sourceSpreadsheetId": "1Va0oCv09nyW98-JnWL9DuYYTsXG35cxjf_WqBZsySrA",
   "seasonYear": "2026",
   "events": [
@@ -50,7 +50,7 @@
     },
     {
       "eventId": "sac-state-maf",
-      "dates": "Mon, Sep 21, 2026 5-9 PM",
+      "dates": "Mon, Sep 21, 2026 6–10 PM",
       "name": "APIDA Night Lights — Illuminating the Hive",
       "host": "Sac State APIDA Center",
       "location": "Acorn Amphitheater (Main Quad), Sac State campus, Sacramento",
