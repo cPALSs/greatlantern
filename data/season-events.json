@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-18T23:40:13.078Z",
+  "generatedAt": "2026-08-19T19:11:08.207Z",
   "sourceSpreadsheetId": "1Va0oCv09nyW98-JnWL9DuYYTsXG35cxjf_WqBZsySrA",
   "seasonYear": "2026",
   "events": [
@@ -11,15 +11,6 @@
       "location": "803 Vallejo Way, Sacramento",
       "href": "https://www.sac-rumc.org/mid-autumn",
       "certainty": "confirmed"
-    },
-    {
-      "eventId": "asm-nguyen-autumn-moon",
-      "dates": "Sat, Sep 12, 2026 6:30–10 PM (estimated Sat before MAF; low confidence)",
-      "name": "Annual Autumn Moon Festival",
-      "host": "Assemblymember Stephanie Nguyen",
-      "location": "Garcia Bend Park — 7654 Pocket Rd (expected), Sacramento",
-      "href": "https://nguyen.asmdc.org/event/20250920-annual-autumn-moon-festival",
-      "certainty": "estimated"
     },
     {
       "eventId": "caaps-lantern",
@@ -75,6 +66,15 @@
       "href": "/",
       "capstone": true,
       "certainty": "cancelled"
+    },
+    {
+      "eventId": "asm-nguyen-autumn-moon",
+      "dates": "Sat, Sep 26, 2026 6:00–10:00 PM",
+      "name": "4th Annual Autumn Moon Movie Night",
+      "host": "Assemblymember Stephanie Nguyen",
+      "location": "Garcia Bend Park — 7654 Pocket Rd, Sacramento",
+      "href": "https://www.instagram.com/p/DcO5ibUj08N/",
+      "certainty": "confirmed"
     },
     {
       "eventId": "sf-supermarket-maf-rancho",
