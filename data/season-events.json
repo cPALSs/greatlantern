@@ -1,6 +1,7 @@
 {
-  "generatedAt": "2026-08-19T19:11:08.207Z",
-  "sourceSpreadsheetId": "1Va0oCv09nyW98-JnWL9DuYYTsXG35cxjf_WqBZsySrA",
+  "generatedAt": "2026-09-04T18:30:56.333Z",
+  "source": "community-graph",
+  "seasonKind": "autumn",
   "seasonYear": "2026",
   "events": [
     {
@@ -20,15 +21,6 @@
       "location": "3009 Power Inn Road, Sacramento",
       "href": "https://www.acaaps.org/asian-fest/",
       "certainty": "confirmed"
-    },
-    {
-      "eventId": "sac-state-harvest-moon",
-      "dates": "Sun, Sep 20, 2026 10 AM-3 PM (estimated Sun before MAF; low confidence)",
-      "name": "Harvest Moon Festival",
-      "host": "JSSCC + CSUS Asian Studies",
-      "location": "Sac State Capistrano Hall + courtyard (expected), Sacramento",
-      "href": "https://jsscc.org/2025-program-and-events/",
-      "certainty": "estimated"
     },
     {
       "eventId": "ca-is-my-home-maf",
@@ -77,12 +69,30 @@
       "certainty": "confirmed"
     },
     {
+      "eventId": "kim-quang-trung-thu",
+      "dates": "Sat, Sep 26, 2026",
+      "name": "Tết Trung Thu",
+      "host": "Kim Quang Temple",
+      "location": "Chùa Kim Quang — 3119 Alta Arden Expy, Sacramento",
+      "href": "https://www.facebook.com/permalink.php?story_fbid=pfbid021tBAHJqwmBdmSwYEJi2Lw3XEVjBu9G7GErehDc8BuWyHQg6NPXkGiZRc1yV4FLkHl&id=61555060748551",
+      "certainty": "confirmed"
+    },
+    {
       "eventId": "sf-supermarket-maf-rancho",
       "dates": "Sat, Oct 3, 2026 – Sun, Oct 4, 2026 (estimated first Oct weekend; low confidence)",
       "name": "SF Supermarket Mid-Autumn Festival",
       "host": "SF Supermarket (Shun Fat)",
       "location": "2738 Sunrise Blvd, Rancho Cordova",
       "href": "https://www.instagram.com/p/DPEo69zER3x/",
+      "certainty": "estimated"
+    },
+    {
+      "eventId": "sac-state-harvest-moon",
+      "dates": "–Thu, Sep 23–24, 2026 (estimated Sun before MAF; low confidence)",
+      "name": "Harvest Moon Festival",
+      "host": "JSSCC + CSUS Asian Studies",
+      "location": "Sac State Capistrano Hall + courtyard, Sacramento",
+      "href": "https://jsscc.org/2025-program-and-events/",
       "certainty": "estimated"
     }
   ]
