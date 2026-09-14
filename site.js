@@ -1138,16 +1138,23 @@
   function renderSeasonalKitchen(kitchen) {
     const home = kitchen.kind === "home";
     const kindLabel = kitchen.kindLabel || (home ? "Home-based" : "Storefront");
-    const mapsHref = kitchen.maps;
-    const address = kitchen.address;
-    const city = kitchen.city;
-    const locationHtml = address
-      ? mapsHref
-        ? `<a class="seasonal-kitchen-address" href="${escapeHtml(mapsHref)}"${externalLinkAttrs(mapsHref)}>${escapeHtml(address)}</a>`
-        : `<span class="seasonal-kitchen-address">${escapeHtml(address)}</span>`
-      : city
-        ? `<span class="seasonal-kitchen-address">${escapeHtml(city)}</span>`
-        : "";
+    const locations = Array.isArray(kitchen.addresses) && kitchen.addresses.length
+      ? kitchen.addresses
+      : kitchen.address
+        ? [{ address: kitchen.address, maps: kitchen.maps }]
+        : kitchen.city
+          ? [{ address: kitchen.city }]
+          : [];
+    const locationHtml = locations
+      .map((loc) => {
+        const line = loc.address || loc;
+        const mapsHref = loc.maps;
+        if (!line) return "";
+        return mapsHref
+          ? `<a class="seasonal-kitchen-address" href="${escapeHtml(mapsHref)}"${externalLinkAttrs(mapsHref)}>${escapeHtml(line)}</a>`
+          : `<span class="seasonal-kitchen-address">${escapeHtml(line)}</span>`;
+      })
+      .join("");
     const links = [];
     if (kitchen.website) {
       links.push(

@@ -3326,6 +3326,10 @@ body.nav-open {
   margin-top: 0.55rem;
 }
 
+.seasonal-kitchen-address + .seasonal-kitchen-address {
+  margin-top: 0.12rem;
+}
+
 .seasonal-kitchen-address,
 .seasonal-kitchen-links a {
   color: var(--accent);

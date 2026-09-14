@@ -20,9 +20,17 @@
         {
           "name": "Pegasus Bakery & Café",
           "style": "Hong Kong–style mooncakes",
-          "note": "Hong Kong–style bakery on Stockton Boulevard. Their listing says goods are baked fresh daily, including mooncakes in season — made here, not boxed import.",
-          "address": "6825 Stockton Blvd #265, Sacramento, CA 95823",
-          "maps": "https://www.google.com/maps/search/?api=1&query=Pegasus+Bakery+%26+Cafe&query_place_id=ChIJuyLJ_G7FmoARGrqes6S89Gs",
+          "note": "Hong Kong–style bakery with two shops — Stockton Boulevard in Sacramento and W Taron Court in Elk Grove. Their listing says goods are baked fresh daily, including mooncakes in season — made here, not boxed import.",
+          "addresses": [
+            {
+              "address": "6825 Stockton Blvd #265, Sacramento, CA 95823",
+              "maps": "https://www.google.com/maps/search/?api=1&query=Pegasus+Bakery+%26+Cafe&query_place_id=ChIJuyLJ_G7FmoARGrqes6S89Gs"
+            },
+            {
+              "address": "2619 W Taron Ct, Ste 150, Elk Grove, CA 95757",
+              "maps": "https://www.google.com/maps/search/?api=1&query=Pegasus+Bakery+%26+Cafe+2619+W+Taron+Ct+Ste+150+Elk+Grove+CA+95757"
+            }
+          ],
           "website": "https://www.facebook.com/PegasusBakeryandCafe",
           "websiteLabel": "Facebook",
           "phone": "(916) 662-7733"
