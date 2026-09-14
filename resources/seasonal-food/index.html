@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="auto">
+<head>
+  <meta charset="UTF-8" />
+  <style>
+    html { background: #0f1419; color-scheme: dark; }
+    html[data-theme="light"] { background: #ffffff; color-scheme: light; }
+    @media (prefers-color-scheme: light) {
+      html[data-theme="auto"] { background: #ffffff; color-scheme: light; }
+    }
+    html.js:not(.is-hydrated) body { visibility: hidden; }
+  </style>
+  <script>
+    document.documentElement.classList.add("js");
+    setTimeout(function () { document.documentElement.classList.add("is-hydrated"); }, 3000);
+  </script>
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-G3HQX0SYHS"></script>
+  <script src="../../analytics.js"></script>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Seasonal food — Great Lantern Festival</title>
+  <script src="../../clean-urls.js"></script>
+  <script>
+    (function () {
+      try {
+        var t = sessionStorage.getItem("maf-theme");
+        if (t === "light" || t === "dark") document.documentElement.setAttribute("data-theme", t);
+      } catch (_) {}
+    })();
+  </script>
+  <link rel="stylesheet" href="../../site.css" />
+  <meta name="description" content="Seasonal food for Mid-Autumn in Greater Sacramento — freshly made local mooncakes from storefront bakeries and a home kitchen, not premade imports." />
+  <link rel="canonical" href="https://greatlantern.com/resources/seasonal-food/" />
+  <meta property="og:title" content="Seasonal food — Great Lantern Festival" />
+  <meta property="og:description" content="Seasonal food for Mid-Autumn in Greater Sacramento — freshly made local mooncakes from storefront bakeries and a home kitchen, not premade imports." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://greatlantern.com/resources/seasonal-food/" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Seasonal food — Great Lantern Festival" />
+  <meta name="twitter:description" content="Seasonal food for Mid-Autumn in Greater Sacramento — freshly made local mooncakes from storefront bakeries and a home kitchen, not premade imports." />
+  <meta property="og:image" content="https://greatlantern.com/assets/og-default.jpg?v=1784751735" />
+  <meta name="twitter:image" content="https://greatlantern.com/assets/og-default.jpg?v=1784751735" />
+
+  </head>
+<body>
+  <div id="site-nav"></div>
+  <main class="page-wrap page-wrap--doc" id="main">
+    <div id="seo-prerender" class="seo-prerender">
+      <section class="hero">
+        <h1>Seasonal food</h1>
+        <p>Mooncakes baked here in Greater Sacramento — not premade imports.</p>
+        <p>Families share mooncakes — 月饼, bánh trung thu — under the harvest moon, at Chinese-forward moon festivals and at Tết Trung Thu. Great Lantern Festival is not hosting its own Elk Grove weekend in 2026; the season still has a table.</p>
+        <p>This page is for freshly made local mooncakes: pastry baked at neighborhood shops and home kitchens, not boxed imports from a warehouse shelf. Two storefront bakeries and one home kitchen are listed below. Seasonal stock sells through — check with the kitchen before you go.</p>
+      </section>
+      <section>
+        <h2>Mooncake (月饼 / bánh trung thu)</h2>
+        <p>The pastry of the season. Look for cakes baked locally this Mid-Autumn — not premade boxed imports.</p>
+        <ul>
+          <li><strong>Pegasus Bakery &amp; Café</strong> (storefront) — Hong Kong–style mooncakes — 6825 Stockton Blvd #265, Sacramento, CA 95823</li>
+          <li><strong>ABC Bakery</strong> (storefront) — Cantonese Chinese mooncakes — 1309 Florin Rd Ste F, Sacramento, CA 95831</li>
+          <li><strong>Đạt Tăng</strong> (home-based) — Vietnamese bánh trung thu — Greater Sacramento</li>
+        </ul>
+      </section>
+    </div>
+  </main>
+  <div id="site-footer"></div>
+  <script src="../../doc-scroll.js"></script>
+  <script src="../../site.js"></script>
+  <script>
+    (async function () {
+      const {
+        initPageShell,
+        loadSiteData,
+        loadSeasonalFood,
+        mountFooter,
+        renderSeasonalFoodPage,
+        initPageToc,
+        setPageTitle,
+        escapeHtml,
+        revealPage,
+      } = window.MafSite;
+      initPageShell("seasonal-food");
+      try {
+        const [site, food] = await Promise.all([loadSiteData(), loadSeasonalFood()]);
+        setPageTitle(site, "Seasonal food");
+        document.getElementById("main").innerHTML = renderSeasonalFoodPage(food);
+        initPageToc();
+        mountFooter(site);
+        if (typeof revealPage === "function") revealPage();
+      } catch (err) {
+        document.getElementById("main").innerHTML = `<p class="error-panel">${escapeHtml(err.message)}</p>`;
+        if (typeof revealPage === "function") revealPage();
+      }
+    })();
+  </script>
+</body>
+</html>

@@ -600,12 +600,17 @@
   },
   "resources": {
     "headline": "Resources",
-    "lead": "Season calendar for Mid-Autumn celebrations across Greater Sacramento.",
+    "lead": "Season calendar and seasonal food for Mid-Autumn in Greater Sacramento.",
     "links": [
       {
         "title": "Mid-Autumn Season",
         "body": "Celebrate Mid-Autumn Season across Greater Sacramento — early September through early October.",
         "href": "/resources/season/"
+      },
+      {
+        "title": "Seasonal food",
+        "body": "Freshly made local mooncakes — storefront bakeries and a home kitchen, not premade imports.",
+        "href": "/resources/seasonal-food/"
       }
     ]
   },
@@ -616,6 +621,9 @@
     "intro": "Greater Sacramento's Mid-Autumn and Moon Festival calendar — community celebrations across the region. Great Lantern Festival is not hosting its own Elk Grove weekend in 2026.",
     "listNote": "Dates marked estimated or tentative may change — check organizer listings before you go.",
     "contactNote": "Know a Mid-Autumn event we missed? Email contact@greatlantern.com.",
+    "foodHref": "/resources/seasonal-food/",
+    "foodLabel": "Seasonal food",
+    "foodNote": "Looking for mooncakes baked in Greater Sacramento?",
     "opportunityLines": [
       {
         "eventId": "caaps-lantern",

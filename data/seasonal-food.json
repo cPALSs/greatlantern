@@ -1,0 +1,54 @@
+{
+  "headline": "Seasonal food",
+  "lead": "Mooncakes baked here in Greater Sacramento — not premade imports.",
+  "intro": [
+    "Families share mooncakes — 月饼, bánh trung thu — under the harvest moon, at Chinese-forward moon festivals and at Tết Trung Thu. Great Lantern Festival is not hosting its own Elk Grove weekend in 2026; the season still has a table.",
+    "This page is for freshly made local mooncakes: pastry baked at neighborhood shops and home kitchens, not boxed imports from a warehouse shelf. Two storefront bakeries and one home kitchen are listed below. Seasonal stock sells through — check with the kitchen before you go."
+  ],
+  "listNote": "Hong Kong–style and Cantonese Chinese mooncakes are not the same bake as Vietnamese bánh trung thu. Storefront bakeries and the home kitchen are marked separately. We list each kitchen for the style it actually makes.",
+  "contactNote": "Know a Greater Sacramento bakery baking mooncakes this season? Email contact@greatlantern.com.",
+  "seasonHref": "/resources/season/",
+  "seasonLabel": "Mid-Autumn Season calendar",
+  "dishes": [
+    {
+      "id": "mooncake",
+      "name": "Mooncake",
+      "nameZh": "月饼",
+      "nameVi": "bánh trung thu",
+      "gloss": "Mid-Autumn pastry",
+      "intro": "The pastry of the season. Look for cakes baked locally this Mid-Autumn — not premade boxed imports.",
+      "kitchens": [
+        {
+          "name": "Pegasus Bakery & Café",
+          "style": "Hong Kong–style mooncakes",
+          "note": "Hong Kong–style bakery on Stockton Boulevard. Their listing says goods are baked fresh daily, including mooncakes in season — made here, not boxed import.",
+          "address": "6825 Stockton Blvd #265, Sacramento, CA 95823",
+          "maps": "https://www.google.com/maps/search/?api=1&query=Pegasus+Bakery+%26+Cafe&query_place_id=ChIJuyLJ_G7FmoARGrqes6S89Gs",
+          "website": "https://www.facebook.com/PegasusBakeryandCafe",
+          "websiteLabel": "Facebook",
+          "phone": "(916) 662-7733"
+        },
+        {
+          "name": "ABC Bakery",
+          "style": "Cantonese Chinese mooncakes",
+          "note": "Cantonese Chinese bakery on Florin Road. A Sacramento shop that bakes dim sum and pastries on site — look here for Chinese-style mooncakes in season, not boxed imports.",
+          "address": "1309 Florin Rd Ste F, Sacramento, CA 95831",
+          "maps": "https://www.google.com/maps/search/?api=1&query=ABC+Bakery+1309+Florin+Rd+Ste+F+Sacramento+CA+95831",
+          "website": "https://abcbakerysac.com/",
+          "websiteLabel": "Website",
+          "phone": "(916) 421-4259"
+        },
+        {
+          "name": "Đạt Tăng",
+          "kind": "home",
+          "kindLabel": "Home-based",
+          "style": "Vietnamese bánh trung thu",
+          "note": "Home kitchen in Greater Sacramento. Bakes Vietnamese bánh trung thu locally — including vegetarian cakes without egg — not boxed import, and not a storefront bakery. Message on Facebook to order.",
+          "city": "Greater Sacramento",
+          "website": "https://www.facebook.com/100001716713897",
+          "websiteLabel": "Facebook"
+        }
+      ]
+    }
+  ]
+}

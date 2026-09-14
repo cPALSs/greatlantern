@@ -172,6 +172,7 @@
         href: "/resources/",
         children: [
           { id: "season", label: "Mid-Autumn Season", href: "/resources/season/" },
+          { id: "seasonal-food", label: "Seasonal food", href: "/resources/seasonal-food/" },
         ],
       },
     ];
@@ -1041,6 +1042,13 @@
     return res.json();
   }
 
+  async function loadSeasonalFood() {
+    const prefix = navPrefix();
+    const res = await fetch(`${prefix}data/seasonal-food.json`, { cache: "no-store" });
+    if (!res.ok) throw new Error(`Could not load seasonal food (${res.status})`);
+    return res.json();
+  }
+
   function seasonEventCertainty(event) {
     const explicit = String(event.certainty || "").toLowerCase().trim();
     if (
@@ -1104,6 +1112,10 @@
     const contactNote = season?.contactNote
       ? `<p class="muted season-contact-note">${escapeHtml(season.contactNote)}</p>`
       : "";
+    const foodNote =
+      season?.foodHref && season?.foodLabel
+        ? `<p class="muted season-food-note">${escapeHtml(season.foodNote ?? "Looking for mooncakes baked in Greater Sacramento?")} <a href="${escapeHtml(season.foodHref)}">${escapeHtml(season.foodLabel)}</a>.</p>`
+        : "";
     const toc = [{ id: "season", label: seasonTitle }];
     const seasonSection = `
       <section class="host-doc-section about-section resources-season" id="season" data-doc-section>
@@ -1111,6 +1123,7 @@
         ${season?.intro ? `<p>${escapeHtml(season.intro)}</p>` : ""}
         ${events.length ? `<ul class="season-event-list">${listItems}</ul>` : `<p class="muted">Season events coming soon.</p>`}
         ${listNote}
+        ${foodNote}
         ${contactNote}
       </section>`;
 
@@ -1120,6 +1133,95 @@
         ${season?.lead ? `<p class="hero-lead">${escapeHtml(season.lead)}</p>` : ""}
       </section>
       ${wrapDocLayout(toc, seasonSection)}`;
+  }
+
+  function renderSeasonalKitchen(kitchen) {
+    const home = kitchen.kind === "home";
+    const kindLabel = kitchen.kindLabel || (home ? "Home-based" : "Storefront");
+    const mapsHref = kitchen.maps;
+    const address = kitchen.address;
+    const city = kitchen.city;
+    const locationHtml = address
+      ? mapsHref
+        ? `<a class="seasonal-kitchen-address" href="${escapeHtml(mapsHref)}"${externalLinkAttrs(mapsHref)}>${escapeHtml(address)}</a>`
+        : `<span class="seasonal-kitchen-address">${escapeHtml(address)}</span>`
+      : city
+        ? `<span class="seasonal-kitchen-address">${escapeHtml(city)}</span>`
+        : "";
+    const links = [];
+    if (kitchen.website) {
+      links.push(
+        `<a href="${escapeHtml(kitchen.website)}"${externalLinkAttrs(kitchen.website)}>${escapeHtml(kitchen.websiteLabel ?? "Website")}</a>`,
+      );
+    }
+    if (kitchen.phone && !home) {
+      const tel = kitchen.phone.replace(/[^\d+]/g, "");
+      links.push(`<a href="tel:${escapeHtml(tel)}">${escapeHtml(kitchen.phone)}</a>`);
+    }
+    return `
+      <li class="seasonal-kitchen${home ? " seasonal-kitchen--home" : ""}">
+        <p class="seasonal-kitchen-name">
+          <span class="seasonal-kitchen-kind">${escapeHtml(kindLabel)}</span>
+          ${escapeHtml(kitchen.name)}
+        </p>
+        ${kitchen.style ? `<p class="seasonal-kitchen-style">${escapeHtml(kitchen.style)}</p>` : ""}
+        ${kitchen.note ? `<p class="seasonal-kitchen-note">${escapeHtml(kitchen.note)}</p>` : ""}
+        ${locationHtml}
+        ${links.length ? `<p class="seasonal-kitchen-links">${links.join(" · ")}</p>` : ""}
+      </li>`;
+  }
+
+  function renderSeasonalFoodPage(food) {
+    const dishes = food?.dishes ?? [];
+    const intro = (food?.intro ?? [])
+      .map((p) => `<p>${escapeHtml(p)}</p>`)
+      .join("");
+    const dishHtml = dishes
+      .map((dish, i) => {
+        const names = [dish.nameZh, dish.nameVi].filter(Boolean).join(" / ");
+        const title = names ? `${dish.name} (${names})` : dish.name;
+        const kitchens = (dish.kitchens ?? []).map(renderSeasonalKitchen).join("");
+        return `
+      <article class="seasonal-dish" id="${escapeHtml(dish.id)}" data-doc-section>
+        <div class="seasonal-dish-head">
+          <span class="seasonal-dish-n" aria-hidden="true">${i + 1}.</span>
+          <div>
+            <h2 class="seasonal-dish-title">${escapeHtml(title)}</h2>
+            ${dish.gloss ? `<p class="seasonal-dish-gloss">${escapeHtml(dish.gloss)}</p>` : ""}
+          </div>
+        </div>
+        ${dish.intro ? `<p>${escapeHtml(dish.intro)}</p>` : ""}
+        ${kitchens ? `<ul class="seasonal-kitchens">${kitchens}</ul>` : ""}
+      </article>`;
+      })
+      .join("");
+    const listNote = food?.listNote ? `<p class="muted">${escapeHtml(food.listNote)}</p>` : "";
+    const contactNote = food?.contactNote
+      ? `<p class="muted season-contact-note">${escapeHtml(food.contactNote)}</p>`
+      : "";
+    const seasonLink =
+      food?.seasonHref && food?.seasonLabel
+        ? `<p class="muted"><a href="${escapeHtml(food.seasonHref)}">${escapeHtml(food.seasonLabel)}</a></p>`
+        : "";
+    const toc = dishes.map((dish) => ({
+      id: dish.id,
+      label: dish.name,
+    }));
+    const body = `
+      <section class="host-doc-section about-section seasonal-food" id="seasonal-food" data-doc-section>
+        ${intro}
+        ${dishHtml}
+        ${listNote}
+        ${seasonLink}
+        ${contactNote}
+      </section>`;
+
+    return `
+      <section class="hero">
+        <h1>${escapeHtml(food?.headline ?? "Seasonal food")}</h1>
+        ${food?.lead ? `<p class="hero-lead">${escapeHtml(food.lead)}</p>` : ""}
+      </section>
+      ${wrapDocLayout(toc, body)}`;
   }
 
   function resolvePublicHref(link) {
@@ -1748,6 +1850,7 @@
     initPageShell,
     loadSiteData,
     loadSeasonEvents,
+    loadSeasonalFood,
     loadSkuCatalog,
     mountFooter,
     renderAboutPage,
@@ -1759,6 +1862,7 @@
     renderProductionPage,
     renderVolunteerPage,
     renderSeasonPage,
+    renderSeasonalFoodPage,
     renderMediaPage,
     initMediaPlayers,
     renderLogoDesignPage,
