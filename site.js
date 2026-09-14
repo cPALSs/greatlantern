@@ -172,7 +172,7 @@
         href: "/resources/",
         children: [
           { id: "season", label: "Mid-Autumn Season", href: "/resources/season/" },
-          { id: "seasonal-food", label: "Seasonal food", href: "/resources/seasonal-food/" },
+          { id: "seasonal-food", label: "Seasonal food", navLabel: "Seasonal food", href: "/resources/seasonal-food/" },
         ],
       },
     ];
