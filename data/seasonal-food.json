@@ -2,8 +2,8 @@
   "headline": "Seasonal food",
   "lead": "Mooncakes baked here in Greater Sacramento — not premade imports.",
   "intro": [
-    "Families share mooncakes — 月饼, bánh trung thu — under the harvest moon, at Chinese-forward moon festivals and at Tết Trung Thu. Great Lantern Festival is not hosting its own Elk Grove weekend in 2026; the season still has a table.",
-    "This page is for freshly made local mooncakes: pastry baked at neighborhood shops and home kitchens, not boxed imports from a warehouse shelf. Two storefront bakeries and one home kitchen are listed below. Seasonal stock sells through — check with the kitchen before you go."
+    "Families share mooncakes — 月饼, bánh trung thu — under the harvest moon, at Chinese-forward moon festivals and at Tết Trung Thu.",
+    "This page is for freshly made local mooncakes: pastry baked at neighborhood shops and home kitchens, not boxed imports from a warehouse shelf. Pegasus Bakery & Café and ABC Bakery bake in-store; Đạt Tăng bakes Vietnamese bánh trung thu from a home kitchen. Seasonal stock sells through — check with the kitchen before you go."
   ],
   "listNote": "Hong Kong–style and Cantonese Chinese mooncakes are not the same bake as Vietnamese bánh trung thu. Storefront bakeries and the home kitchen are marked separately. We list each kitchen for the style it actually makes.",
   "contactNote": "Know a Greater Sacramento bakery baking mooncakes this season? Email contact@greatlantern.com.",
@@ -15,7 +15,6 @@
       "name": "Mooncake",
       "nameZh": "月饼",
       "nameVi": "bánh trung thu",
-      "gloss": "Mid-Autumn pastry",
       "intro": "The pastry of the season. Look for cakes baked locally this Mid-Autumn — not premade boxed imports.",
       "kitchens": [
         {
