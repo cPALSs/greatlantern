@@ -3253,6 +3253,10 @@ body.nav-open {
   font-size: 1.35rem;
 }
 
+.about-section.seasonal-food h2 {
+  margin-bottom: 0;
+}
+
 .seasonal-dish-gloss {
   margin: 0.2rem 0 0;
   color: var(--muted);
