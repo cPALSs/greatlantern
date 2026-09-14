@@ -1161,8 +1161,8 @@
     return `
       <li class="seasonal-kitchen${home ? " seasonal-kitchen--home" : ""}">
         <p class="seasonal-kitchen-name">
-          <span class="seasonal-kitchen-kind">${escapeHtml(kindLabel)}</span>
           ${escapeHtml(kitchen.name)}
+          <span class="seasonal-kitchen-kind">${escapeHtml(kindLabel)}</span>
         </p>
         ${kitchen.style ? `<p class="seasonal-kitchen-style">${escapeHtml(kitchen.style)}</p>` : ""}
         ${kitchen.note ? `<p class="seasonal-kitchen-note">${escapeHtml(kitchen.note)}</p>` : ""}
@@ -1195,7 +1195,7 @@
       </article>`;
       })
       .join("");
-    const listNote = food?.listNote ? `<p class="muted">${escapeHtml(food.listNote)}</p>` : "";
+    const listNote = food?.listNote ? `<p class="muted seasonal-list-note">${escapeHtml(food.listNote)}</p>` : "";
     const contactNote = food?.contactNote
       ? `<p class="muted season-contact-note">${escapeHtml(food.contactNote)}</p>`
       : "";

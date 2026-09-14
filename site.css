@@ -3259,6 +3259,10 @@ body.nav-open {
   font-size: 0.95rem;
 }
 
+.seasonal-dish > p {
+  margin-top: 0.85rem;
+}
+
 .seasonal-kitchens {
   list-style: none;
   margin: 1rem 0 0;
@@ -3287,7 +3291,7 @@ body.nav-open {
 
 .seasonal-kitchen-kind {
   display: inline-block;
-  margin: 0 0.45rem 0.2rem 0;
+  margin: 0 0 0.2rem 0.45rem;
   padding: 0.1rem 0.45rem;
   border-radius: 999px;
   background: var(--accent-dim);
@@ -3332,6 +3336,10 @@ body.nav-open {
 .seasonal-kitchen-links {
   margin: 0.45rem 0 0;
   font-size: 0.92rem;
+}
+
+.seasonal-list-note {
+  margin-top: 1.35rem;
 }
 
 .season-food-note {
