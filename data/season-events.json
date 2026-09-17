@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-14T02:30:22.042Z",
+  "generatedAt": "2026-09-17T18:10:07.051Z",
   "source": "community-graph",
   "seasonKind": "autumn",
   "seasonYear": "2026",
@@ -50,6 +50,15 @@
       "certainty": "confirmed"
     },
     {
+      "eventId": "prise-arc-moon-festival",
+      "dates": "Thu, Sep 24, 2026 11:30 AM–1:00 PM",
+      "name": "Moon Festival",
+      "host": "PRISE (American River College)",
+      "location": "UNITE Center (Student Center), American River College, Sacramento",
+      "href": "https://www.instagram.com/p/DdXI2bQSW_Y/",
+      "certainty": "confirmed"
+    },
+    {
       "eventId": "ari-autumn-moon",
       "dates": "Thu, Sep 24, 2026 6:00–8:00 PM",
       "name": "Autumn Moon Festival",
@@ -69,21 +78,21 @@
       "certainty": "cancelled"
     },
     {
-      "eventId": "asm-nguyen-autumn-moon",
-      "dates": "Sat, Sep 26, 2026 6:00–10:00 PM",
-      "name": "4th Annual Autumn Moon Movie Night",
-      "host": "Assemblymember Stephanie Nguyen",
-      "location": "Garcia Bend Park — 7654 Pocket Rd, Sacramento",
-      "href": "https://www.instagram.com/p/DcO5ibUj08N/",
-      "certainty": "confirmed"
-    },
-    {
       "eventId": "kim-quang-trung-thu",
       "dates": "Sat, Sep 26, 2026",
       "name": "Tết Trung Thu",
       "host": "Kim Quang Temple",
       "location": "Chùa Kim Quang — 3119 Alta Arden Expy, Sacramento",
       "href": "https://www.facebook.com/permalink.php?story_fbid=pfbid021tBAHJqwmBdmSwYEJi2Lw3XEVjBu9G7GErehDc8BuWyHQg6NPXkGiZRc1yV4FLkHl&id=61555060748551",
+      "certainty": "confirmed"
+    },
+    {
+      "eventId": "asm-nguyen-autumn-moon",
+      "dates": "Sat, Sep 26, 2026 6:00–10:00 PM",
+      "name": "4th Annual Autumn Moon Movie Night",
+      "host": "Assemblymember Stephanie Nguyen",
+      "location": "Garcia Bend Park — 7654 Pocket Rd, Sacramento",
+      "href": "https://www.instagram.com/p/DcO5ibUj08N/",
       "certainty": "confirmed"
     },
     {
