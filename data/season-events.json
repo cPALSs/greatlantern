@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-17T18:10:07.051Z",
+  "generatedAt": "2026-09-20T18:13:08.316Z",
   "source": "community-graph",
   "seasonKind": "autumn",
   "seasonYear": "2026",
@@ -47,6 +47,15 @@
       "host": "Sac State APIDA Center",
       "location": "Acorn Amphitheater (Main Quad), Sac State campus, Sacramento",
       "href": "https://www.csus.edu/student-affairs/spotlights/lantern-festival-popo-up-market.html",
+      "certainty": "confirmed"
+    },
+    {
+      "eventId": "scc-api-center-mid-autumn",
+      "dates": "Tue, Sep 22, 2026 – Fri, Sep 25, 2026 · 10:00 AM–5:00 PM (Friday until 3:00 PM)",
+      "name": "Mid-Autumn Festival Lantern Display",
+      "host": "SCC API Center (Sacramento City College)",
+      "location": "South Gym (SOG 234), Sacramento City College",
+      "href": "https://www.instagram.com/p/Ddb9i4omjx_/",
       "certainty": "confirmed"
     },
     {
