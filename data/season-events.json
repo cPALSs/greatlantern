@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-20T18:13:08.316Z",
+  "generatedAt": "2026-09-24T09:06:16.763Z",
   "source": "community-graph",
   "seasonKind": "autumn",
   "seasonYear": "2026",
@@ -88,12 +88,12 @@
     },
     {
       "eventId": "kim-quang-trung-thu",
-      "dates": "Sat, Sep 26, 2026",
+      "dates": "Sat, Sep 26, 2026 (tentative)",
       "name": "Tết Trung Thu",
       "host": "Kim Quang Temple",
       "location": "Chùa Kim Quang — 3119 Alta Arden Expy, Sacramento",
       "href": "https://www.facebook.com/permalink.php?story_fbid=pfbid021tBAHJqwmBdmSwYEJi2Lw3XEVjBu9G7GErehDc8BuWyHQg6NPXkGiZRc1yV4FLkHl&id=61555060748551",
-      "certainty": "confirmed"
+      "certainty": "tentative"
     },
     {
       "eventId": "asm-nguyen-autumn-moon",
@@ -112,6 +112,15 @@
       "location": "2738 Sunrise Blvd, Rancho Cordova",
       "href": "https://www.instagram.com/p/DPEo69zER3x/",
       "certainty": "estimated"
+    },
+    {
+      "eventId": "vietnamese-martyrs-parish-maf",
+      "dates": "Sat, Oct 3, 2026 6:30 PM–9:00 PM",
+      "name": "Tết Trung Thu",
+      "host": "Đoàn Kitô Vua Sacramento",
+      "location": "Vietnamese Martyrs Parish — 8181 Florin Rd, Sacramento",
+      "href": "https://www.instagram.com/p/Ddp0d1Ro6fW/",
+      "certainty": "confirmed"
     }
   ]
 }
