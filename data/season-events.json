@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-24T09:06:16.763Z",
+  "generatedAt": "2026-09-26T02:18:29.677Z",
   "source": "community-graph",
   "seasonKind": "autumn",
   "seasonYear": "2026",
@@ -102,6 +102,15 @@
       "host": "Assemblymember Stephanie Nguyen",
       "location": "Garcia Bend Park — 7654 Pocket Rd, Sacramento",
       "href": "https://www.instagram.com/p/DcO5ibUj08N/",
+      "certainty": "confirmed"
+    },
+    {
+      "eventId": "gdpt-thien-ton-trung-thu",
+      "dates": "Sun, Sep 27, 2026 3:00 PM–9:00 PM",
+      "name": "Chu Niên 13 & Mid-Autumn Moon Festival",
+      "host": "GĐPT Thiền Tôn",
+      "location": "Thiền Tôn Meditation Center — 6528 Fruitridge Rd, Sacramento",
+      "href": "https://www.facebook.com/groups/290197905206406/posts/2180043286221849",
       "certainty": "confirmed"
     },
     {
