@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-26T02:18:29.677Z",
+  "generatedAt": "2026-10-01T02:31:46.194Z",
   "source": "community-graph",
   "seasonKind": "autumn",
   "seasonYear": "2026",
@@ -88,12 +88,12 @@
     },
     {
       "eventId": "kim-quang-trung-thu",
-      "dates": "Sat, Sep 26, 2026 (tentative)",
+      "dates": "Not hosted",
       "name": "Tết Trung Thu",
       "host": "Kim Quang Temple",
       "location": "Chùa Kim Quang — 3119 Alta Arden Expy, Sacramento",
       "href": "https://www.facebook.com/permalink.php?story_fbid=pfbid021tBAHJqwmBdmSwYEJi2Lw3XEVjBu9G7GErehDc8BuWyHQg6NPXkGiZRc1yV4FLkHl&id=61555060748551",
-      "certainty": "tentative"
+      "certainty": "cancelled"
     },
     {
       "eventId": "asm-nguyen-autumn-moon",
@@ -112,15 +112,6 @@
       "location": "Thiền Tôn Meditation Center — 6528 Fruitridge Rd, Sacramento",
       "href": "https://www.facebook.com/groups/290197905206406/posts/2180043286221849",
       "certainty": "confirmed"
-    },
-    {
-      "eventId": "sf-supermarket-maf-rancho",
-      "dates": "Sat, Oct 3, 2026 – Sun, Oct 4, 2026 (estimated first Oct weekend; low confidence)",
-      "name": "SF Supermarket Mid-Autumn Festival",
-      "host": "SF Supermarket (Shun Fat)",
-      "location": "2738 Sunrise Blvd, Rancho Cordova",
-      "href": "https://www.instagram.com/p/DPEo69zER3x/",
-      "certainty": "estimated"
     },
     {
       "eventId": "vietnamese-martyrs-parish-maf",
