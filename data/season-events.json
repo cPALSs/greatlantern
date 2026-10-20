@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-20T18:37:06.450Z",
+  "generatedAt": "2026-10-20T18:49:44.028Z",
   "source": "community-graph",
   "seasonKind": "autumn",
   "seasonYear": "2027",
@@ -20,16 +20,17 @@
       "host": "VACOS / cPALSs / NVCC",
       "location": "Laguna Town Hall, Elk Grove",
       "href": "/",
+      "certainty": "tentative",
       "capstone": true
     },
     {
       "eventId": "ca-is-my-home-maf",
-      "dates": "Sun, Sep 19, 2027 (intended; not confirmed)",
+      "dates": "Sun, Sep 19, 2027 (tentative)",
       "name": "Mid-Autumn Festival",
       "host": "California Is My Home",
       "location": "District 56 - 8230 Civic Center Dr, Elk Grove",
       "href": "https://www.caismyhome.com/",
-      "certainty": "intended"
+      "certainty": "tentative"
     },
     {
       "eventId": "ari-mid-autumn-noodle-festival",
@@ -63,16 +64,17 @@
           "host": "VACOS / cPALSs / NVCC",
           "location": "Laguna Town Hall, Elk Grove",
           "href": "/",
+          "certainty": "tentative",
           "capstone": true
         },
         {
           "eventId": "ca-is-my-home-maf",
-          "dates": "Sun, Sep 19, 2027 (intended; not confirmed)",
+          "dates": "Sun, Sep 19, 2027 (tentative)",
           "name": "Mid-Autumn Festival",
           "host": "California Is My Home",
           "location": "District 56 - 8230 Civic Center Dr, Elk Grove",
           "href": "https://www.caismyhome.com/",
-          "certainty": "intended"
+          "certainty": "tentative"
         },
         {
           "eventId": "ari-mid-autumn-noodle-festival",
@@ -169,8 +171,8 @@
           "host": "VACOS / cPALSs / NVCC",
           "location": "Derr-Okamoto Park, Elk Grove",
           "href": "/",
-          "capstone": true,
-          "certainty": "cancelled"
+          "certainty": "cancelled",
+          "capstone": true
         },
         {
           "eventId": "kim-quang-trung-thu",

@@ -18,6 +18,7 @@
   --font-display: "Pacifico", cursive;
   --max-width: 960px;
   --nav-height: 3.25rem;
+  --season-tentative-bg: color-mix(in srgb, var(--gold) 28%, var(--surface));
   /* Soft dusk wash — elliptical arcs along the top, with a hint of sunset orange */
   --night-sky:
     radial-gradient(145% 75% at 50% -8%, rgba(88, 62, 98, 0.55) 0%, transparent 60%),
@@ -41,6 +42,7 @@
   --accent-hover: #7d2a82;
   --accent-dim: #f2e1f3;
   --gold: #b8860b;
+  --season-tentative-bg: #fff6d4;
   --night-sky: none;
 }
 
@@ -57,6 +59,7 @@
     --accent-hover: #7d2a82;
     --accent-dim: #f2e1f3;
     --gold: #b8860b;
+    --season-tentative-bg: #fff6d4;
     --night-sky: none;
   }
 }
@@ -1063,7 +1066,41 @@ body.nav-open {
   border-top: 1px solid var(--border);
 }
 
-/* Estimated / tentative / cancelled — slightly gray so firm dates read as the bright path */
+.season-date-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1.15rem;
+  list-style: none;
+  margin: 1.15rem 0 0;
+  padding: 0;
+  font-size: 0.92rem;
+  color: var(--muted);
+}
+
+.season-date-legend-item {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.season-date-legend-swatch {
+  width: 1.05rem;
+  height: 1.05rem;
+  border-radius: 4px;
+  flex-shrink: 0;
+  border: 1px solid var(--border);
+  background: var(--surface);
+}
+
+.season-date-legend-swatch--tentative {
+  background: var(--season-tentative-bg);
+}
+
+.season-date-legend-swatch--confirmed {
+  background: var(--surface);
+}
+
+/* Soft rows (estimated / cancelled) — muted; tentative uses yellow below */
 .season-event-item--soft {
   background: color-mix(in srgb, var(--muted) 14%, var(--surface));
   padding-left: 0.85rem;
@@ -1073,9 +1110,10 @@ body.nav-open {
   border-bottom-color: transparent;
 }
 
-/* Organizer intends this date; not a public listing yet */
+/* Intended ≡ tentative — yellow (Bao 10/20) */
+.season-event-item--tentative,
 .season-event-item--intended {
-  background: color-mix(in srgb, var(--muted) 10%, var(--surface));
+  background: var(--season-tentative-bg);
 }
 
 .season-event-item--soft + .season-event-item--soft {

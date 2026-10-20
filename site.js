@@ -1051,10 +1051,10 @@
 
   function seasonEventCertainty(event) {
     const explicit = String(event.certainty || "").toLowerCase().trim();
+    // intended ≡ tentative (Bao 10/20) — one yellow UI status
+    if (explicit === "intended" || explicit === "tentative") return "tentative";
     if (
       explicit === "estimated" ||
-      explicit === "intended" ||
-      explicit === "tentative" ||
       explicit === "cancelled" ||
       explicit === "canceled" ||
       explicit === "confirmed"
@@ -1063,9 +1063,14 @@
     }
     const dates = String(event.dates || "").toLowerCase();
     if (/not hosting|cancelled|canceled/.test(dates)) return "cancelled";
-    if (/\bintended\b/.test(dates)) return "intended";
     if (/\(estimated\)/.test(dates) || /\bestimated\b/.test(dates)) return "estimated";
-    if (/\(tentative\)/.test(dates) || /\btentative\b/.test(dates)) return "tentative";
+    if (
+      /\bintended\b/.test(dates) ||
+      /\(tentative\)/.test(dates) ||
+      /\btentative\b/.test(dates)
+    ) {
+      return "tentative";
+    }
     return "confirmed";
   }
 
@@ -1073,7 +1078,6 @@
     const certainty = seasonEventCertainty(event);
     const soft =
       certainty === "estimated" ||
-      certainty === "intended" ||
       certainty === "tentative" ||
       certainty === "cancelled";
     const softClass = soft ? " season-event-item--soft" : "";
@@ -1096,6 +1100,19 @@
       <span class="season-event-location">${escapeHtml(event.location)}</span>
       ${opportunityHtml}
     </li>`;
+  }
+
+  function renderSeasonDateLegend() {
+    return `<ul class="season-date-legend" aria-label="Date key">
+      <li class="season-date-legend-item">
+        <span class="season-date-legend-swatch season-date-legend-swatch--tentative" aria-hidden="true"></span>
+        Tentative
+      </li>
+      <li class="season-date-legend-item">
+        <span class="season-date-legend-swatch season-date-legend-swatch--confirmed" aria-hidden="true"></span>
+        Confirmed listing
+      </li>
+    </ul>`;
   }
 
   function seasonBlocksFromData(season, seasonData) {
@@ -1155,7 +1172,7 @@
         ${block.intro ? `<p>${escapeHtml(block.intro)}</p>` : ""}
         ${
           block.events?.length
-            ? `<ul class="season-event-list">${listItems}</ul>`
+            ? `${index === 0 ? renderSeasonDateLegend() : ""}<ul class="season-event-list">${listItems}</ul>`
             : `<p class="muted">Season events coming soon.</p>`
         }
         ${footer}

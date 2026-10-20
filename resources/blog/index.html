@@ -14,12 +14,19 @@
     document.documentElement.classList.add("js");
     setTimeout(function () { document.documentElement.classList.add("is-hydrated"); }, 3000);
   </script>
-
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <script>
+    (function () {
+      try {
+        var t = sessionStorage.getItem("maf-theme");
+        if (t === "light" || t === "dark") document.documentElement.setAttribute("data-theme", t);
+      } catch (_) {}
+    })();
+  </script>
+  <link rel="stylesheet" href="../../site.css" />
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-G3HQX0SYHS"></script>
   <script src="../../analytics.js"></script>
-
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="description" content="Festival planning notes from our organizing teams — budgets, ownership, and regional coordination." />
   <link rel="canonical" href="https://greatlantern.com/resources/blog/" />
   <meta property="og:title" content="Blog — Great Lantern Festival" />
@@ -31,15 +38,6 @@
   <meta name="twitter:description" content="Festival planning notes from our organizing teams — budgets, ownership, and regional coordination." />
   <title>Blog — Great Lantern Festival</title>
   <script src="../../clean-urls.js"></script>
-  <script>
-    (function () {
-      try {
-        var t = sessionStorage.getItem("maf-theme");
-        if (t === "light" || t === "dark") document.documentElement.setAttribute("data-theme", t);
-      } catch (_) {}
-    })();
-  </script>
-  <link rel="stylesheet" href="../../site.css" />
 </head>
 <body>
   <div id="site-nav"></div>
