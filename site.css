@@ -1073,6 +1073,11 @@ body.nav-open {
   border-bottom-color: transparent;
 }
 
+/* Organizer intends this date; not a public listing yet */
+.season-event-item--intended {
+  background: color-mix(in srgb, var(--muted) 10%, var(--surface));
+}
+
 .season-event-item--soft + .season-event-item--soft {
   margin-top: 0.15rem;
 }

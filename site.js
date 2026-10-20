@@ -1053,6 +1053,7 @@
     const explicit = String(event.certainty || "").toLowerCase().trim();
     if (
       explicit === "estimated" ||
+      explicit === "intended" ||
       explicit === "tentative" ||
       explicit === "cancelled" ||
       explicit === "canceled" ||
@@ -1062,6 +1063,7 @@
     }
     const dates = String(event.dates || "").toLowerCase();
     if (/not hosting|cancelled|canceled/.test(dates)) return "cancelled";
+    if (/\bintended\b/.test(dates)) return "intended";
     if (/\(estimated\)/.test(dates) || /\bestimated\b/.test(dates)) return "estimated";
     if (/\(tentative\)/.test(dates) || /\btentative\b/.test(dates)) return "tentative";
     return "confirmed";
@@ -1071,6 +1073,7 @@
     const certainty = seasonEventCertainty(event);
     const soft =
       certainty === "estimated" ||
+      certainty === "intended" ||
       certainty === "tentative" ||
       certainty === "cancelled";
     const softClass = soft ? " season-event-item--soft" : "";
@@ -1095,17 +1098,39 @@
     </li>`;
   }
 
+  function seasonBlocksFromData(season, seasonData) {
+    if (Array.isArray(seasonData?.seasons) && seasonData.seasons.length) {
+      return seasonData.seasons.map((block, index) => {
+        const year = String(block.seasonYear || "");
+        const fallbackTitle =
+          index === 0
+            ? season?.upcomingTitle || season?.title
+            : season?.previousTitle || (year ? `${year} season` : "Previous season");
+        return {
+          id: index === 0 ? "season" : `season-${year || index}`,
+          title: block.title || fallbackTitle || "Season",
+          intro: index === 0 ? season?.intro : season?.previousIntro,
+          events: block.events ?? [],
+        };
+      });
+    }
+    return [
+      {
+        id: "season",
+        title: season?.title ?? "Mid-Autumn Season",
+        intro: season?.intro,
+        events: seasonData?.events ?? [],
+      },
+    ];
+  }
+
   function renderSeasonPage(season, seasonData) {
-    const events = seasonData?.events ?? [];
-    const seasonTitle = season?.title ?? "Mid-Autumn Season";
+    const blocks = seasonBlocksFromData(season, seasonData);
     const opportunityById = Object.fromEntries(
       (season?.opportunityLines ?? [])
         .filter((row) => row?.eventId && row?.label)
         .map((row) => [row.eventId, row.label]),
     );
-    const listItems = events
-      .map((event) => renderSeasonEventItem(event, opportunityById[event.eventId]))
-      .join("");
     const listNote = season?.listNote
       ? `<p class="muted season-list-note">${escapeHtml(season.listNote)}</p>`
       : "";
@@ -1116,23 +1141,34 @@
       season?.foodHref && season?.foodLabel
         ? `<p class="muted season-food-note">${escapeHtml(season.foodNote ?? "Looking for mooncakes baked in Greater Sacramento?")} <a href="${escapeHtml(season.foodHref)}">${escapeHtml(season.foodLabel)}</a>.</p>`
         : "";
-    const toc = [{ id: "season", label: seasonTitle }];
-    const seasonSection = `
-      <section class="host-doc-section about-section resources-season" id="season" data-doc-section>
-        <h2>${escapeHtml(seasonTitle)}</h2>
-        ${season?.intro ? `<p>${escapeHtml(season.intro)}</p>` : ""}
-        ${events.length ? `<ul class="season-event-list">${listItems}</ul>` : `<p class="muted">Season events coming soon.</p>`}
-        ${listNote}
-        ${foodNote}
-        ${contactNote}
+    const toc = blocks.map((block) => ({ id: block.id, label: block.title }));
+    const seasonSections = blocks
+      .map((block, index) => {
+        const listItems = (block.events ?? [])
+          .map((event) => renderSeasonEventItem(event, opportunityById[event.eventId]))
+          .join("");
+        const footer =
+          index === blocks.length - 1 ? `${listNote}${foodNote}${contactNote}` : "";
+        return `
+      <section class="host-doc-section about-section resources-season" id="${escapeHtml(block.id)}" data-doc-section>
+        <h2>${escapeHtml(block.title)}</h2>
+        ${block.intro ? `<p>${escapeHtml(block.intro)}</p>` : ""}
+        ${
+          block.events?.length
+            ? `<ul class="season-event-list">${listItems}</ul>`
+            : `<p class="muted">Season events coming soon.</p>`
+        }
+        ${footer}
       </section>`;
+      })
+      .join("");
 
     return `
       <section class="hero">
         <h1>${escapeHtml(season?.headline ?? "Mid-Autumn Season")}</h1>
         ${season?.lead ? `<p class="hero-lead">${escapeHtml(season.lead)}</p>` : ""}
       </section>
-      ${wrapDocLayout(toc, seasonSection)}`;
+      ${wrapDocLayout(toc, seasonSections)}`;
   }
 
   function renderSeasonalKitchen(kitchen) {
